@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "es5",
     "module": "esnext",
     "strict": true,
     "jsx": "preserve",
@@ -13,6 +13,7 @@
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
+      "node",
       "webpack-env",
       "jest"
     ],
@@ -23,6 +24,8 @@
     },
     "lib": [
       "esnext",
+      "es5",
+      "es2015.promise",
       "dom",
       "dom.iterable",
       "scripthost"
