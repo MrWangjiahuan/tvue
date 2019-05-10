@@ -46,6 +46,7 @@
     "@vue/cli-service": "^3.7.0",
     "@vue/test-utils": "1.0.0-beta.29",
     "babel-core": "7.0.0-bridge.0",
+    "babel-plugin-import": "^1.11.0",
     "commitizen": "^3.1.1",
     "conventional-changelog": "^3.1.8",
     "cz-conventional-changelog": "^2.1.0",
