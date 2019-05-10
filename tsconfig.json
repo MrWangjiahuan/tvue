@@ -5,6 +5,7 @@
     "strict": true,
     "jsx": "preserve",
     "importHelpers": true,
+    "noImplicitAny": false, //未定义默认any检查 关闭
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "esModuleInterop": true,
