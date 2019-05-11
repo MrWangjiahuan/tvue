@@ -1,9 +1,25 @@
 <template>
-  <div></div>
+  <div>
+    <Header />
+    <sider-menu />
+    <router-view></router-view>
+    <Footer />
+  </div>
 </template>
 
-<script>
-import { Vue } from 'vue-property-decorator'
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator'
+import Header from './Header.vue'
+import Footer from './Footer.vue'
+import SiderMenu from './SiderMenu.vue'
+
+@Component({
+  components: {
+    Header,
+    Footer,
+    SiderMenu
+  }
+})
 export default class BasicLayout extends Vue {}
 </script>
 

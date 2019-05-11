@@ -1,16 +1,19 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+import NotFound from '@/views/404.vue'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {
       path: '/user',
       component: () =>
-        import(/* webpackChunkName: "layout" */ './layouts/UserLayout.vue'),
+        import(/* webpackChunkName: "layout" */ '@/layouts/UserLayout.vue'),
       children: [
         {
           path: '/user',
@@ -20,20 +23,21 @@ export default new Router({
           path: '/user/login',
           name: 'login',
           component: () =>
-            import(/* webpackChunkName: "user" */ './views/user/Login.vue')
+            import(/* webpackChunkName: "user" */ '@/views/user/Login.vue')
         },
         {
           path: '/user/register',
           name: 'register',
           component: () =>
-            import(/* webpackChunkName: "user" */ './views/user/Register.vue')
+            import(/* webpackChunkName: "user" */ '@/views/user/Register.vue')
         }
       ]
     },
     {
       path: '/',
+      meta: { authority: ['user', 'admin'] },
       component: () =>
-        import(/* webpackChunkName: "layout" */ './layouts/BasicLayout.vue'),
+        import(/* webpackChunkName: "layout" */ '@/layouts/BasicLayout.vue'),
       children: [
         // dashboard
         {
@@ -52,7 +56,7 @@ export default new Router({
               meta: { title: '分析页' },
               component: () =>
                 import(
-                  /* webpackChunkName: "dashboard" */ './views/dashboard/Analysis.vue'
+                  /* webpackChunkName: "dashboard" */ '@/views/dashboard/Analysis.vue'
                 )
             }
           ]
@@ -70,7 +74,7 @@ export default new Router({
               meta: { title: '基础表单' },
               component: () =>
                 import(
-                  /* webpackChunkName: "form" */ './views/forms/BasicForm.vue'
+                  /* webpackChunkName: "form" */ '@/views/forms/BasicForm.vue'
                 )
             },
             {
@@ -79,7 +83,7 @@ export default new Router({
               meta: { title: '分布表单' },
               component: () =>
                 import(
-                  /* webpackChunkName: "form" */ './views/forms/stepForm/index.vue'
+                  /* webpackChunkName: "form" */ '@/views/forms/stepForm/index.vue'
                 ),
               children: [
                 {
@@ -91,7 +95,7 @@ export default new Router({
                   name: 'info',
                   component: () =>
                     import(
-                      /* webpackChunkName: "form" */ './views/forms/stepForm/Step1.vue'
+                      /* webpackChunkName: "form" */ '@/views/forms/stepForm/Step1.vue'
                     )
                 },
                 {
@@ -99,7 +103,7 @@ export default new Router({
                   name: 'confirm',
                   component: () =>
                     import(
-                      /* webpackChunkName: "form" */ './views/forms/stepForm/Step2.vue'
+                      /* webpackChunkName: "form" */ '@/views/forms/stepForm/Step2.vue'
                     )
                 },
                 {
@@ -107,14 +111,30 @@ export default new Router({
                   name: 'result',
                   component: () =>
                     import(
-                      /* webpackChunkName: "form" */ './views/forms/stepForm/Step3.vue'
+                      /* webpackChunkName: "form" */ '@/views/forms/stepForm/Step3.vue'
                     )
                 }
               ]
             }
           ]
+        },
+        {
+          path: '*',
+          name: '404',
+          component: NotFound
         }
       ]
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  NProgress.start()
+  next()
+})
+
+router.afterEach(() => {
+  NProgress.done()
+})
+
+export default router

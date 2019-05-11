@@ -2,8 +2,9 @@
   <div class="">登录页</div>
 </template>
 
-<script>
-import { Vue } from 'vue-property-decorator'
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator'
+@Component
 export default class Login extends Vue {}
 </script>
-<style lang="scss" scoped></style>
+<style lang="less" scoped></style>
