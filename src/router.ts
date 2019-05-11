@@ -4,6 +4,7 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import NotFound from '@/views/404.vue'
 
+NProgress.configure({ showSpinner: false })
 Vue.use(Router)
 
 const router = new Router({
@@ -129,7 +130,9 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  NProgress.start()
+  if (to.path !== from.path) {
+    NProgress.start()
+  }
   next()
 })
 

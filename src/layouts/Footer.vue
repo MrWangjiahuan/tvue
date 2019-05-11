@@ -1,7 +1,5 @@
 <template>
-  <div>
-    aaaa
-  </div>
+  <div>Tvue ©2019 Created by Wangjiahuan</div>
 </template>
 
 <script lang="ts">

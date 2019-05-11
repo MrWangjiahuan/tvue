@@ -1,6 +1,6 @@
 <template>
-  <div>
-    ssssss
+  <div class="header">
+    header
   </div>
 </template>
 
@@ -9,4 +9,8 @@ import { Vue, Component } from 'vue-property-decorator'
 @Component
 export default class Header extends Vue {}
 </script>
-<style lang="less"></style>
+<style lang="less" scoped>
+.header {
+  float: right;
+}
+</style>
