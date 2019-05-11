@@ -10,12 +10,8 @@
     "commit": "git-cz"
   },
   "lint-staged": {
-    "{src,test}/**/*.ts": [
-      "prettier --write",
-      "git add"
-    ],
-    "*.vue": [
-      "prettier --write",
+    "*.{vue,ts,js,json,css,less}": [
+      "prettier --config ./.prettierrc --write",
       "git add"
     ]
   },
