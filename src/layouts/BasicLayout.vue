@@ -7,9 +7,10 @@
         :trigger="null"
         collapsible
         v-model="collapsed"
+        width="256px"
       >
         <div class="logo">Tvue</div>
-        <sider-menu />
+        <sider-menu :theme="navTheme" />
       </a-layout-sider>
       <a-layout>
         <a-layout-header style="background: #fff; padding: 0">

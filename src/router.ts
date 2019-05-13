@@ -13,6 +13,7 @@ const router = new Router({
   routes: [
     {
       path: '/user',
+      meta: { hideInMenu: true },
       component: () =>
         import(/* webpackChunkName: "layout" */ '@/layouts/UserLayout.vue'),
       children: [
@@ -81,16 +82,16 @@ const router = new Router({
             {
               path: '/form/step-form',
               name: 'stepform',
-              meta: { title: '分布表单' },
+              meta: { title: '分布表单', hideChildrenInMenu: true },
               component: () =>
                 import(
                   /* webpackChunkName: "form" */ '@/views/forms/stepForm/index.vue'
                 ),
               children: [
-                {
-                  path: '/form/step-form',
-                  redirect: '/form/step-form/info'
-                },
+                // {
+                //   path: '/form/step-form',
+                //   redirect: '/form/step-form/info'
+                // },
                 {
                   path: '/form/step-form/info',
                   name: 'info',
@@ -122,6 +123,7 @@ const router = new Router({
         {
           path: '*',
           name: '404',
+          meta: { hideInMenu: true },
           component: NotFound
         }
       ]
