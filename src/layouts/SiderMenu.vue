@@ -1,68 +1,82 @@
 <template>
   <div style="width: 256px">
-    <a-menu
-      :selectedKeys="selectedKeys"
-      :openKeys.sync="openKeys"
-      mode="inline"
-      :theme="theme"
+    <a-layout-sider
+      :class="[
+        'sider',
+        isDesktop() ? null : 'shadow',
+        AppModule.navTheme,
+        AppModule.fixSiderbar ? 'ant-fixed-sidemenu' : null
+      ]"
+      width="256px"
+      :collapsible="true"
+      v-model="collapsed"
+      :trigger="null"
     >
-      <template v-for="item in menuData">
-        <a-menu-item
-          v-if="!item.children"
-          :key="item.path"
-          @click="() => $router.push({ path: item.path, query: $route.query })"
-        >
-          <a-icon v-if="item.meta.icon" :type="item.meta.icon" />
-          <span>{{ item.meta.title }}</span>
-        </a-menu-item>
-        <sub-menu v-else :menu-info="item" :key="item.path" />
-      </template>
-    </a-menu>
+      <a-menu
+        :selectedKeys="selectedKeys"
+        :openKeys.sync="openKeys"
+        mode="inline"
+        :theme="AppModule.navTheme"
+      >
+        <template v-for="item in menuData">
+          <a-menu-item
+            v-if="!item.children"
+            :key="item.path"
+            @click="
+              () => $router.push({ path: item.path, query: $route.query })
+            "
+          >
+            <a-icon v-if="item.meta.icon" :type="item.meta.icon" />
+            <span>{{ item.meta.title }}</span>
+          </a-menu-item>
+          <sub-menu v-else :menu-info="item" :key="item.path" />
+        </template>
+      </a-menu>
+    </a-layout-sider>
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
+import { Vue, Component, Prop, Watch, Mixins } from 'vue-property-decorator'
+import { Mixin, DeviceMixin } from '@/utils/mixins'
 import SubMenu from './SubMenu.vue'
 @Component({
   components: {
     SubMenu
   }
 })
-export default class SiderMenu extends Vue {
-  @Prop({ default: 'dark' }) public theme!: string
-  private collapsed: boolean = false
+export default class SiderMenu extends Mixins(Mixin, DeviceMixin) {
+  @Prop({ default: false }) public collapsed!: boolean
   private menuData: any = []
-  private selectedKeys = []
-  private openKeys = []
-  private selectedKeyMap = {}
+  private routePath = ''
+  private selectedKeys: string[] = []
+  private openKeys: string[] = []
+  private selectedKeysMap = {}
   private openKeysMap = {}
 
   private created() {
     this.menuData = this.getMenuData(this.$router['options'].routes)
-    this.selectedKeys = this.selectedKeyMap[this.$route.path]
+    this.routePath = this.$route.path
+    this.selectedKeys = this.selectedKeysMap[this.$route.path]
     this.openKeys = this.collapsed ? [] : this.openKeysMap[this.$route.path]
   }
-  private toggleCollapsed() {
-    this.collapsed = !this.collapsed
-  }
+
   private getMenuData(
     routes: any[] = [],
     parentKeys: any[] = [],
     selectedKey?: string
   ): any {
-    // if (routes.length == 0) {
-    //   return []
-    // }
-    let menuData: any[] = []
-    console.log(routes)
-    routes.forEach(item => {
-      if (item.name && item.meta && !item.meta.hideInMenu) {
+    const menuData: any = []
+    for (let item of routes) {
+      // if (item.meta && item.meta.authority && !check(item.meta.authority)) {
+      //   continue;
+      // }
+      if (item.name && !item.hideInMenu) {
         this.openKeysMap[item.path] = parentKeys
-        this.selectedKeyMap[item.path] = [selectedKey || item.path]
+        this.selectedKeysMap[item.path] = [selectedKey || item.path]
         const newItem = { ...item }
         delete newItem.children
-        if (item.children && item.meta && !item.meta.hideChildrenInMenu) {
+        if (item.children && !item.hideChildrenInMenu) {
           newItem.children = this.getMenuData(item.children, [
             ...parentKeys,
             item.path
@@ -76,33 +90,27 @@ export default class SiderMenu extends Vue {
         }
         menuData.push(newItem)
       } else if (
-        item.meta &&
-        !item.meta.hideInMenu &&
-        !item.meta.hideChildrenInMenu &&
+        !item.hideInMenu &&
+        !item.hideChildrenInMenu &&
         item.children
       ) {
         menuData.push(
           ...this.getMenuData(item.children, [...parentKeys, item.path])
         )
       }
-    })
+    }
     return menuData
   }
 
   @Watch('$route.path')
   routePathChange(val) {
-    console.log(
-      '%cval: ',
-      'color: MidnightBlue; background: Aquamarine; font-size: 20px;',
-      val
-    )
-    this.selectedKeys = this.selectedKeyMap[val]
+    this.routePath = val
+    this.selectedKeys = this.selectedKeysMap[val]
     this.openKeys = this.collapsed ? [] : this.openKeysMap[val]
-    console.log(
-      '%cthis.openKeys : ',
-      'color: MidnightBlue; background: Aquamarine; font-size: 20px;',
-      this.openKeysMap
-    )
+  }
+  @Watch('collapsed')
+  collapsedChange(val) {
+    this.openKeys = val ? [] : this.openKeysMap[this.routePath]
   }
 }
 </script>

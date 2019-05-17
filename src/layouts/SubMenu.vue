@@ -29,6 +29,6 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 
 @Component
 export default class SubMenu extends Vue {
-  @Prop({ default: () => {} }) public menuInfo!: any
+  @Prop({ default: {} }) public menuInfo!: any
 }
 </script>

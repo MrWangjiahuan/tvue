@@ -1,6 +1,6 @@
 <template>
-  <div :class="[`nav-theme-${navTheme}`, `nav-layout-${navLayout}`]">
-    <a-layout id="components-layout-demo-side" style="min-height: 100vh">
+  <!-- <div>
+    <a-layout :class="['layout', AppModule.device]">
       <a-layout-sider
         v-if="navLayout === 'left'"
         :theme="navTheme"
@@ -10,73 +10,133 @@
         width="256px"
       >
         <div class="logo">Tvue</div>
-        <sider-menu :theme="navTheme" />
+        <sider-menu :theme="navTheme"/>
       </a-layout-sider>
-      <a-layout>
-        <a-layout-header style="background: #fff; padding: 0">
-          <a-icon
-            class="trigger"
-            :type="collapsed ? 'menu-unfold' : 'menu-fold'"
-            @click="collapsed = !collapsed"
-          />
-          <Header />
-        </a-layout-header>
+      <a-layout
+        :class="[AppModule.layoutMode, `content-width-${AppModule.contentWidth}`]"
+        :style="{ paddingLeft: contentPaddingLeft, minHeight: '100vh' }"
+      >
+        <global-header
+          :mode="AppModule.layoutMode"
+          :theme="AppModule.navTheme"
+          :collapsed="collapsed"
+          :device="AppModule.device"
+        />
         <a-layout-content style="margin: 0 16px">
-          <router-view />
+          <router-view/>
         </a-layout-content>
         <a-layout-footer style="text-align: center">
-          <Footer />
+          <Footer/>
         </a-layout-footer>
       </a-layout>
     </a-layout>
-    <setting-drawer />
-  </div>
+    <setting-drawer/>
+  </div>-->
+  <a-layout :class="['layout', AppModule.device]">
+    <!-- SideMenu -->
+    <a-drawer
+      v-if="isMobile()"
+      placement="left"
+      :wrapClassName="`drawer-sider ${AppModule.navTheme}`"
+      :closable="false"
+      :visible="collapsed"
+      @close="collapsed = false"
+    >
+      <!-- <side-menu
+        mode="inline"
+        :menus="menus"
+        :theme="navTheme"
+        :collapsed="false"
+        :collapsible="true"
+        @menuSelect="menuSelect"
+      ></side-menu>-->
+      <sider-menu />
+    </a-drawer>
+
+    <sider-menu :collapsed="collapsed" v-else-if="isSideMenu()" />
+
+    <a-layout
+      :class="[AppModule.layoutMode, `content-width-${AppModule.contentWidth}`]"
+      :style="{ paddingLeft: contentPaddingLeft, minHeight: '100vh' }"
+    >
+      <!-- layout header -->
+      <global-header :collapsed="collapsed" @toggle="toggle" />
+
+      <!-- layout content -->
+      <a-layout-content
+        :style="{
+          height: '100%',
+          margin: '24px 24px 0',
+          paddingTop: AppModule.fixedHeader ? '64px' : '0'
+        }"
+      >
+        <!-- <multi-tab v-if="multiTab"></multi-tab> -->
+        <transition name="page-transition">
+          <router-view />
+        </transition>
+      </a-layout-content>
+
+      <!-- layout footer -->
+      <a-layout-footer>
+        <!-- <global-footer /> -->
+      </a-layout-footer>
+
+      <!-- Setting Drawer (show in development mode) -->
+      <setting-drawer></setting-drawer>
+    </a-layout>
+  </a-layout>
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
-import Header from './Header.vue'
+import { Vue, Component, Mixins } from 'vue-property-decorator'
+import { Mixin, DeviceMixin } from '@/utils/mixins'
+import { triggerWindowResizeEvent } from '@/utils/helper/'
+import config from '@/config/defaultSettings'
+import GlobalHeader from './GlobalHeader.vue'
 import Footer from './Footer.vue'
 import SiderMenu from './SiderMenu.vue'
 import SettingDrawer from '@/components/settingDrawer/index.vue'
 
 @Component({
   components: {
-    Header,
+    GlobalHeader,
     Footer,
     SiderMenu,
     SettingDrawer
   }
 })
-export default class BasicLayout extends Vue {
+export default class BasicLayout extends Mixins(Mixin, DeviceMixin) {
   private collapsed: boolean = false
-
-  get navTheme(): string | (string | null)[] {
-    return this.$route.query.navTheme || 'dark'
+  get contentPaddingLeft() {
+    if (!this.AppModule.fixSiderbar || this.isMobile()) {
+      return '0'
+    }
+    if (this.AppModule.sidebar) {
+      return '256px'
+    }
+    return '80px'
   }
-  get navLayout(): string | (string | null)[] {
-    return this.$route.query.navLayout || 'left'
+  private toggle() {
+    this.collapsed = !this.collapsed
+    this.AppModule.SetSidebar(!this.collapsed)
+    triggerWindowResizeEvent()
   }
 }
 </script>
 
-<style scoped>
-.trigger {
-  padding: 0 20px;
-  line-height: 64px;
-  font-size: 20px;
+<style lang="less">
+@import url('../assets/styles/global.less');
+.page-transition-enter {
+  opacity: 0;
 }
-.trigger:hover {
-  background: #eeeeee;
-  cursor: pointer;
+
+.page-transition-leave-active {
+  opacity: 0;
 }
-.logo {
-  height: 64px;
-  line-height: 64px;
-  text-align: center;
-  overflow: hidden;
-}
-.nav-theme-dark >>> .logo {
-  color: #ffffff;
+
+.page-transition-enter .page-transition-container,
+.page-transition-leave-active .page-transition-container {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 </style>
