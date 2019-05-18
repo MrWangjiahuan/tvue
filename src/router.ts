@@ -121,7 +121,7 @@ const routes = [
       {
         path: '*',
         name: '404',
-        meta: { hideInMenu: true },
+        hideInMenu: true,
         component: NotFound
       }
     ]

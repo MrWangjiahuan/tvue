@@ -16,7 +16,7 @@
       <div>
         <h2>整体风格定制</h2>
         <a-radio-group
-          :value="$route.query.navTheme || 'dark'"
+          :value="navTheme || 'dark'"
           @change="e => handleSettingChange('navTheme', e.target.value)"
         >
           <a-radio value="dark">黑色</a-radio>
@@ -24,11 +24,11 @@
         </a-radio-group>
         <h2>导航模式</h2>
         <a-radio-group
-          :value="$route.query.navLayout || 'left'"
-          @change="e => handleSettingChange('navLayout', e.target.value)"
+          :value="layoutMode || 'sidemenu'"
+          @change="e => handleSettingChange('layout', e.target.value)"
         >
-          <a-radio value="left">左侧</a-radio>
-          <a-radio value="top">顶部</a-radio>
+          <a-radio value="sidemenu">左侧</a-radio>
+          <a-radio value="topmenu">顶部</a-radio>
         </a-radio-group>
       </div>
     </a-drawer>
@@ -36,17 +36,30 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component, Watch } from 'vue-property-decorator'
+import { Getter, Action } from 'vuex-class'
+
 @Component
 export default class SettingDrawer extends Vue {
   private visible: boolean = false
+
+  @Getter layoutMode
+  @Getter navTheme
+
+  @Action('ToggleLayoutMode') toggleLayoutMode
+  @Action('ToggleNavTheme') toggleNavTheme
 
   private onClose(): void {
     this.visible = false
   }
 
   private handleSettingChange(type: string, value: string): void {
-    this.$router.push({ query: { ...this.$route.query, [type]: value } })
+    if (type === 'layout') {
+      this.toggleLayoutMode(value)
+    }
+    if (type === 'navTheme') {
+      this.toggleNavTheme(value)
+    }
   }
 }
 </script>

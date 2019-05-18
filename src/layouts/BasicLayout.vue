@@ -1,39 +1,6 @@
 <template>
-  <!-- <div>
-    <a-layout :class="['layout', AppModule.device]">
-      <a-layout-sider
-        v-if="navLayout === 'left'"
-        :theme="navTheme"
-        :trigger="null"
-        collapsible
-        v-model="collapsed"
-        width="256px"
-      >
-        <div class="logo">Tvue</div>
-        <sider-menu :theme="navTheme"/>
-      </a-layout-sider>
-      <a-layout
-        :class="[AppModule.layoutMode, `content-width-${AppModule.contentWidth}`]"
-        :style="{ paddingLeft: contentPaddingLeft, minHeight: '100vh' }"
-      >
-        <global-header
-          :mode="AppModule.layoutMode"
-          :theme="AppModule.navTheme"
-          :collapsed="collapsed"
-          :device="AppModule.device"
-        />
-        <a-layout-content style="margin: 0 16px">
-          <router-view/>
-        </a-layout-content>
-        <a-layout-footer style="text-align: center">
-          <Footer/>
-        </a-layout-footer>
-      </a-layout>
-    </a-layout>
-    <setting-drawer/>
-  </div>-->
   <a-layout :class="['layout', AppModule.device]">
-    <!-- SideMenu -->
+    <!-- SiderMenu mobile-->
     <a-drawer
       v-if="isMobile()"
       placement="left"
@@ -42,24 +9,46 @@
       :visible="collapsed"
       @close="collapsed = false"
     >
-      <!-- <side-menu
-        mode="inline"
-        :menus="menus"
-        :theme="navTheme"
-        :collapsed="false"
+      <a-layout-sider
+        :class="[
+          'sider',
+          isDesktop() ? null : 'shadow',
+          AppModule.navTheme,
+          AppModule.fixSiderbar ? 'ant-fixed-sidemenu' : null
+        ]"
+        width="256px"
         :collapsible="true"
-        @menuSelect="menuSelect"
-      ></side-menu>-->
-      <sider-menu />
+        :trigger="null"
+      >
+        <sider-menu
+          mode="inline"
+          :collapsed="false"
+          @handleClick="handleClick"
+        />
+      </a-layout-sider>
     </a-drawer>
-
-    <sider-menu :collapsed="collapsed" v-else-if="isSideMenu()" />
+    <!-- SiderMenu -->
+    <a-layout-sider
+      v-else-if="isSideMenu()"
+      :class="[
+        'sider',
+        isDesktop() ? null : 'shadow',
+        AppModule.navTheme,
+        AppModule.fixSiderbar ? 'ant-fixed-sidemenu' : null
+      ]"
+      width="256px"
+      :collapsible="true"
+      v-model="collapsed"
+      :trigger="null"
+    >
+      <sider-menu :collapsed="collapsed" mode="inline" />
+    </a-layout-sider>
 
     <a-layout
       :class="[AppModule.layoutMode, `content-width-${AppModule.contentWidth}`]"
       :style="{ paddingLeft: contentPaddingLeft, minHeight: '100vh' }"
     >
-      <!-- layout header -->
+      <!-- layout global header -->
       <global-header :collapsed="collapsed" @toggle="toggle" />
 
       <!-- layout content -->
@@ -78,35 +67,41 @@
 
       <!-- layout footer -->
       <a-layout-footer>
-        <!-- <global-footer /> -->
+        <global-footer />
       </a-layout-footer>
 
-      <!-- Setting Drawer (show in development mode) -->
-      <setting-drawer></setting-drawer>
+      <!-- Setting Drawer -->
+      <setting-drawer />
     </a-layout>
   </a-layout>
 </template>
 
 <script lang="ts">
-import { Vue, Component, Mixins } from 'vue-property-decorator'
+import { Vue, Component, Mixins, Watch } from 'vue-property-decorator'
 import { Mixin, DeviceMixin } from '@/utils/mixins'
 import { triggerWindowResizeEvent } from '@/utils/helper/'
 import config from '@/config/defaultSettings'
 import GlobalHeader from './GlobalHeader.vue'
-import Footer from './Footer.vue'
-import SiderMenu from './SiderMenu.vue'
+import GlobalFooter from './GlobalFooter.vue'
+import SiderMenu from './menu/SiderMenu.vue'
 import SettingDrawer from '@/components/settingDrawer/index.vue'
 
 @Component({
   components: {
     GlobalHeader,
-    Footer,
+    GlobalFooter,
     SiderMenu,
     SettingDrawer
   }
 })
 export default class BasicLayout extends Mixins(Mixin, DeviceMixin) {
   private collapsed: boolean = false
+
+  private created() {
+    console.log(this.AppModule)
+    this.collapsed = !this.AppModule.sidebar
+  }
+
   get contentPaddingLeft() {
     if (!this.AppModule.fixSiderbar || this.isMobile()) {
       return '0'
@@ -116,10 +111,22 @@ export default class BasicLayout extends Mixins(Mixin, DeviceMixin) {
     }
     return '80px'
   }
+
   private toggle() {
     this.collapsed = !this.collapsed
     this.AppModule.SetSidebar(!this.collapsed)
     triggerWindowResizeEvent()
+  }
+
+  private handleClick({ item, key, keyPath }) {
+    if (!this.isDesktop()) {
+      this.collapsed = false
+    }
+  }
+
+  @Watch('AppModule.sidebar')
+  sidebarChange(val) {
+    this.collapsed = !val
   }
 }
 </script>

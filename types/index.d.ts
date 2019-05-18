@@ -12,6 +12,8 @@ declare module '*.gif'
 
 declare module '*.svg'
 
+declare module '*.svg?inline'
+
 declare module 'vue-count-to'
 
 declare module 'vuedraggable'

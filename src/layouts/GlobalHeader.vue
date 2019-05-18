@@ -11,9 +11,9 @@
             : 'ant-header-side-closed'
         ]"
       >
-        <div v-if="AppModule.layoutMode === 'sidemenu'" class="header">
+        <div v-if="isSideMenu()" class="header">
           <a-icon
-            v-if="AppModule.device === 'mobile'"
+            v-if="isMobile()"
             class="trigger"
             :type="collapsed ? 'menu-fold' : 'menu-unfold'"
             @click="toggle"
@@ -29,9 +29,10 @@
         <div v-else :class="['top-nav-header-index', AppModule.navTheme]">
           <div class="header-index-wide">
             <div class="header-index-left">
-              <!-- <logo class="top-nav-header" :show-title="device !== 'mobile'"/> -->
-              <!-- <s-menu v-if="device !== 'mobile'" mode="horizontal" :menu="menus" :theme="theme" /> -->
+              <Logo class="top-nav-header" :showTitle="!isMobile()" />
+              <sider-menu v-if="!isMobile()" mode="horizontal" />
               <a-icon
+                v-else
                 class="trigger"
                 :type="collapsed ? 'menu-fold' : 'menu-unfold'"
                 @click="toggle"
@@ -47,10 +48,17 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Emit, Mixins } from 'vue-property-decorator'
-import { Mixin } from '@/utils/mixins'
+import { Mixin, DeviceMixin } from '@/utils/mixins'
+import Logo from './tools/Logo.vue'
+import SiderMenu from './menu/SiderMenu.vue'
 
-@Component
-export default class GlobalHeader extends Mixins(Mixin) {
+@Component({
+  components: {
+    Logo,
+    SiderMenu
+  }
+})
+export default class GlobalHeader extends Mixins(Mixin, DeviceMixin) {
   @Prop({ default: false }) public collapsed!: boolean
 
   private visible: boolean = true
@@ -59,16 +67,10 @@ export default class GlobalHeader extends Mixins(Mixin) {
   private toggle() {
     return
   }
-  created() {
-    console.log(this.AppModule)
-  }
 }
 </script>
 
 <style lang="less">
-// .header {
-//   float: right;
-// }
 .header-animat {
   position: relative;
   z-index: 2;

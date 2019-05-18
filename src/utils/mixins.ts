@@ -16,6 +16,7 @@ class Mixin extends Vue {
 
 @Component
 class DeviceMixin extends Vue {
+  public AppModule = AppModule
   public isMobile(): boolean {
     return AppModule.device === DEVICE_TYPE.MOBILE
   }
