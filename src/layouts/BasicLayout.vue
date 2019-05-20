@@ -71,7 +71,12 @@
       </a-layout-footer>
 
       <!-- Setting Drawer -->
-      <setting-drawer />
+      <!-- 权限组件使用方式 -->
+      <!-- <Authorized :authority="['admin']">
+       <setting-drawer />
+      </Authorized> -->
+      <!-- 权限指令使用方式 -->
+      <setting-drawer v-auth="['admin']" />
     </a-layout>
   </a-layout>
 </template>
@@ -84,7 +89,7 @@ import config from '@/config/defaultSettings'
 import GlobalHeader from './GlobalHeader.vue'
 import GlobalFooter from './GlobalFooter.vue'
 import SiderMenu from './menu/SiderMenu.vue'
-import SettingDrawer from '@/components/settingDrawer/index.vue'
+import { SettingDrawer } from '@/components'
 
 @Component({
   components: {

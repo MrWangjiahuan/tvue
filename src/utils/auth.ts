@@ -1,5 +1,5 @@
 export function getCurrentAuthority(): string[] {
-  return ['admin']
+  return ['user']
 }
 
 export function check(authority): boolean {
@@ -9,5 +9,5 @@ export function check(authority): boolean {
 
 export function isLogin(): boolean {
   const current = getCurrentAuthority()
-  return current && current[0] !== 'gust'
+  return current && current[0] !== 'guest'
 }

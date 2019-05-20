@@ -35,6 +35,7 @@ import {
 } from 'vue-property-decorator'
 import { Getter } from 'vuex-class'
 import { Mixin, DeviceMixin } from '@/utils/mixins'
+import { check } from '@/utils/auth'
 import SubMenu from './SubMenu.vue'
 import Logo from '../tools/Logo.vue'
 
@@ -100,9 +101,9 @@ export default class SiderMenu extends Mixins(Mixin, DeviceMixin) {
   ): any {
     const menuData: any = []
     for (let item of routes) {
-      // if (item.meta && item.meta.authority && !check(item.meta.authority)) {
-      //   continue;
-      // }
+      if (item.meta && item.meta.authority && !check(item.meta.authority)) {
+        continue
+      }
       if (item.name && !item.hideInMenu) {
         this.openKeysMap[item.path] = parentKeys
         this.selectedKeysMap[item.path] = [selectedKey || item.path]
