@@ -51,6 +51,7 @@ export default class SiderMenu extends Mixins(Mixin, DeviceMixin) {
   private menuData: any = []
   private selectedKeys: string[] = []
   private openKeys: string[] = []
+  private openKeys_: string[] = []
   private selectedKeysMap = {}
   private openKeysMap = {}
 
@@ -73,7 +74,6 @@ export default class SiderMenu extends Mixins(Mixin, DeviceMixin) {
 
   @Emit('handleClick')
   private handleClick({ item, key, keyPath }) {
-    console.log(this.menuData)
     return { item, key, keyPath }
   }
 
@@ -144,10 +144,13 @@ export default class SiderMenu extends Mixins(Mixin, DeviceMixin) {
   }
   @Watch('collapsed')
   collapsedChange(val) {
-    // 如果为关闭状态 不打开任何菜单
-    this.openKeys = val
-      ? []
-      : this.openKeys.concat(this.openKeysMap[this.$route.path])
+    if (val) {
+      // 缓存上一次openKeys
+      this.openKeys_ = this.openKeys.concat()
+      this.openKeys = []
+    } else {
+      this.openKeys = this.openKeys_
+    }
   }
 }
 </script>
