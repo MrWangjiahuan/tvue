@@ -13,7 +13,7 @@
         <a-menu-item
           v-if="!item.children"
           :key="item.path"
-          @click="() => $router.push({ path: item.path, query: $route.query })"
+          @click="() => $router.push({ path: item.path })"
         >
           <a-icon v-if="item.meta.icon" :type="item.meta.icon" />
           <span>{{ item.meta.title }}</span>
@@ -51,7 +51,7 @@ export default class SiderMenu extends Mixins(Mixin, DeviceMixin) {
   private menuData: any = []
   private selectedKeys: string[] = []
   private openKeys: string[] = []
-  private openKeys_: string[] = []
+  private openKeysCache: string[] = []
   private selectedKeysMap = {}
   private openKeysMap = {}
 
@@ -146,10 +146,10 @@ export default class SiderMenu extends Mixins(Mixin, DeviceMixin) {
   collapsedChange(val) {
     if (val) {
       // 缓存上一次openKeys
-      this.openKeys_ = this.openKeys.concat()
+      this.openKeysCache = this.openKeys.concat()
       this.openKeys = []
     } else {
-      this.openKeys = this.openKeys_
+      this.openKeys = this.openKeysCache
     }
   }
 }

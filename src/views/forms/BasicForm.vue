@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a-form :layout="formLayout">
+    <a-form :layout="formLayout" :form="form">
       <a-form-item
         label="Form Layout"
         :label-col="formItemLayout.labelCol"
@@ -19,19 +19,24 @@
         label="Field A"
         :label-col="formItemLayout.labelCol"
         :wrapper-col="formItemLayout.wrapperCol"
-        :validateStatus="fieldAStatus"
-        :help="fieldAHelp"
       >
-        <a-input v-model="fieldA" placeholder="input placeholder" />
+        <a-input
+          v-decorator="[
+            'fieldA',
+            {
+              initialValue: fieldA,
+              rules: [{ required: true, min: 6, message: '必须大于5个字符' }]
+            }
+          ]"
+          placeholder="input placeholder"
+        />
       </a-form-item>
       <a-form-item
         label="Field B"
-        :help="fieldAHelp"
-        :validateStatus="fieldBStatus"
         :label-col="formItemLayout.labelCol"
         :wrapper-col="formItemLayout.wrapperCol"
       >
-        <a-input v-model="fieldB" placeholder="input placeholder" />
+        <a-input v-decorator="['fieldB']" placeholder="input placeholder" />
       </a-form-item>
       <a-form-item :wrapper-col="buttonItemLayout.wrapperCol">
         <a-button type="primary" @click="handleSubmit">Submit</a-button>
@@ -44,14 +49,19 @@
 import { Vue, Component, Watch } from 'vue-property-decorator'
 @Component
 export default class BasicForm extends Vue {
+  private form
   private formLayout: string = 'horizontal'
-  private fieldA: string = ''
+  private fieldA: string = 'hello'
   private fieldB: string = ''
-  private fieldAStatus: string = ''
-  private fieldBStatus: string = ''
-  private fieldAHelp: string = ''
-  private fieldBHelp: string = ''
 
+  private created() {
+    this.form = this.$form.createForm(this)
+  }
+  private mounted() {
+    setTimeout(() => {
+      this.form.setFieldsValue({ fieldA: 'hello word' })
+    }, 3000)
+  }
   get formItemLayout() {
     const { formLayout } = this
     return formLayout === 'horizontal'
@@ -73,22 +83,18 @@ export default class BasicForm extends Vue {
     this.formLayout = e.target.value
   }
   private handleSubmit() {
-    if (this.fieldA.length <= 5) {
-      this.fieldAStatus = 'error'
-      this.fieldAHelp = '必须大于5个字符'
-    } else {
-      console.log('校验通过')
-    }
-  }
-  @Watch('fieldA')
-  fieldAChange(val) {
-    if (val.length <= 5) {
-      this.fieldAStatus = 'error'
-      this.fieldAHelp = '必须大于5个字符'
-    } else {
-      this.fieldAStatus = ''
-      this.fieldAHelp = ''
-    }
+    this.form.validateFields((err, values) => {
+      if (!err) {
+        console.log(values)
+        Object.assign(this, values)
+      }
+    })
+    // if (this.fieldA.length <= 5) {
+    //   this.fieldAStatus = 'error'
+    //   this.fieldAHelp = '必须大于5个字符'
+    // } else {
+    //   console.log('校验通过')
+    // }
   }
 }
 </script>

@@ -11,10 +11,7 @@
       <a-menu-item
         v-if="!item.children"
         :key="item.path"
-        @click="
-          () =>
-            parent.$router.push({ path: item.path, query: parent.$route.query })
-        "
+        @click="() => parent.$router.push({ path: item.path })"
       >
         <a-icon v-if="item.meta.icon" :type="item.meta.icon" />
         <span>{{ item.meta.title }}</span>

@@ -32,4 +32,5 @@ export default function Initializer(): void {
   AppModule.TOGGLE_MULTI_TAB(
     Vue.ls.get(types.DEFAULT_MULTI_TAB, config.multiTab)
   )
+  AppModule.TOGGLE_LANGUAGE(Vue.ls.get(types.DEFAULT_LANGUAGE, config.language))
 }

@@ -12,7 +12,6 @@
  * storageOptions: {} - Vue-ls 插件配置项 (localStorage/sessionStorage)
  *
  */
-
 export default {
   primaryColor: '#1890FF', // primary color of ant design
   navTheme: 'dark', // theme for nav menu
@@ -23,6 +22,7 @@ export default {
   autoHideHeader: false, //  auto hide header
   colorWeak: false,
   multiTab: false,
+  language: 'enUS',
   // vue-ls options
   // https://robinck.gitbooks.io/vue-storage/
   storageOptions: {

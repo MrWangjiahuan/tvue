@@ -22,6 +22,7 @@ export interface IAppState {
   autoHideHeader: boolean
   colorWeak: boolean
   multiTab: boolean
+  language: string
 }
 
 @Module({ dynamic: true, store, name: 'app' })
@@ -37,6 +38,7 @@ class App extends VuexModule implements IAppState {
   public autoHideHeader = false
   public fixSiderbar = false
   public multiTab = true
+  public language = 'enUS'
 
   @Mutation
   public SET_SIDEBAR(type: boolean) {
@@ -108,6 +110,12 @@ class App extends VuexModule implements IAppState {
     this.colorWeak = payload
   }
 
+  @Mutation
+  public TOGGLE_LANGUAGE(lan: string) {
+    Vue.ls.set(types.DEFAULT_LANGUAGE, lan)
+    this.language = lan
+  }
+
   @Action({ commit: 'SET_SIDEBAR' })
   public SetSidebar(type: boolean) {
     return type
@@ -169,6 +177,11 @@ class App extends VuexModule implements IAppState {
       this.context.commit('TOGGLE_FIXED_HEADER_HIDDEN', false)
     }
     this.context.commit('TOGGLE_FIXED_HEADER', fixedHeader)
+  }
+
+  @Action({ commit: 'TOGGLE_LANGUAGE' })
+  public ToggleLanguage(lan: string) {
+    return lan
   }
 }
 
