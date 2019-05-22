@@ -1,7 +1,4 @@
+import globalHeader from './enUS/layouts/globalHeader'
 export default {
-  title: {
-    home: 'home',
-    message: 'message',
-    code: 'code'
-  }
+  globalHeader
 }
