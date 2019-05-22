@@ -24,18 +24,7 @@
             :type="collapsed ? 'menu-unfold' : 'menu-fold'"
             @click="toggle"
           />
-          <a-dropdown>
-            <a-icon type="global" />
-            <a-menu
-              slot="overlay"
-              @click="localeChange"
-              :selectedKeys="[language]"
-            >
-              <a-menu-item key="zhCN">中文</a-menu-item>
-              <a-menu-item key="enUS">English</a-menu-item>
-            </a-menu>
-          </a-dropdown>
-          <!-- <user-menu></user-menu> -->
+          <header-right-layout />
         </div>
         <div v-else :class="['top-nav-header-index', AppModule.navTheme]">
           <div class="header-index-wide">
@@ -49,11 +38,11 @@
                 @click="toggle"
               />
             </div>
-            <!-- <user-menu class="header-index-right"></user-menu> -->
+            <header-right-layout class="header-index-right" />
           </div>
         </div>
-        <!-- <span>{{$t('title.home')}}</span>
-        <a-date-picker></a-date-picker> -->
+        <span>{{ $t('globalHeader.message') }}</span>
+        <a-date-picker></a-date-picker>
       </a-layout-header>
     </div>
   </transition>
@@ -65,11 +54,13 @@ import { Getter, Action } from 'vuex-class'
 import { Mixin, DeviceMixin } from '@/utils/mixins'
 import Logo from './tools/Logo.vue'
 import SiderMenu from './menu/SiderMenu.vue'
+import HeaderRightLayout from './tools/HeaderRightLayout.vue'
 
 @Component({
   components: {
     Logo,
-    SiderMenu
+    SiderMenu,
+    HeaderRightLayout
   }
 })
 export default class GlobalHeader extends Mixins(Mixin, DeviceMixin) {
@@ -86,7 +77,6 @@ export default class GlobalHeader extends Mixins(Mixin, DeviceMixin) {
   }
   private localeChange() {
     this.toggleLanguage(this.language === 'enUS' ? 'zhCN' : 'enUS')
-    this.$i18n.locale = this.language === 'enUS' ? 'zhCN' : 'enUS'
   }
 }
 </script>

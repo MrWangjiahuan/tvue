@@ -1,3 +1,4 @@
+require('promise.prototype.finally').shim()
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 import enUS from '@/locale/enUS'
@@ -7,7 +8,6 @@ import router from '@/router'
 import store from '@/store'
 import core from '@/core/'
 import '@/core/lazy_use'
-require('promise.prototype.finally').shim()
 
 Vue.use(VueI18n)
 const i18n = new VueI18n({

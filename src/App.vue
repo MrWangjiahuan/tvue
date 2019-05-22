@@ -23,6 +23,7 @@ export default class App extends Vue {
 
   get locale() {
     moment.locale(this.language === 'enUS' ? 'en' : 'zh-cn')
+    this.$i18n.locale = this.language === 'enUS' ? 'enUS' : 'zhCN'
     return this.language === 'enUS' ? enUS : zhCN
   }
 }

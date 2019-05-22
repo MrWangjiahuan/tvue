@@ -50,13 +50,13 @@ const routes = [
       {
         path: '/dashboard',
         name: 'dashboard',
-        meta: { icon: 'dashboard', title: '仪表盘' },
+        meta: { icon: 'dashboard', title: 'dashboard' },
         component: { render: h => h('router-view') },
         children: [
           {
             path: '/dashboard/analysis',
             name: 'analysis',
-            meta: { title: '分析页' },
+            meta: { title: 'analysis' },
             component: () =>
               import(
                 /* webpackChunkName: "dashboard" */ '@/views/dashboard/Analysis.vue'
@@ -69,12 +69,12 @@ const routes = [
         path: '/form',
         name: 'form',
         component: { render: h => h('router-view') },
-        meta: { icon: 'form', title: '表单', authority: ['admin'] },
+        meta: { icon: 'form', title: 'form', authority: ['admin'] },
         children: [
           {
             path: '/form/basic-form',
             name: 'basicform',
-            meta: { title: '基础表单' },
+            meta: { title: 'basicform' },
             component: () =>
               import(
                 /* webpackChunkName: "form" */ '@/views/forms/BasicForm.vue'
@@ -83,7 +83,7 @@ const routes = [
           {
             path: '/form/step-form',
             name: 'stepform',
-            meta: { title: '分布表单' },
+            meta: { title: 'stepform' },
             hideChildrenInMenu: true,
             component: () =>
               import(

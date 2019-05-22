@@ -16,7 +16,7 @@
           @click="() => $router.push({ path: item.path })"
         >
           <a-icon v-if="item.meta.icon" :type="item.meta.icon" />
-          <span>{{ item.meta.title }}</span>
+          <span>{{ item.meta.localeTitle }}</span>
         </a-menu-item>
         <sub-menu v-else :menu-info="item" :key="item.path" />
       </template>
@@ -48,6 +48,7 @@ import Logo from '../tools/Logo.vue'
 export default class SiderMenu extends Mixins(Mixin, DeviceMixin) {
   @Prop({ default: false }) public collapsed!: boolean
   @Prop({ default: 'inline' }) public mode!: string
+  @Getter language
   private menuData: any = []
   private selectedKeys: string[] = []
   private openKeys: string[] = []
@@ -105,6 +106,12 @@ export default class SiderMenu extends Mixins(Mixin, DeviceMixin) {
         continue
       }
       if (item.name && !item.hideInMenu) {
+        // 由于subMenu为函数式组件 没有this实例 所以取不到$t
+        // 在这里直接把title处理成当前语言
+        // localeTitle 国际化显示的路由菜单名称
+        if (item.meta && item.meta.title) {
+          item.meta.localeTitle = this.$t(`menu.${item.meta.title}`)
+        }
         this.openKeysMap[item.path] = parentKeys
         this.selectedKeysMap[item.path] = [selectedKey || item.path]
         const newItem = { ...item }
@@ -141,6 +148,10 @@ export default class SiderMenu extends Mixins(Mixin, DeviceMixin) {
     this.openKeys = this.collapsed
       ? []
       : this.openKeys.concat(this.openKeysMap[val])
+  }
+  @Watch('language')
+  languageChange(val) {
+    this.menuData = this.getMenuData(this.$router['options'].routes)
   }
   @Watch('collapsed')
   collapsedChange(val) {
