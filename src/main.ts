@@ -7,6 +7,7 @@ import router from '@/router'
 import store from '@/store'
 import core from '@/core/'
 import '@/core/lazy_use'
+require('promise.prototype.finally').shim()
 
 Vue.use(VueI18n)
 const i18n = new VueI18n({

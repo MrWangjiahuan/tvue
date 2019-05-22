@@ -12,7 +12,7 @@
   },
   "lint-staged": {
     "*.{vue,ts,js,json,css,less}": [
-      "prettier --config ./.prettierrc --write",
+      "node scripts/lint-prettier.js",
       "git add"
     ]
   },
@@ -33,6 +33,7 @@
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
     "nprogress": "^0.2.0",
+    "promise.prototype.finally": "^3.1.0",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
     "vue-i18n": "^8.11.2",
@@ -54,6 +55,7 @@
     "@vue/test-utils": "1.0.0-beta.29",
     "babel-core": "7.0.0-bridge.0",
     "babel-plugin-import": "^1.11.0",
+    "chalk": "^2.4.2",
     "commitizen": "^3.1.1",
     "conventional-changelog": "^3.1.8",
     "cross-env": "^5.2.0",
