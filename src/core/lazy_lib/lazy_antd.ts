@@ -10,6 +10,9 @@ import {
   Input,
   Dropdown,
   DatePicker,
+  Divider,
+  Tooltip,
+  Tag,
   LocaleProvider
 } from 'ant-design-vue'
 
@@ -23,4 +26,7 @@ Vue.use(Form)
 Vue.use(Input)
 Vue.use(Dropdown)
 Vue.use(DatePicker)
+Vue.use(Divider)
+Vue.use(Tooltip)
+Vue.use(Tag)
 Vue.use(LocaleProvider)

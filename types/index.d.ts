@@ -1,7 +1,5 @@
 interface Window {
-  LOCAL_CONFIG?: any
-  tinymce?: any
-  webkitURL?: any
+  less?: any
 }
 
 declare var window: Window

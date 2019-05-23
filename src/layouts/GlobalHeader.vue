@@ -70,7 +70,9 @@ export default class GlobalHeader extends Mixins(Mixin, DeviceMixin) {
 
   @Getter language
   @Action('ToggleLanguage') toggleLanguage
-
+  private mounted() {
+    console.log(this.$i18n)
+  }
   @Emit('toggle')
   private toggle() {
     return

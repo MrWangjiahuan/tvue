@@ -29,8 +29,4 @@ export default class App extends Vue {
 }
 </script>
 
-<style>
-#app {
-  height: 100%;
-}
-</style>
+<style lang="less" src="./app.less" />

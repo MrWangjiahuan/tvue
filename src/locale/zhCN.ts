@@ -1,6 +1,6 @@
-import globalHeader from './zhCN/layouts/globalHeader'
-import menu from './zhCN/layouts/menu'
+import { globalHeader, settingDrawer, menu } from './zhCN/layouts/'
 export default {
   globalHeader,
+  settingDrawer,
   menu
 }

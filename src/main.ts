@@ -6,7 +6,7 @@ import zhCN from '@/locale/zhCN'
 import App from '@/App.vue'
 import router from '@/router'
 import store from '@/store'
-import core from '@/core/'
+import { Initializer } from '@/core/'
 import '@/core/lazy_use'
 
 Vue.use(VueI18n)
@@ -22,8 +22,9 @@ new Vue({
   router,
   store,
   i18n,
-  created() {
-    core()
+  beforeCreate() {
+    // 核心函数
+    Initializer(false)
   },
   render: h => h(App)
 }).$mount('#app')

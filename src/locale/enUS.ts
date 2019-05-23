@@ -1,6 +1,6 @@
-import globalHeader from './enUS/layouts/globalHeader'
-import menu from './enUS/layouts/menu'
+import { globalHeader, settingDrawer, menu } from './enUS/layouts/'
 export default {
   globalHeader,
+  settingDrawer,
   menu
 }
