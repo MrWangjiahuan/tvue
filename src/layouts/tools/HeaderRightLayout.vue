@@ -6,7 +6,7 @@
           <a-icon type="question-circle-o" class="icon"></a-icon>
         </span>
       </a>
-      <!-- <notice-icon class="action"/> -->
+      <Notice class="action" />
       <a-dropdown>
         <span class="action ant-dropdown-link user-dropdown-menu">
           <!-- <a-avatar class="avatar" size="small" :src="avatar()"/>
@@ -68,18 +68,34 @@
 
 <script lang="ts">
 import { Vue, Component, Mixins } from 'vue-property-decorator'
+import throttle from 'lodash/throttle'
 import { Getter, Action } from 'vuex-class'
 import { DeviceMixin } from '@/utils/mixins'
+import { Notice } from '@/components/'
 
-@Component
+@Component({
+  name: 'HeaderRightLayout',
+  components: {
+    Notice
+  }
+})
 export default class HeaderRightLayout extends Mixins(DeviceMixin) {
+  private clientWidth: number = 0
+
   @Getter language
 
   @Action('ToggleLanguage') toggleLanguage
 
   // 如果为手机端下拉菜单则为屏幕宽度
   get contentWith() {
-    return this.isMobile() ? `width:${window.innerWidth}px;` : ''
+    return this.isMobile() ? `width:${this.clientWidth}px;` : ''
+  }
+
+  private mounted() {
+    this.clientWidth = window.innerWidth
+    window.onresize = throttle(() => {
+      this.clientWidth = window.innerWidth
+    }, 1000)
   }
 
   private localeChange() {

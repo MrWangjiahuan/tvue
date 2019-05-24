@@ -6,7 +6,18 @@ const settingDrawer = {
   pageStyleTitle: 'Page style setting',
   dartTooltipTitle: 'Dark style',
   lightTooltipTitle: 'Light style',
-  themeTitle: 'Theme Color'
+  themeTitle: 'Theme Color',
+  layoutTitle: 'Navigation Mode',
+  sideMenuTitle: 'Side Menu Layout',
+  topMenuTitle: 'Top Menu Layout',
+  dustRed: 'Dust Red',
+  volcano: 'Volcano',
+  sunsetOrange: 'Sunset Orange',
+  cyan: 'Cyan',
+  polarGreen: 'Polar Green',
+  daybreakBlue: 'Daybreak Blue (default)',
+  geekBlue: 'Geek Blue',
+  goldenPurple: 'Golden Purple'
 }
 const menu = {
   dashboard: 'Dashboard',

@@ -19,12 +19,11 @@
           <h3 class="setting-drawer-index-title">
             {{ $t('settingDrawer.pageStyleTitle') }}
           </h3>
-
           <div class="setting-drawer-index-blockChecbox">
             <a-tooltip>
-              <template slot="title">{{
-                $t('settingDrawer.dartTooltipTitle')
-              }}</template>
+              <template slot="title">
+                {{ $t('settingDrawer.dartTooltipTitle') }}
+              </template>
               <div
                 class="setting-drawer-index-item"
                 @click="handleChangeTheme('dark')"
@@ -42,9 +41,9 @@
               </div>
             </a-tooltip>
             <a-tooltip>
-              <template slot="title">{{
-                $t('settingDrawer.lightTooltipTitle')
-              }}</template>
+              <template slot="title">
+                {{ $t('settingDrawer.lightTooltipTitle') }}
+              </template>
               <div
                 class="setting-drawer-index-item"
                 @click="handleChangeTheme('light')"
@@ -73,7 +72,9 @@
               v-for="(item, index) in colorList"
               :key="index"
             >
-              <template slot="title">{{ item.key }}</template>
+              <template slot="title">{{
+                $t(`settingDrawer.${item.key}`)
+              }}</template>
               <a-tag :color="item.color" @click="handleChangeColor(item.color)">
                 <a-icon
                   type="check"
@@ -84,6 +85,53 @@
           </div>
         </div>
         <a-divider />
+        <div style="margin-bottom:24px;">
+          <h3 class="setting-drawer-index-title">
+            {{ $t('settingDrawer.layoutTitle') }}
+          </h3>
+          <div class="setting-drawer-index-blockChecbox">
+            <a-tooltip>
+              <template slot="title">{{
+                $t('settingDrawer.sideMenuTitle')
+              }}</template>
+              <div
+                class="setting-drawer-index-item"
+                @click="handleChangeLayout('sidemenu')"
+              >
+                <img
+                  src="https://gw.alipayobjects.com/zos/rmsportal/JopDzEhOqwOjeNTXkoje.svg"
+                  alt="sidemenu"
+                />
+                <div
+                  class="setting-drawer-index-selectIcon"
+                  v-if="layoutMode === 'sidemenu'"
+                >
+                  <a-icon type="check" />
+                </div>
+              </div>
+            </a-tooltip>
+            <a-tooltip>
+              <template slot="title">{{
+                $t('settingDrawer.topMenuTitle')
+              }}</template>
+              <div
+                class="setting-drawer-index-item"
+                @click="handleChangeLayout('topmenu')"
+              >
+                <img
+                  src="https://gw.alipayobjects.com/zos/rmsportal/KDNDBbriJhLwuqMoxcAr.svg"
+                  alt="topmenu"
+                />
+                <div
+                  class="setting-drawer-index-selectIcon"
+                  v-if="layoutMode !== 'sidemenu'"
+                >
+                  <a-icon type="check" />
+                </div>
+              </div>
+            </a-tooltip>
+          </div>
+        </div>
       </div>
     </a-drawer>
   </div>
@@ -123,6 +171,9 @@ export default class SettingDrawer extends Vue {
       this.togglePrimaryColor(color)
       updateTheme(true, color, this.$t(`globalHeader.themeMessage`))
     }
+  }
+  private handleChangeLayout(layout: string): void {
+    this.toggleLayoutMode(layout)
   }
 }
 </script>

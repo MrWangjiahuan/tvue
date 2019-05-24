@@ -13,6 +13,12 @@ import {
   Divider,
   Tooltip,
   Tag,
+  Popover,
+  Spin,
+  List,
+  Avatar,
+  Tabs,
+  Badge,
   LocaleProvider
 } from 'ant-design-vue'
 
@@ -29,4 +35,10 @@ Vue.use(DatePicker)
 Vue.use(Divider)
 Vue.use(Tooltip)
 Vue.use(Tag)
+Vue.use(Popover)
+Vue.use(Spin)
+Vue.use(List)
+Vue.use(Avatar)
+Vue.use(Tabs)
+Vue.use(Badge)
 Vue.use(LocaleProvider)

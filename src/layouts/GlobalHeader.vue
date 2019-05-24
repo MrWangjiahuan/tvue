@@ -41,8 +41,8 @@
             <header-right-layout class="header-index-right" />
           </div>
         </div>
-        <span>{{ $t('globalHeader.message') }}</span>
-        <a-date-picker></a-date-picker>
+        <!-- <span>{{ $t('globalHeader.message') }}</span>
+        <a-date-picker></a-date-picker> -->
       </a-layout-header>
     </div>
   </transition>

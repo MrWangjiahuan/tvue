@@ -8,35 +8,35 @@ let lessNodesAppended
 
 export const colorList = [
   {
-    key: '薄暮',
+    key: 'dustRed',
     color: '#F5222D'
   },
   {
-    key: '火山',
+    key: 'volcano',
     color: '#FA541C'
   },
   {
-    key: '日暮',
+    key: 'sunsetOrange',
     color: '#FAAD14'
   },
   {
-    key: '明青',
+    key: 'cyan',
     color: '#13C2C2'
   },
   {
-    key: '极光绿',
+    key: 'polarGreen',
     color: '#52C41A'
   },
   {
-    key: '拂晓蓝（默认）',
+    key: 'daybreakBlue',
     color: '#1890FF'
   },
   {
-    key: '极客蓝',
+    key: 'geekBlue',
     color: '#2F54EB'
   },
   {
-    key: '酱紫',
+    key: 'goldenPurple',
     color: '#722ED1'
   }
 ]
