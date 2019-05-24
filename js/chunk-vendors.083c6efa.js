@@ -8842,7 +8842,7 @@
           s = n.n(c),
           l = n('20ba')
         function u(t) {
-          ;(e && Object({ NODE_ENV: 'production', BASE_URL: '/' })) ||
+          ;(e && Object({ NODE_ENV: 'production', BASE_URL: '/tvue/' })) ||
             console.error('[@ant-design/icons-vue]: ' + t + '.')
         }
         function h(e) {
@@ -53621,4 +53621,4 @@ and limitations under the License.
     }
   }
 ])
-//# sourceMappingURL=chunk-vendors.85f7ab4f.js.map
+//# sourceMappingURL=chunk-vendors.083c6efa.js.map
