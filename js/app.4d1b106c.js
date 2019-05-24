@@ -190,7 +190,7 @@
     (s.o = function(t, e) {
       return Object.prototype.hasOwnProperty.call(t, e)
     }),
-    (s.p = '/tvue/'),
+    (s.p = '/'),
     (s.oe = function(t) {
       throw (console.error(t), t)
     })
@@ -1678,7 +1678,7 @@
           ]
         }
       ],
-      et = new M['a']({ mode: 'history', base: '/tvue/', routes: tt })
+      et = new M['a']({ mode: 'hash', base: '/', routes: tt })
     et.beforeEach(function(t, e, n) {
       t.path !== e.path && R.a.start()
       var a = x()(t.matched, function(t) {
@@ -1792,4 +1792,4 @@
     o.a
   }
 })
-//# sourceMappingURL=app.808f7878.js.map
+//# sourceMappingURL=app.4d1b106c.js.map
