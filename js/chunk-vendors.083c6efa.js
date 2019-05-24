@@ -8842,7 +8842,7 @@
           s = n.n(c),
           l = n('20ba')
         function u(t) {
-          ;(e && Object({ NODE_ENV: 'production', BASE_URL: '/' })) ||
+          ;(e && Object({ NODE_ENV: 'production', BASE_URL: '/tvue/' })) ||
             console.error('[@ant-design/icons-vue]: ' + t + '.')
         }
         function h(e) {
@@ -14514,11 +14514,9 @@ object-assign
           }
     },
     '323e': function(e, t, n) {
-      var r,
-        i
-        /* NProgress, (c) 2013, 2014 Rico Sta. Cruz - http://ricostacruz.com/nprogress
-         * @license MIT */
-      ;(function(o, a) {
+      var r, i
+      /* NProgress, (c) 2013, 2014 Rico Sta. Cruz - http://ricostacruz.com/nprogress
+       * @license MIT */ ;(function(o, a) {
         ;(r = a),
           (i = 'function' === typeof r ? r.call(t, n, t, e) : r),
           void 0 === i || (e.exports = i)
@@ -24551,14 +24549,13 @@ object-assign
       }
     },
     '4d26': function(e, t, n) {
-      var r,
-        i
-        /*!
+      var r, i
+      /*!
   Copyright (c) 2017 Jed Watson.
   Licensed under the MIT License (MIT), see
   http://jedwatson.github.io/classnames
 */
-        /*!
+      /*!
   Copyright (c) 2017 Jed Watson.
   Licensed under the MIT License (MIT), see
   http://jedwatson.github.io/classnames
@@ -53624,4 +53621,4 @@ and limitations under the License.
     }
   }
 ])
-//# sourceMappingURL=chunk-vendors.85f7ab4f.js.map
+//# sourceMappingURL=chunk-vendors.083c6efa.js.map

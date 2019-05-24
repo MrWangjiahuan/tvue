@@ -1391,7 +1391,6 @@ this.tinycolor = tinycolor;
 @red-10: color(~`colorPalette('@{red-6}', 10) `);
 @orange-1: color(~`colorPalette('@{orange-6}', 1) `);
 @orange-2: color(~`colorPalette('@{orange-6}', 2) `);
-
 @orange-3: color(~`colorPalette('@{orange-6}', 3) `);
 @orange-4: color(~`colorPalette('@{orange-6}', 4) `);
 @orange-5: color(~`colorPalette('@{orange-6}', 5) `);
@@ -1403,6 +1402,7 @@ this.tinycolor = tinycolor;
 @yellow-1: color(~`colorPalette('@{yellow-6}', 1) `);
 @yellow-2: color(~`colorPalette('@{yellow-6}', 2) `);
 @yellow-3: color(~`colorPalette('@{yellow-6}', 3) `);
+
 @yellow-4: color(~`colorPalette('@{yellow-6}', 4) `);
 @yellow-5: color(~`colorPalette('@{yellow-6}', 5) `);
 @yellow-6: #fadb14;
@@ -1464,13 +1464,15 @@ this.tinycolor = tinycolor;
 @black: #000;
 // Color used by default to control hover and active backgrounds and for
 // alert info backgrounds.
-@primary-1: color(~`colorPalette('@{primary-color}', 1) `);
-// replace tint(@primary-color, 90%)
-@primary-2: color(~`colorPalette('@{primary-color}', 2) `);
-// replace tint(@primary-color, 80%)
+
+@primary-1: color(
+  ~`colorPalette('@{primary-color}', 1) `
+); // replace tint(@primary-color, 90%)
+@primary-2: color(
+  ~`colorPalette('@{primary-color}', 2) `
+); // replace tint(@primary-color, 80%)
 @primary-3: color(~`colorPalette('@{primary-color}', 3) `); // unused
-@primary-4: color(~`colorPalette('@{primary-color}', 4) `);
-// unused
+@primary-4: color(~`colorPalette('@{primary-color}', 4) `); // unused
 @primary-5: color(~`colorPalette('@{primary-color}', 5) `);
 // color used to control the text color in many active and hover states, replace tint(@primary-color, 20%)
 @primary-6: @primary-color; // color used to control the text color of active buttons, don't use, use @primary-color
@@ -1546,8 +1548,7 @@ this.tinycolor = tinycolor;
 @outline-blur-size : 0;
 @outline-width : 2px;
 @outline-color : @primary-color;
-@background-color-light : hsv(0, 0, 98%);
-// background of header and selected item
+@background-color-light : hsv(0, 0, 98%); // background of header and selected item
 @background-color-base : hsv(0, 0, 96%); // Default grey background color
 // Disabled states
 @disabled-color : fade(#000, 25%);
@@ -1658,8 +1659,7 @@ this.tinycolor = tinycolor;
 @zindex-dropdown : 1050;
 @zindex-tooltip : 1060;
 // Animation
-@animation-duration-slow: 0.3s;
-// Modal
+@animation-duration-slow: 0.3s; // Modal
 @animation-duration-base: 0.2s;
 @animation-duration-fast: 0.1s; // Tooltip
 // Form
@@ -1704,6 +1704,7 @@ this.tinycolor = tinycolor;
 @tooltip-distance: @tooltip-arrow-width - 1px + 4px;
 //** Tooltip arrow color
 @tooltip-arrow-color: @tooltip-bg;
+
 // Popover
 // ---
 // Popover body background color
@@ -1719,7 +1720,6 @@ this.tinycolor = tinycolor;
 // Popover outer arrow width
 // Popover outer arrow color
 @popover-arrow-outer-color: @popover-bg;
-
 // Popover distance with trigger
 @popover-distance: @popover-arrow-width + 4px;
 // Modal
@@ -1769,6 +1769,7 @@ this.tinycolor = tinycolor;
 @table-border-radius-base : @border-radius-base;
 // Tag
 // --
+
 @tag-default-bg: @background-color-light;
 @tag-default-color: @text-color;
 @tag-font-size: @font-size-sm;
@@ -1875,6 +1876,7 @@ this.tinycolor = tinycolor;
 @slider-margin: 14px 6px 10px;
 @slider-rail-background-color: @background-color-base;
 @slider-rail-background-color-hover: #e1e1e1;
+
 @slider-track-background-color: @primary-5;
 @slider-track-background-color-hover: @primary-6;
 @slider-handle-color: @primary-5;
@@ -1935,6 +1937,7 @@ this.tinycolor = tinycolor;
 #nprogress .bar {
   background: @primary-color !important;
 }
+
 html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -1964,7 +1967,6 @@ a:hover {
 a:active {
   color: color(~`colorPalette('@{primary-color}', 7) `);
 }
-
 a[disabled] {
   color: rgba(0, 0, 0, 0.25);
 }
@@ -1977,6 +1979,7 @@ table {
 caption {
   color: rgba(0, 0, 0, 0.45);
 }
+
 input,
 button,
 select,
@@ -2019,7 +2022,6 @@ mark {
 .layout.ant-layout .top-nav-header-index .header-right-layout-wrapper .action {
   color: rgba(0, 0, 0, 0.65);
 }
-
 .layout.ant-layout .header .header-right-layout-wrapper .action:hover,
 .layout.ant-layout
   .top-nav-header-index
@@ -2349,12 +2351,12 @@ mark {
 }
 .ant-alert-with-description {
   border-radius: 4px;
-
   color: rgba(0, 0, 0, 0.65);
 }
 .ant-alert-with-description .ant-alert-message {
   color: rgba(0, 0, 0, 0.85);
 }
+
 .ant-alert-banner {
   border-radius: 0;
   border: 0;
@@ -2376,6 +2378,7 @@ mark {
 .ant-anchor-link-title {
   color: rgba(0, 0, 0, 0.65);
 }
+
 .ant-anchor-link-active > .ant-anchor-link-title {
   color: @primary-color;
 }
@@ -2411,7 +2414,6 @@ mark {
   color: #fff;
   border-radius: 50%;
 }
-
 .ant-avatar-image {
   background: transparent;
 }
@@ -2421,7 +2423,6 @@ mark {
 .ant-avatar-sm {
   border-radius: 50%;
 }
-
 .ant-avatar-square {
   border-radius: 4px;
 }
@@ -3153,6 +3154,7 @@ mark {
 .ant-btn-background-ghost.ant-btn-danger.disabled.active,
 .ant-btn-background-ghost.ant-btn-danger[disabled].active {
   color: rgba(0, 0, 0, 0.25);
+
   background-color: #f5f5f5;
   border-color: #d9d9d9;
   box-shadow: none;
@@ -3643,7 +3645,6 @@ mark {
 .ant-calendar-picker-icon {
   color: rgba(0, 0, 0, 0.25);
 }
-
 .ant-calendar {
   border: 1px solid #fff;
   background-color: #fff;
