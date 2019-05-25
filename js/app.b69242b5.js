@@ -1,28 +1,28 @@
 ;(function(t) {
   function e(e) {
     for (
-      var o, a, l = e[0], s = e[1], c = e[2], u = 0, p = [];
+      var a, o, l = e[0], s = e[1], c = e[2], u = 0, p = [];
       u < l.length;
       u++
     )
-      (a = l[u]), r[a] && p.push(r[a][0]), (r[a] = 0)
-    for (o in s) Object.prototype.hasOwnProperty.call(s, o) && (t[o] = s[o])
+      (o = l[u]), r[o] && p.push(r[o][0]), (r[o] = 0)
+    for (a in s) Object.prototype.hasOwnProperty.call(s, a) && (t[a] = s[a])
     d && d(e)
     while (p.length) p.shift()()
     return i.push.apply(i, c || []), n()
   }
   function n() {
     for (var t, e = 0; e < i.length; e++) {
-      for (var n = i[e], o = !0, a = 1; a < n.length; a++) {
-        var l = n[a]
-        0 !== r[l] && (o = !1)
+      for (var n = i[e], a = !0, o = 1; o < n.length; o++) {
+        var l = n[o]
+        0 !== r[l] && (a = !1)
       }
-      o && (i.splice(e--, 1), (t = s((s.s = n[0]))))
+      a && (i.splice(e--, 1), (t = s((s.s = n[0]))))
     }
     return t
   }
-  var o = {},
-    a = { app: 0 },
+  var a = {},
+    o = { app: 0 },
     r = { app: 0 },
     i = []
   function l(t) {
@@ -34,30 +34,30 @@
       ] || t) +
       '.' +
       {
-        dashboard: 'c7ed0547',
-        form: '98b992f2',
-        layout: 'b1dd5e9f',
-        user: 'f5e2085e'
+        dashboard: '92229ec7',
+        form: '069c22e9',
+        layout: '24288812',
+        user: '83e71a21'
       }[t] +
       '.js'
     )
   }
   function s(e) {
-    if (o[e]) return o[e].exports
-    var n = (o[e] = { i: e, l: !1, exports: {} })
+    if (a[e]) return a[e].exports
+    var n = (a[e] = { i: e, l: !1, exports: {} })
     return t[e].call(n.exports, n, n.exports, s), (n.l = !0), n.exports
   }
   ;(s.e = function(t) {
     var e = [],
       n = { layout: 1 }
-    a[t]
-      ? e.push(a[t])
-      : 0 !== a[t] &&
+    o[t]
+      ? e.push(o[t])
+      : 0 !== o[t] &&
         n[t] &&
         e.push(
-          (a[t] = new Promise(function(e, n) {
+          (o[t] = new Promise(function(e, n) {
             for (
-              var o =
+              var a =
                   'css/' +
                   ({
                     dashboard: 'dashboard',
@@ -73,7 +73,7 @@
                     user: '31d6cfe0'
                   }[t] +
                   '.css',
-                r = s.p + o,
+                r = s.p + a,
                 i = document.getElementsByTagName('link'),
                 l = 0;
               l < i.length;
@@ -81,25 +81,25 @@
             ) {
               var c = i[l],
                 u = c.getAttribute('data-href') || c.getAttribute('href')
-              if ('stylesheet' === c.rel && (u === o || u === r)) return e()
+              if ('stylesheet' === c.rel && (u === a || u === r)) return e()
             }
             var p = document.getElementsByTagName('style')
             for (l = 0; l < p.length; l++) {
               ;(c = p[l]), (u = c.getAttribute('data-href'))
-              if (u === o || u === r) return e()
+              if (u === a || u === r) return e()
             }
             var d = document.createElement('link')
             ;(d.rel = 'stylesheet'),
               (d.type = 'text/css'),
               (d.onload = e),
               (d.onerror = function(e) {
-                var o = (e && e.target && e.target.src) || r,
+                var a = (e && e.target && e.target.src) || r,
                   i = new Error(
-                    'Loading CSS chunk ' + t + ' failed.\n(' + o + ')'
+                    'Loading CSS chunk ' + t + ' failed.\n(' + a + ')'
                   )
                 ;(i.code = 'CSS_CHUNK_LOAD_FAILED'),
-                  (i.request = o),
-                  delete a[t],
+                  (i.request = a),
+                  delete o[t],
                   d.parentNode.removeChild(d),
                   n(i)
               }),
@@ -107,17 +107,17 @@
             var f = document.getElementsByTagName('head')[0]
             f.appendChild(d)
           }).then(function() {
-            a[t] = 0
+            o[t] = 0
           }))
         )
-    var o = r[t]
-    if (0 !== o)
-      if (o) e.push(o[2])
+    var a = r[t]
+    if (0 !== a)
+      if (a) e.push(a[2])
       else {
         var i = new Promise(function(e, n) {
-          o = r[t] = [e, n]
+          a = r[t] = [e, n]
         })
-        e.push((o[2] = i))
+        e.push((a[2] = i))
         var c,
           u = document.createElement('script')
         ;(u.charset = 'utf-8'),
@@ -129,12 +129,12 @@
             var n = r[t]
             if (0 !== n) {
               if (n) {
-                var o = e && ('load' === e.type ? 'missing' : e.type),
-                  a = e && e.target && e.target.src,
+                var a = e && ('load' === e.type ? 'missing' : e.type),
+                  o = e && e.target && e.target.src,
                   i = new Error(
-                    'Loading chunk ' + t + ' failed.\n(' + o + ': ' + a + ')'
+                    'Loading chunk ' + t + ' failed.\n(' + a + ': ' + o + ')'
                   )
-                ;(i.type = o), (i.request = a), n[1](i)
+                ;(i.type = a), (i.request = o), n[1](i)
               }
               r[t] = void 0
             }
@@ -147,7 +147,7 @@
     return Promise.all(e)
   }),
     (s.m = t),
-    (s.c = o),
+    (s.c = a),
     (s.d = function(t, e, n) {
       s.o(t, e) || Object.defineProperty(t, e, { enumerable: !0, get: n })
     }),
@@ -166,13 +166,13 @@
         Object.defineProperty(n, 'default', { enumerable: !0, value: t }),
         2 & e && 'string' != typeof t)
       )
-        for (var o in t)
+        for (var a in t)
           s.d(
             n,
-            o,
+            a,
             function(e) {
               return t[e]
-            }.bind(null, o)
+            }.bind(null, a)
           )
       return n
     }),
@@ -206,8 +206,8 @@
   },
   '0613': function(t, e, n) {
     'use strict'
-    var o = n('2b0e'),
-      a = n('2f62'),
+    var a = n('2b0e'),
+      o = n('2f62'),
       r = {
         sidebar: function(t) {
           return t.app.sidebar
@@ -235,43 +235,43 @@
         }
       },
       i = r
-    o['a'].use(a['a'])
-    e['a'] = new a['a'].Store({ getters: i })
+    a['a'].use(o['a'])
+    e['a'] = new o['a'].Store({ getters: i })
   },
   '1ea3': function(t, e, n) {
     'use strict'
     n.d(e, 'a', function() {
-      return o
+      return a
     }),
       n.d(e, 'b', function() {
         return i
       })
-    var o,
-      a = n('8e95'),
-      r = n.n(a)
+    var a,
+      o = n('8e95'),
+      r = n.n(o)
     ;(function(t) {
       ;(t['DESKTOP'] = 'desktop'),
         (t['TABLET'] = 'tablet'),
         (t['MOBILE'] = 'mobile')
-    })(o || (o = {}))
+    })(a || (a = {}))
     var i = function(t) {
       var e = {
           match: function() {
-            t && t(o.DESKTOP)
+            t && t(a.DESKTOP)
           }
         },
         n = {
           match: function() {
-            t && t(o.TABLET)
+            t && t(a.TABLET)
           }
         },
-        a = {
+        o = {
           match: function() {
-            t && t(o.MOBILE)
+            t && t(a.MOBILE)
           }
         }
       r.a
-        .register('screen and (max-width: 576px)', a)
+        .register('screen and (max-width: 576px)', o)
         .register('screen and (min-width: 576px) and (max-width: 1199px)', n)
         .register('screen and (min-width: 1200px)', e)
     }
@@ -280,10 +280,10 @@
   '2d40': function(t, e, n) {
     'use strict'
     n.d(e, 'k', function() {
-      return o
+      return a
     }),
       n.d(e, 'i', function() {
-        return a
+        return o
       }),
       n.d(e, 'g', function() {
         return r
@@ -312,8 +312,8 @@
       n.d(e, 'f', function() {
         return f
       })
-    var o = 'DEFAULT_SIDEBAR_TYPE',
-      a = 'DEFAULT_NAV_THEME',
+    var a = 'DEFAULT_SIDEBAR_TYPE',
+      o = 'DEFAULT_NAV_THEME',
       r = 'DEFAULT_LAYOUT_MODE',
       i = 'DEFAULT_PRIMARY_COLOR',
       l = 'DEFAULT_COLOR_WEAK',
@@ -326,15 +326,15 @@
   },
   '2d43': function(t, e, n) {
     'use strict'
-    var o = n('cc46'),
-      a = n.n(o)
-    a.a
+    var a = n('cc46'),
+      o = n.n(a)
+    o.a
   },
   3430: function(t, e, n) {},
   3617: function(t, e, n) {
     'use strict'
-    var o,
-      a,
+    var a,
+      o,
       r = function() {
         var t = this,
           e = t.$createElement,
@@ -517,11 +517,11 @@
                       n(
                         'div',
                         { staticStyle: { height: '20px' } },
-                        t._l(t.colorList, function(e, o) {
+                        t._l(t.colorList, function(e, a) {
                           return n(
                             'a-tooltip',
                             {
-                              key: o,
+                              key: a,
                               staticClass:
                                 'setting-drawer-theme-color-colorBlock'
                             },
@@ -723,20 +723,20 @@
       f = d,
       m = (n('ae8d'), n('2877')),
       h = Object(m['a'])(f, r, i, !1, null, null, null),
-      b = h.exports,
-      g = b,
+      g = h.exports,
+      b = g,
       y = n('6ac5'),
-      E = {
+      T = {
         functional: !0,
         props: { authority: { type: Array, required: !0 } },
         render: function(t, e) {
           var n = e.props,
-            o = e.scopedSlots
-          return Object(y['a'])(n.authority) ? o.default() : null
+            a = e.scopedSlots
+          return Object(y['a'])(n.authority) ? a.default() : null
         }
       },
-      T = E,
-      v = Object(m['a'])(T, o, a, !1, null, null, null),
+      E = T,
+      v = Object(m['a'])(E, a, o, !1, null, null, null),
       _ = v.exports,
       O = _,
       L = function() {
@@ -973,16 +973,16 @@
       S = (n('2d43'),
       n('dfd0'),
       Object(m['a'])(A, L, D, !1, null, '0db3b769', null)),
-      w = S.exports,
-      k = w
+      k = S.exports,
+      w = k
     n.d(e, 'c', function() {
-      return g
+      return b
     }),
       n.d(e, 'a', function() {
         return O
       }),
       n.d(e, 'b', function() {
-        return k
+        return w
       })
   },
   '51c6': function(t, e, n) {
@@ -1004,21 +1004,20 @@
   5339: function(t, e, n) {
     'use strict'
     n.d(e, 'b', function() {
-      return c
+      return s
     }),
       n.d(e, 'c', function() {
-        return u
+        return c
       }),
       n.d(e, 'a', function() {
-        return p
+        return u
       })
-    var o,
-      a = n('2b0e'),
-      r = n('2d40'),
-      i = n('ac1a'),
-      l = n('51c6'),
-      s = n('f64c'),
-      c = [
+    var a = n('2b0e'),
+      o = n('2d40'),
+      r = n('ac1a'),
+      i = n('51c6'),
+      l = n('f64c'),
+      s = [
         { key: 'dustRed', color: '#F5222D' },
         { key: 'volcano', color: '#FA541C' },
         { key: 'sunsetOrange', color: '#FAAD14' },
@@ -1028,38 +1027,10 @@
         { key: 'geekBlue', color: '#2F54EB' },
         { key: 'goldenPurple', color: '#722ED1' }
       ],
-      u = function(t, e, n) {
+      c = function(t, e, n) {
         var a
-        if ((console.log(t), e))
-          if ((t && (a = s['a'].loading(n, 0)), o)) c()
-          else {
-            var r = document.createElement('link'),
-              i = document.createElement('script'),
-              l = document.createElement('script')
-            r.setAttribute('rel', 'stylesheet/less'),
-              console.log(
-                Object({
-                  NODE_ENV: 'production',
-                  VUE_APP_GH_ENV: 'ghpages',
-                  BASE_URL: '/tvue/'
-                })
-              ),
-              console.log('/tvue/'),
-              r.setAttribute('href', '/tvue/color.less'),
-              (i.innerHTML =
-                "\n      window.less = {\n        async: true,\n        env: 'production',\n        javascriptEnabled: true\n      };\n    "),
-              (l.src =
-                'https://gw.alipayobjects.com/os/lib/less.js/3.8.1/less.min.js'),
-              (l.async = !0),
-              (l.onload = function() {
-                c(), (l.onload = null)
-              }),
-              document.body.appendChild(r),
-              document.body.appendChild(i),
-              document.body.appendChild(l),
-              (o = !0)
-          }
-        function c() {
+        ;(console.log(t), e) && (t && (a = l['a'].loading(n, 0)), o())
+        function o() {
           window.less &&
             setTimeout(
               function() {
@@ -1076,45 +1047,45 @@
             )
         }
       }
-    function p(t) {
-      u(t, a['a'].ls.get(r['j'], l['a'].primaryColor)),
-        i['a'].SET_SIDEBAR(a['a'].ls.get(r['k'], !0)),
-        i['a'].TOGGLE_NAV_THEME(a['a'].ls.get(r['i'], l['a'].navTheme)),
-        i['a'].TOGGLE_LAYOUT_MODE(a['a'].ls.get(r['g'], l['a'].layoutMode)),
-        i['a'].TOGGLE_FIXED_HEADER(a['a'].ls.get(r['c'], l['a'].fixedHeader)),
-        i['a'].TOGGLE_FIXED_SIDERBAR(
-          a['a'].ls.get(r['e'], l['a'].autoHideHeader)
+    function u(t) {
+      c(t, a['a'].ls.get(o['j'], i['a'].primaryColor)),
+        r['a'].SET_SIDEBAR(a['a'].ls.get(o['k'], !0)),
+        r['a'].TOGGLE_NAV_THEME(a['a'].ls.get(o['i'], i['a'].navTheme)),
+        r['a'].TOGGLE_LAYOUT_MODE(a['a'].ls.get(o['g'], i['a'].layoutMode)),
+        r['a'].TOGGLE_FIXED_HEADER(a['a'].ls.get(o['c'], i['a'].fixedHeader)),
+        r['a'].TOGGLE_FIXED_SIDERBAR(
+          a['a'].ls.get(o['e'], i['a'].autoHideHeader)
         ),
-        i['a'].TOGGLE_CONTENT_WIDTH(a['a'].ls.get(r['b'], l['a'].contentWidth)),
-        i['a'].TOGGLE_FIXED_HEADER_HIDDEN(
-          a['a'].ls.get(r['d'], l['a'].autoHideHeader)
+        r['a'].TOGGLE_CONTENT_WIDTH(a['a'].ls.get(o['b'], i['a'].contentWidth)),
+        r['a'].TOGGLE_FIXED_HEADER_HIDDEN(
+          a['a'].ls.get(o['d'], i['a'].autoHideHeader)
         ),
-        i['a'].TOGGLE_COLOR_WEAK(a['a'].ls.get(r['a'], l['a'].colorWeak)),
-        i['a'].TOGGLE_PRIMARY_COLOR(a['a'].ls.get(r['j'], l['a'].primaryColor)),
-        i['a'].TOGGLE_MULTI_TAB(a['a'].ls.get(r['h'], l['a'].multiTab)),
-        i['a'].TOGGLE_LANGUAGE(a['a'].ls.get(r['f'], l['a'].language))
+        r['a'].TOGGLE_COLOR_WEAK(a['a'].ls.get(o['a'], i['a'].colorWeak)),
+        r['a'].TOGGLE_PRIMARY_COLOR(a['a'].ls.get(o['j'], i['a'].primaryColor)),
+        r['a'].TOGGLE_MULTI_TAB(a['a'].ls.get(o['h'], i['a'].multiTab)),
+        r['a'].TOGGLE_LANGUAGE(a['a'].ls.get(o['f'], i['a'].language))
     }
   },
   '6ac5': function(t, e, n) {
     'use strict'
     n.d(e, 'a', function() {
-      return a
+      return o
     }),
       n.d(e, 'b', function() {
         return r
       })
     n('6762'), n('2fdb')
-    function o() {
+    function a() {
       return ['admin']
     }
-    function a(t) {
-      var e = o()
+    function o(t) {
+      var e = a()
       return e.some(function(e) {
         return t.includes(e)
       })
     }
     function r() {
-      var t = o()
+      var t = a()
       return t && 'guest' !== t[0]
     }
   },
@@ -1127,8 +1098,8 @@
     n.d(e, 'a', function() {
       return u
     })
-    var o = n('9ab4'),
-      a = n('2b0e'),
+    var a = n('9ab4'),
+      o = n('2b0e'),
       r = n('6fc5'),
       i = n('2d40'),
       l = n('0613'),
@@ -1153,45 +1124,45 @@
           )
         }
         return (
-          o['c'](e, t),
+          a['c'](e, t),
           (e.prototype.SET_SIDEBAR = function(t) {
-            a['a'].ls.set(i['k'], t), (this.sidebar = t)
+            o['a'].ls.set(i['k'], t), (this.sidebar = t)
           }),
           (e.prototype.TOGGLE_NAV_THEME = function(t) {
-            a['a'].ls.set(i['i'], t), (this.navTheme = t)
+            o['a'].ls.set(i['i'], t), (this.navTheme = t)
           }),
           (e.prototype.TOGGLE_PRIMARY_COLOR = function(t) {
-            a['a'].ls.set(i['j'], t), (this.primaryColor = t)
+            o['a'].ls.set(i['j'], t), (this.primaryColor = t)
           }),
           (e.prototype.CLOSE_SIDEBAR = function() {
-            a['a'].ls.set(i['k'], !1), (this.sidebar = !1)
+            o['a'].ls.set(i['k'], !1), (this.sidebar = !1)
           }),
           (e.prototype.TOGGLE_DEVICE = function(t) {
             this.device = t
           }),
           (e.prototype.TOGGLE_LAYOUT_MODE = function(t) {
-            a['a'].ls.set(i['g'], t), (this.layoutMode = t)
+            o['a'].ls.set(i['g'], t), (this.layoutMode = t)
           }),
           (e.prototype.TOGGLE_CONTENT_WIDTH = function(t) {
-            a['a'].ls.set(i['b'], t), (this.contentWidth = t)
+            o['a'].ls.set(i['b'], t), (this.contentWidth = t)
           }),
           (e.prototype.TOGGLE_FIXED_HEADER = function(t) {
-            a['a'].ls.set(i['c'], t), (this.fixedHeader = t)
+            o['a'].ls.set(i['c'], t), (this.fixedHeader = t)
           }),
           (e.prototype.TOGGLE_FIXED_HEADER_HIDDEN = function(t) {
-            a['a'].ls.set(i['d'], t), (this.autoHideHeader = t)
+            o['a'].ls.set(i['d'], t), (this.autoHideHeader = t)
           }),
           (e.prototype.TOGGLE_FIXED_SIDERBAR = function(t) {
-            a['a'].ls.set(i['e'], t), (this.fixSiderbar = t)
+            o['a'].ls.set(i['e'], t), (this.fixSiderbar = t)
           }),
           (e.prototype.TOGGLE_MULTI_TAB = function(t) {
-            a['a'].ls.set(i['h'], t), (this.multiTab = t)
+            o['a'].ls.set(i['h'], t), (this.multiTab = t)
           }),
           (e.prototype.TOGGLE_COLOR_WEAK = function(t) {
-            a['a'].ls.set(i['a'], t), (this.colorWeak = t)
+            o['a'].ls.set(i['a'], t), (this.colorWeak = t)
           }),
           (e.prototype.TOGGLE_LANGUAGE = function(t) {
-            a['a'].ls.set(i['f'], t), (this.language = t)
+            o['a'].ls.set(i['f'], t), (this.language = t)
           }),
           (e.prototype.SetSidebar = function(t) {
             return t
@@ -1233,88 +1204,88 @@
           (e.prototype.ToggleLanguage = function(t) {
             return t
           }),
-          o['b']([r['c']], e.prototype, 'SET_SIDEBAR', null),
-          o['b']([r['c']], e.prototype, 'TOGGLE_NAV_THEME', null),
-          o['b']([r['c']], e.prototype, 'TOGGLE_PRIMARY_COLOR', null),
-          o['b']([r['c']], e.prototype, 'CLOSE_SIDEBAR', null),
-          o['b']([r['c']], e.prototype, 'TOGGLE_DEVICE', null),
-          o['b']([r['c']], e.prototype, 'TOGGLE_LAYOUT_MODE', null),
-          o['b']([r['c']], e.prototype, 'TOGGLE_CONTENT_WIDTH', null),
-          o['b']([r['c']], e.prototype, 'TOGGLE_FIXED_HEADER', null),
-          o['b']([r['c']], e.prototype, 'TOGGLE_FIXED_HEADER_HIDDEN', null),
-          o['b']([r['c']], e.prototype, 'TOGGLE_FIXED_SIDERBAR', null),
-          o['b']([r['c']], e.prototype, 'TOGGLE_MULTI_TAB', null),
-          o['b']([r['c']], e.prototype, 'TOGGLE_COLOR_WEAK', null),
-          o['b']([r['c']], e.prototype, 'TOGGLE_LANGUAGE', null),
-          o['b'](
+          a['b']([r['c']], e.prototype, 'SET_SIDEBAR', null),
+          a['b']([r['c']], e.prototype, 'TOGGLE_NAV_THEME', null),
+          a['b']([r['c']], e.prototype, 'TOGGLE_PRIMARY_COLOR', null),
+          a['b']([r['c']], e.prototype, 'CLOSE_SIDEBAR', null),
+          a['b']([r['c']], e.prototype, 'TOGGLE_DEVICE', null),
+          a['b']([r['c']], e.prototype, 'TOGGLE_LAYOUT_MODE', null),
+          a['b']([r['c']], e.prototype, 'TOGGLE_CONTENT_WIDTH', null),
+          a['b']([r['c']], e.prototype, 'TOGGLE_FIXED_HEADER', null),
+          a['b']([r['c']], e.prototype, 'TOGGLE_FIXED_HEADER_HIDDEN', null),
+          a['b']([r['c']], e.prototype, 'TOGGLE_FIXED_SIDERBAR', null),
+          a['b']([r['c']], e.prototype, 'TOGGLE_MULTI_TAB', null),
+          a['b']([r['c']], e.prototype, 'TOGGLE_COLOR_WEAK', null),
+          a['b']([r['c']], e.prototype, 'TOGGLE_LANGUAGE', null),
+          a['b'](
             [Object(r['a'])({ commit: 'SET_SIDEBAR' })],
             e.prototype,
             'SetSidebar',
             null
           ),
-          o['b']([r['a']], e.prototype, 'CloseSidebar', null),
-          o['b'](
+          a['b']([r['a']], e.prototype, 'CloseSidebar', null),
+          a['b'](
             [Object(r['a'])({ commit: 'TOGGLE_NAV_THEME' })],
             e.prototype,
             'ToggleNavTheme',
             null
           ),
-          o['b'](
+          a['b'](
             [Object(r['a'])({ commit: 'TOGGLE_PRIMARY_COLOR' })],
             e.prototype,
             'TogglePrimaryColor',
             null
           ),
-          o['b'](
+          a['b'](
             [Object(r['a'])({ commit: 'TOGGLE_CONTENT_WIDTH' })],
             e.prototype,
             'ToggleContentWidth',
             null
           ),
-          o['b'](
+          a['b'](
             [Object(r['a'])({ commit: 'TOGGLE_DEVICE' })],
             e.prototype,
             'ToggleDevice',
             null
           ),
-          o['b'](
+          a['b'](
             [Object(r['a'])({ commit: 'TOGGLE_LAYOUT_MODE' })],
             e.prototype,
             'ToggleLayoutMode',
             null
           ),
-          o['b'](
+          a['b'](
             [Object(r['a'])({ commit: 'TOGGLE_MULTI_TAB' })],
             e.prototype,
             'ToggleMultiTab',
             null
           ),
-          o['b'](
+          a['b'](
             [Object(r['a'])({ commit: 'TOGGLE_FIXED_HEADER_HIDDEN' })],
             e.prototype,
             'ToggleFixedHeaderHidden',
             null
           ),
-          o['b'](
+          a['b'](
             [Object(r['a'])({ commit: 'TOGGLE_COLOR_WEAK' })],
             e.prototype,
             'ToggleColorWeak',
             null
           ),
-          o['b'](
+          a['b'](
             [Object(r['a'])({ commit: 'TOGGLE_FIXED_SIDERBAR' })],
             e.prototype,
             'ToggleFixSiderbar',
             null
           ),
-          o['b']([r['a']], e.prototype, 'ToggleFixedHeader', null),
-          o['b'](
+          a['b']([r['a']], e.prototype, 'ToggleFixedHeader', null),
+          a['b'](
             [Object(r['a'])({ commit: 'TOGGLE_LANGUAGE' })],
             e.prototype,
             'ToggleLanguage',
             null
           ),
-          (e = o['b'](
+          (e = a['b'](
             [Object(r['b'])({ dynamic: !0, store: l['a'], name: 'app' })],
             e
           )),
@@ -1325,9 +1296,9 @@
   },
   ae8d: function(t, e, n) {
     'use strict'
-    var o = n('3430'),
-      a = n.n(o)
-    a.a
+    var a = n('3430'),
+      o = n.n(a)
+    o.a
   },
   cc46: function(t, e, n) {},
   ccf6: function(t, e, n) {
@@ -1341,8 +1312,8 @@
       n.d(e, 'a', function() {
         return c
       })
-    var o = n('9ab4'),
-      a = n('60a3'),
+    var a = n('9ab4'),
+      o = n('60a3'),
       r = n('1ea3'),
       i = n('ac1a'),
       l = (function(t) {
@@ -1351,24 +1322,24 @@
           return (e.AppModule = i['a']), e
         }
         return (
-          o['c'](e, t),
+          a['c'](e, t),
           (e.prototype.isTopMenu = function() {
             return 'topmenu' === i['a'].layoutMode
           }),
           (e.prototype.isSideMenu = function() {
             return !this.isTopMenu()
           }),
-          (e = o['b']([a['a']], e)),
+          (e = a['b']([o['a']], e)),
           e
         )
-      })(a['e']),
+      })(o['e']),
       s = (function(t) {
         function e() {
           var e = (null !== t && t.apply(this, arguments)) || this
           return (e.AppModule = i['a']), e
         }
         return (
-          o['c'](e, t),
+          a['c'](e, t),
           (e.prototype.isMobile = function() {
             return i['a'].device === r['a'].MOBILE
           }),
@@ -1378,16 +1349,16 @@
           (e.prototype.isTablet = function() {
             return i['a'].device === r['a'].TABLET
           }),
-          (e = o['b']([a['a']], e)),
+          (e = a['b']([o['a']], e)),
           e
         )
-      })(a['e']),
+      })(o['e']),
       c = (function(t) {
         function e() {
           return (null !== t && t.apply(this, arguments)) || this
         }
         return (
-          o['c'](e, t),
+          a['c'](e, t),
           (e.prototype.mounted = function() {
             Object(r['b'])(function(t) {
               switch (t) {
@@ -1404,17 +1375,17 @@
               }
             })
           }),
-          (e = o['b']([a['a']], e)),
+          (e = a['b']([o['a']], e)),
           e
         )
-      })(a['e'])
+      })(o['e'])
   },
   cd49: function(t, e, n) {
     'use strict'
     n.r(e)
     n('cadf'), n('551c'), n('f751'), n('097d')
-    var o = n('2b0e'),
-      a = n('a925'),
+    var a = n('2b0e'),
+      o = n('a925'),
       r = {
         message: 'Compiling Language !',
         themeMessage: 'Compiling theme !'
@@ -1480,11 +1451,11 @@
       },
       m = [],
       h = n('9ab4'),
-      b = n('60a3'),
-      g = n('4bb5'),
+      g = n('60a3'),
+      b = n('4bb5'),
       y = n('ccf6'),
-      E = n('677e'),
-      T = n.n(E),
+      T = n('677e'),
+      E = n.n(T),
       v = n('766a'),
       _ = n.n(v),
       O = n('c1df'),
@@ -1502,26 +1473,26 @@
                 L.a.locale('enUS' === this.language ? 'en' : 'zh-cn'),
                 (this.$i18n.locale =
                   'enUS' === this.language ? 'enUS' : 'zhCN'),
-                'enUS' === this.language ? _.a : T.a
+                'enUS' === this.language ? _.a : E.a
               )
             },
             enumerable: !0,
             configurable: !0
           }),
-          h['b']([g['b']], e.prototype, 'language', void 0),
-          (e = h['b']([Object(b['a'])({ mixins: [y['a']] })], e)),
+          h['b']([b['b']], e.prototype, 'language', void 0),
+          (e = h['b']([Object(g['a'])({ mixins: [y['a']] })], e)),
           e
         )
-      })(b['e'])),
+      })(g['e'])),
       G = D,
       C = G,
       A = (n('f131'), n('2877')),
       S = Object(A['a'])(C, f, m, !1, null, null, null),
-      w = S.exports,
-      k = (n('dc5a'), n('56cd')),
-      M = n('8c4f'),
-      I = n('995c'),
-      x = n.n(I),
+      k = S.exports,
+      w = (n('dc5a'), n('56cd')),
+      I = n('8c4f'),
+      M = n('995c'),
+      x = n.n(M),
       j = n('323e'),
       N = n.n(j),
       R = (n('a5d8'),
@@ -1545,15 +1516,15 @@
         }
         return (
           h['c'](e, t),
-          (e = h['b']([Object(b['a'])({ components: { Logo: F.a } })], e)),
+          (e = h['b']([Object(g['a'])({ components: { Logo: F.a } })], e)),
           e
         )
-      })(b['e']),
+      })(g['e']),
       U = P,
       W = U,
       X = Object(A['a'])(W, R, H, !1, null, null, null),
-      V = X.exports,
-      $ = function() {
+      $ = X.exports,
+      V = function() {
         var t = this,
           e = t.$createElement,
           n = t._self._c || e
@@ -1564,14 +1535,14 @@
         function e() {
           return (null !== t && t.apply(this, arguments)) || this
         }
-        return h['c'](e, t), (e = h['b']([b['a']], e)), e
-      })(b['e']),
+        return h['c'](e, t), (e = h['b']([g['a']], e)), e
+      })(g['e']),
       z = K,
       q = z,
-      J = Object(A['a'])(q, $, Y, !1, null, null, null),
+      J = Object(A['a'])(q, V, Y, !1, null, null, null),
       Z = J.exports,
       Q = n('6ac5')
-    N.a.configure({ showSpinner: !1 }), o['a'].use(M['a'])
+    N.a.configure({ showSpinner: !1 }), a['a'].use(I['a'])
     var tt = [
       {
         path: '/user',
@@ -1679,7 +1650,7 @@
             ]
           },
           { path: '/403', name: '403', hideInMenu: !0, component: Z },
-          { path: '*', name: '404', hideInMenu: !0, component: V }
+          { path: '*', name: '404', hideInMenu: !0, component: $ }
         ]
       }
     ]
@@ -1690,17 +1661,17 @@
         BASE_URL: '/tvue/'
       })
     )
-    var et = new M['a']({ mode: 'hash', base: '/tvue/', routes: tt })
+    var et = new I['a']({ mode: 'hash', base: '/tvue/', routes: tt })
     et.beforeEach(function(t, e, n) {
       t.path !== e.path && N.a.start()
-      var o = x()(t.matched, function(t) {
+      var a = x()(t.matched, function(t) {
         return t.meta.authority
       })
-      o &&
-        !Object(Q['a'])(o.meta.authority) &&
+      a &&
+        !Object(Q['a'])(a.meta.authority) &&
         (Object(Q['b'])() || '/user/login' === t.path
           ? '/403' !== t.path &&
-            (k['a'].error({
+            (w['a'].error({
               message: '403',
               description: '你没有权限访问，请联系管理员咨询。'
             }),
@@ -1713,8 +1684,8 @@
         N.a.done()
       })
     var nt = et,
-      ot = n('0613'),
-      at = n('5339'),
+      at = n('0613'),
+      ot = n('5339'),
       rt = (n('3b18'), n('f64c')),
       it = n('c16e'),
       lt = n.n(it),
@@ -1735,11 +1706,11 @@
       ft = (n('4a96'), n('a071')),
       mt = (n('d13f'), n('ccb9e')),
       ht = (n('af3d'), n('27fd')),
-      bt = (n('d88f'), n('fe2b')),
-      gt = (n('7f6b'), n('8592')),
+      gt = (n('d88f'), n('fe2b')),
+      bt = (n('7f6b'), n('8592')),
       yt = (n('5136'), n('681b')),
-      Et = (n('b97c'), n('7571')),
-      Tt = (n('9a33'), n('f933')),
+      Tt = (n('b97c'), n('7571')),
+      Et = (n('9a33'), n('f933')),
       vt = (n('55ec'), n('a79d')),
       _t = (n('9980'), n('0bb7')),
       Ot = (n('9d5c'), n('a600')),
@@ -1749,59 +1720,59 @@
       Ct = (n('5783'), n('59a5')),
       At = (n('6d2a'), n('9571')),
       St = (n('8fb1'), n('0c63')),
-      wt = (n('1a62'), n('98c5')),
-      kt = (n('6ba6'), n('5efb'))
-    o['a'].use(kt['a']),
-      o['a'].use(wt['a']),
-      o['a'].use(St['a']),
-      o['a'].use(At['a']),
-      o['a'].use(Ct['a']),
-      o['a'].use(Gt['a']),
-      o['a'].use(Dt['a']),
-      o['a'].use(Lt['a']),
-      o['a'].use(Ot['a']),
-      o['a'].use(_t['a']),
-      o['a'].use(vt['a']),
-      o['a'].use(Tt['a']),
-      o['a'].use(Et['a']),
-      o['a'].use(yt['a']),
-      o['a'].use(gt['a']),
-      o['a'].use(bt['b']),
-      o['a'].use(ht['a']),
-      o['a'].use(mt['a']),
-      o['a'].use(ft['a']),
-      o['a'].use(dt['a']),
-      (o['a'].config.productionTip = !1),
-      (o['a'].prototype.$message = rt['a']),
-      o['a'].component('Authorized', ct['a']),
-      o['a'].use(pt),
-      o['a'].use(lt.a, st['a'].storageOptions),
+      kt = (n('1a62'), n('98c5')),
+      wt = (n('6ba6'), n('5efb'))
+    a['a'].use(wt['a']),
+      a['a'].use(kt['a']),
+      a['a'].use(St['a']),
+      a['a'].use(At['a']),
+      a['a'].use(Ct['a']),
+      a['a'].use(Gt['a']),
+      a['a'].use(Dt['a']),
+      a['a'].use(Lt['a']),
+      a['a'].use(Ot['a']),
+      a['a'].use(_t['a']),
+      a['a'].use(vt['a']),
+      a['a'].use(Et['a']),
+      a['a'].use(Tt['a']),
+      a['a'].use(yt['a']),
+      a['a'].use(bt['a']),
+      a['a'].use(gt['b']),
+      a['a'].use(ht['a']),
+      a['a'].use(mt['a']),
+      a['a'].use(ft['a']),
+      a['a'].use(dt['a']),
+      (a['a'].config.productionTip = !1),
+      (a['a'].prototype.$message = rt['a']),
+      a['a'].component('Authorized', ct['a']),
+      a['a'].use(pt),
+      a['a'].use(lt.a, st['a'].storageOptions),
       n('09bd').shim(),
-      o['a'].use(a['a'])
-    var Mt = new a['a']({ locale: 'enUS', messages: { enUS: s, zhCN: d } })
-    new o['a']({
+      a['a'].use(o['a'])
+    var It = new o['a']({ locale: 'enUS', messages: { enUS: s, zhCN: d } })
+    new a['a']({
       router: nt,
-      store: ot['a'],
-      i18n: Mt,
+      store: at['a'],
+      i18n: It,
       beforeCreate: function() {
-        Object(at['a'])(!1)
+        Object(ot['a'])(!1)
       },
       render: function(t) {
-        return t(w)
+        return t(k)
       }
     }).$mount('#app')
   },
   dfd0: function(t, e, n) {
     'use strict'
-    var o = n('a4b2'),
-      a = n.n(o)
-    a.a
+    var a = n('a4b2'),
+      o = n.n(a)
+    o.a
   },
   f131: function(t, e, n) {
     'use strict'
-    var o = n('254c'),
-      a = n.n(o)
-    a.a
+    var a = n('254c'),
+      o = n.n(a)
+    o.a
   }
 })
-//# sourceMappingURL=app.34c12687.js.map
+//# sourceMappingURL=app.b69242b5.js.map
