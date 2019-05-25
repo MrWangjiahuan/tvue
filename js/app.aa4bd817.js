@@ -34,10 +34,10 @@
       ] || t) +
       '.' +
       {
-        dashboard: '92229ec7',
-        form: '069c22e9',
-        layout: '24288812',
-        user: '83e71a21'
+        dashboard: 'e649bcc2',
+        form: '91ea6b41',
+        layout: 'e5149e59',
+        user: 'b78d11c6'
       }[t] +
       '.js'
     )
@@ -973,8 +973,8 @@
       S = (n('2d43'),
       n('dfd0'),
       Object(m['a'])(A, L, D, !1, null, '0db3b769', null)),
-      k = S.exports,
-      w = k
+      w = S.exports,
+      k = w
     n.d(e, 'c', function() {
       return b
     }),
@@ -982,7 +982,7 @@
         return O
       }),
       n.d(e, 'b', function() {
-        return w
+        return k
       })
   },
   '51c6': function(t, e, n) {
@@ -1037,10 +1037,10 @@
                 window.less
                   .modifyVars({ '@primary-color': e })
                   .then(function() {
-                    t && a()
+                    console.log('11111'), t && a()
                   })
                   .catch(function(e) {
-                    console.log(e), t && a()
+                    console.warn(e), t && a()
                   })
               },
               t ? 200 : 0
@@ -1488,8 +1488,8 @@
       C = G,
       A = (n('f131'), n('2877')),
       S = Object(A['a'])(C, f, m, !1, null, null, null),
-      k = S.exports,
-      w = (n('dc5a'), n('56cd')),
+      w = S.exports,
+      k = (n('dc5a'), n('56cd')),
       I = n('8c4f'),
       M = n('995c'),
       x = n.n(M),
@@ -1671,7 +1671,7 @@
         !Object(Q['a'])(a.meta.authority) &&
         (Object(Q['b'])() || '/user/login' === t.path
           ? '/403' !== t.path &&
-            (w['a'].error({
+            (k['a'].error({
               message: '403',
               description: '你没有权限访问，请联系管理员咨询。'
             }),
@@ -1720,10 +1720,10 @@
       Ct = (n('5783'), n('59a5')),
       At = (n('6d2a'), n('9571')),
       St = (n('8fb1'), n('0c63')),
-      kt = (n('1a62'), n('98c5')),
-      wt = (n('6ba6'), n('5efb'))
-    a['a'].use(wt['a']),
-      a['a'].use(kt['a']),
+      wt = (n('1a62'), n('98c5')),
+      kt = (n('6ba6'), n('5efb'))
+    a['a'].use(kt['a']),
+      a['a'].use(wt['a']),
       a['a'].use(St['a']),
       a['a'].use(At['a']),
       a['a'].use(Ct['a']),
@@ -1758,7 +1758,7 @@
         Object(ot['a'])(!1)
       },
       render: function(t) {
-        return t(k)
+        return t(w)
       }
     }).$mount('#app')
   },
@@ -1775,4 +1775,4 @@
     o.a
   }
 })
-//# sourceMappingURL=app.c97f5fa0.js.map
+//# sourceMappingURL=app.aa4bd817.js.map
