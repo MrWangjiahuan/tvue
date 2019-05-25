@@ -1037,6 +1037,14 @@
               i = document.createElement('script'),
               l = document.createElement('script')
             r.setAttribute('rel', 'stylesheet/less'),
+              console.log(
+                Object({
+                  NODE_ENV: 'production',
+                  VUE_APP_GH_ENV: 'ghpages',
+                  BASE_URL: '/tvue/'
+                })
+              ),
+              console.log('/tvue/'),
               r.setAttribute('href', '/tvue/color.less'),
               (i.innerHTML =
                 "\n      window.less = {\n        async: true,\n        env: 'production',\n        javascriptEnabled: true\n      };\n    "),
@@ -1544,8 +1552,8 @@
       U = P,
       W = U,
       X = Object(A['a'])(W, R, H, !1, null, null, null),
-      $ = X.exports,
-      V = function() {
+      V = X.exports,
+      $ = function() {
         var t = this,
           e = t.$createElement,
           n = t._self._c || e
@@ -1560,7 +1568,7 @@
       })(b['e']),
       z = K,
       q = z,
-      J = Object(A['a'])(q, V, Y, !1, null, null, null),
+      J = Object(A['a'])(q, $, Y, !1, null, null, null),
       Z = J.exports,
       Q = n('6ac5')
     N.a.configure({ showSpinner: !1 }), o['a'].use(M['a'])
@@ -1671,7 +1679,7 @@
             ]
           },
           { path: '/403', name: '403', hideInMenu: !0, component: Z },
-          { path: '*', name: '404', hideInMenu: !0, component: $ }
+          { path: '*', name: '404', hideInMenu: !0, component: V }
         ]
       }
     ]
@@ -1796,4 +1804,4 @@
     a.a
   }
 })
-//# sourceMappingURL=app.981a6220.js.map
+//# sourceMappingURL=app.34c12687.js.map
