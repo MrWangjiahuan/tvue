@@ -6,12 +6,13 @@
     "start": "npm run serve",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build:gh": "vue-cli-service build --mode ghpages",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
     "commit": "git-cz"
   },
   "lint-staged": {
-    "*.{vue,ts,js,json,css,less}": [
+    "*.{vue,ts,js,json,css}": [
       "node scripts/lint-prettier.js",
       "git add"
     ]
@@ -59,7 +60,6 @@
     "chalk": "^2.4.2",
     "commitizen": "^3.1.1",
     "conventional-changelog": "^3.1.8",
-    "cross-env": "^5.2.0",
     "cz-conventional-changelog": "^2.1.0",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",

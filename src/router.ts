@@ -137,9 +137,12 @@ const routes = [
     ]
   }
 ]
-
+console.log(process.env)
 const router = new Router({
-  mode: 'history',
+  mode:
+    process.env.VUE_APP_GH_ENV && process.env.VUE_APP_GH_ENV === 'ghpages'
+      ? 'hash'
+      : 'history',
   base: process.env.BASE_URL,
   routes: routes
 })

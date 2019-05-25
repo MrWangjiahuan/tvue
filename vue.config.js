@@ -2,8 +2,13 @@ const path = require('path')
 const webpack = require('webpack')
 const AntDesignThemePlugin = require('antd-theme-webpack-plugin')
 
+const isGhpages =
+  process.env.VUE_APP_GH_ENV && process.env.VUE_APP_GH_ENV === 'ghpages'
+    ? true
+    : false
 // 主题切换配置 生成color.less
-const options = {
+// https://github.com/mzohaibqc/antd-theme-webpack-plugin/blob/master/index.js
+let options = {
   antDir: path.join(__dirname, './node_modules/ant-design-vue'),
   stylesDir: path.join(__dirname, './src'),
   varFile: path.join(
@@ -12,11 +17,18 @@ const options = {
   ),
   mainLessFile: '',
   themeVariables: ['@primary-color'],
+  publicPath: isGhpages ? '/tvue' : '/',
   generateOnce: false
 }
+// 本地不需要publicPath
+if (!isGhpages) {
+  delete options.publicPath
+}
+
 const themePlugin = new AntDesignThemePlugin(options)
 
 module.exports = {
+  publicPath: isGhpages ? '/tvue/' : '/',
   css: {
     loaderOptions: {
       // modifyVars: {

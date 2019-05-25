@@ -69,7 +69,8 @@ export const updateTheme = (
               hideMessage()
             }
           })
-          .catch(() => {
+          .catch(e => {
+            console.warn(e)
             if (showMessage) {
               hideMessage()
             }
@@ -78,36 +79,43 @@ export const updateTheme = (
       showMessage ? 200 : 0
     )
   }
-  if (!lessNodesAppended) {
-    // insert less.js and color.less
-    const lessStyleNode = document.createElement('link')
-    const lessConfigNode = document.createElement('script')
-    const lessScriptNode = document.createElement('script')
-    lessStyleNode.setAttribute('rel', 'stylesheet/less')
-    lessStyleNode.setAttribute('href', '/color.less')
-    lessConfigNode.innerHTML = `
-      window.less = {
-        async: true,
-        env: 'production',
-        javascriptEnabled: true
-      };
-    `
-    lessScriptNode.src =
-      'https://gw.alipayobjects.com/os/lib/less.js/3.8.1/less.min.js'
-    //  lessScriptNode.src =
-    //    'https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js'
-    lessScriptNode.async = true
-    lessScriptNode.onload = () => {
-      buildTheme()
-      lessScriptNode.onload = null
-    }
-    document.body.appendChild(lessStyleNode)
-    document.body.appendChild(lessConfigNode)
-    document.body.appendChild(lessScriptNode)
-    lessNodesAppended = true
-  } else {
-    buildTheme()
-  }
+  buildTheme()
+  // if (!lessNodesAppended) {
+  //   // insert less.js and color.less
+  //   const lessStyleNode = document.createElement('link')
+  //   const lessConfigNode = document.createElement('script')
+  //   const lessScriptNode = document.createElement('script')
+  //   lessStyleNode.setAttribute('rel', 'stylesheet/less')
+  //       console.log(lessStyleNode)
+  //       console.log(process.env)
+  //       console.log(process.env.BASE_URL)
+  //   lessStyleNode.setAttribute(
+  //     'href',
+  //     `${process.env.BASE_URL}color.less`
+  //   )
+  //   lessConfigNode.innerHTML = `
+  //     window.less = {
+  //       async: true,
+  //       env: 'production',
+  //       javascriptEnabled: true
+  //     };
+  //   `
+  //   lessScriptNode.src =
+  //     'https://gw.alipayobjects.com/os/lib/less.js/3.8.1/less.min.js'
+  //   //  lessScriptNode.src =
+  //   //    'https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js'
+  //   lessScriptNode.async = true
+  //   lessScriptNode.onload = () => {
+  //     buildTheme()
+  //     lessScriptNode.onload = null
+  //   }
+  //   document.body.appendChild(lessStyleNode)
+  //   document.body.appendChild(lessConfigNode)
+  //   document.body.appendChild(lessScriptNode)
+  //   lessNodesAppended = true
+  // } else {
+  //   buildTheme()
+  // }
 }
 
 export function Initializer(showMessage): void {
