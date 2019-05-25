@@ -34,10 +34,10 @@
       ] || t) +
       '.' +
       {
-        dashboard: '326e88d7',
-        form: '25452bd3',
-        layout: '14b6e8e6',
-        user: 'fbee9c1e'
+        dashboard: 'bbab54e1',
+        form: 'df5b8762',
+        layout: '3950b813',
+        user: '3e29ebe9'
       }[t] +
       '.js'
     )
@@ -722,9 +722,9 @@
       d = p,
       f = d,
       m = (n('ae8d'), n('2877')),
-      h = Object(m['a'])(f, r, i, !1, null, null, null),
-      b = h.exports,
-      g = b,
+      b = Object(m['a'])(f, r, i, !1, null, null, null),
+      h = b.exports,
+      g = h,
       y = n('6ac5'),
       E = {
         functional: !0,
@@ -1480,8 +1480,8 @@
         ])
       },
       m = [],
-      h = n('9ab4'),
-      b = n('60a3'),
+      b = n('9ab4'),
+      h = n('60a3'),
       g = n('4bb5'),
       y = n('ccf6'),
       E = n('677e'),
@@ -1496,7 +1496,7 @@
           return (null !== t && t.apply(this, arguments)) || this
         }
         return (
-          h['c'](e, t),
+          b['c'](e, t),
           Object.defineProperty(e.prototype, 'locale', {
             get: function() {
               return (
@@ -1509,11 +1509,11 @@
             enumerable: !0,
             configurable: !0
           }),
-          h['b']([g['b']], e.prototype, 'language', void 0),
-          (e = h['b']([Object(b['a'])({ mixins: [y['a']] })], e)),
+          b['b']([g['b']], e.prototype, 'language', void 0),
+          (e = b['b']([Object(h['a'])({ mixins: [y['a']] })], e)),
           e
         )
-      })(b['e'])),
+      })(h['e'])),
       G = D,
       C = G,
       A = (n('f131'), n('2877')),
@@ -1545,11 +1545,11 @@
           return (null !== t && t.apply(this, arguments)) || this
         }
         return (
-          h['c'](e, t),
-          (e = h['b']([Object(b['a'])({ components: { Logo: F.a } })], e)),
+          b['c'](e, t),
+          (e = b['b']([Object(h['a'])({ components: { Logo: F.a } })], e)),
           e
         )
-      })(b['e']),
+      })(h['e']),
       U = P,
       W = U,
       X = Object(A['a'])(W, R, H, !1, null, null, null),
@@ -1565,8 +1565,8 @@
         function e() {
           return (null !== t && t.apply(this, arguments)) || this
         }
-        return h['c'](e, t), (e = h['b']([b['a']], e)), e
-      })(b['e']),
+        return b['c'](e, t), (e = b['b']([h['a']], e)), e
+      })(h['e']),
       z = K,
       q = z,
       J = Object(A['a'])(q, $, Y, !1, null, null, null),
@@ -1735,8 +1735,8 @@
       dt = (n('38e4'), n('d49c')),
       ft = (n('4a96'), n('a071')),
       mt = (n('d13f'), n('ccb9e')),
-      ht = (n('af3d'), n('27fd')),
-      bt = (n('d88f'), n('fe2b')),
+      bt = (n('af3d'), n('27fd')),
+      ht = (n('d88f'), n('fe2b')),
       gt = (n('7f6b'), n('8592')),
       yt = (n('5136'), n('681b')),
       Et = (n('b97c'), n('7571')),
@@ -1767,8 +1767,8 @@
       o['a'].use(Et['a']),
       o['a'].use(yt['a']),
       o['a'].use(gt['a']),
-      o['a'].use(bt['b']),
-      o['a'].use(ht['a']),
+      o['a'].use(ht['b']),
+      o['a'].use(bt['a']),
       o['a'].use(mt['a']),
       o['a'].use(ft['a']),
       o['a'].use(dt['a']),
@@ -1805,4 +1805,4 @@
     a.a
   }
 })
-//# sourceMappingURL=app.31c890d4.js.map
+//# sourceMappingURL=app.0cb1b825.js.map
