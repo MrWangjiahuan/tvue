@@ -2053,10 +2053,10 @@ body.userLayout {
   transition: width 0.2s;
 }
 .layout.ant-layout .sidemenu .ant-header-fixedHeader.ant-header-side-opened {
-  width: calc(100% - 256px);
+  width: -156%;
 }
 .layout.ant-layout .sidemenu .ant-header-fixedHeader.ant-header-side-closed {
-  width: calc(100% - 80px);
+  width: 20%;
 }
 .layout.ant-layout .header {
   height: 64px;
