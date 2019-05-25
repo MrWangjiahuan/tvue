@@ -1039,8 +1039,8 @@
                   .then(function() {
                     t && a()
                   })
-                  .catch(function() {
-                    t && a()
+                  .catch(function(e) {
+                    console.log(e), t && a()
                   })
               },
               t ? 200 : 0
@@ -1775,4 +1775,4 @@
     o.a
   }
 })
-//# sourceMappingURL=app.b69242b5.js.map
+//# sourceMappingURL=app.c97f5fa0.js.map
