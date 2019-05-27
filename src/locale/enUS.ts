@@ -1,6 +1,7 @@
-import { globalHeader, settingDrawer, menu } from './enUS/layouts/'
+import { globalHeader, settingDrawer, menu, http } from './enUS/index'
 export default {
   globalHeader,
   settingDrawer,
-  menu
+  menu,
+  http
 }

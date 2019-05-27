@@ -71,7 +71,7 @@
 </template>
 
 <script lang="ts">
-import axios from 'axios'
+import { getUser } from '@/api/user'
 import { Vue, Component } from 'vue-property-decorator'
 
 @Component({
@@ -81,10 +81,11 @@ export default class Notice extends Vue {
   private visible: boolean = false
   private loading: boolean = false
   private mounted() {
-    axios.get(`${process.env.VUE_APP_BASE_API}/user/login`).then(res => {
-      console.log(res)
-      return res
-    })
+    setTimeout(() => {
+      getUser().then(res => {
+        console.log(res)
+      })
+    }, 6000)
   }
   private fetchNotice() {
     if (!this.visible) {
