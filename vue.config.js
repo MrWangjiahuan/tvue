@@ -27,7 +27,10 @@ if (!isGhpages) {
 
 const themePlugin = new AntDesignThemePlugin(options)
 
+const port = 5200 // dev port
+
 module.exports = {
+  productionSourceMap: false,
   publicPath: isGhpages ? '/tvue/' : '/',
   css: {
     loaderOptions: {
@@ -69,27 +72,25 @@ module.exports = {
       .options({
         name: 'assets/[name].[hash:8].[ext]'
       })
+  },
+  devServer: {
+    port: port,
+    open: true,
+    overlay: {
+      warnings: false,
+      errors: true
+    },
+    proxy: {
+      // change xxx-api/login => mock/login
+      // detail: https://cli.vuejs.org/config/#devserver-proxy
+      [process.env.VUE_APP_BASE_API]: {
+        target: `http://localhost:${port}/mock`,
+        changeOrigin: true,
+        pathRewrite: {
+          ['^' + process.env.VUE_APP_BASE_API]: ''
+        }
+      }
+    },
+    after: require('./mock/mockServer.ts')
   }
-  // devServer: {
-  //   proxy: {
-  //     '/api': {
-  //       target: 'http://localhost:3000',
-  //       bypass: function(req, res) {
-  //         if (req.headers.accept.indexOf('html') !== -1) {
-  //           console.log('Skipping proxy for browser request.')
-  //           return '/index.html'
-  //         } else if (process.env.MOCK !== 'none') {
-  //           const name = req.path
-  //             .split('/api/')[1]
-  //             .split('/')
-  //             .join('_')
-  //           const mock = require(`./mock/${name}`)
-  //           const result = mock(req.method)
-  //           delete require.cache[require.resolve(`./mock/${name}`)]
-  //           return res.send(result)
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
 }

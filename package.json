@@ -26,12 +26,22 @@
       "path": "node_modules/cz-conventional-changelog"
     }
   },
+  "keywords": [
+    "vue",
+    "admin",
+    "typescript",
+    "ant-design-vue",
+    "antd",
+    "vue-admin",
+    "antd-admin"
+  ],
   "dependencies": {
     "ant-design-vue": "^1.3.8",
     "axios": "^0.18.0",
     "core-js": "^2.6.5",
     "enquire.js": "^2.1.6",
     "lodash": "^4.17.11",
+    "mockjs": "^1.0.1-beta3",
     "moment": "^2.24.0",
     "nprogress": "^0.2.0",
     "promise.prototype.finally": "^3.1.0",
@@ -47,6 +57,8 @@
     "vuex-module-decorators": "^0.9.9"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.3.3",
+    "@babel/register": "^7.4.4",
     "@types/jest": "^23.1.4",
     "@types/nprogress": "^0.0.29",
     "@vue/cli-plugin-babel": "^3.7.0",
@@ -58,6 +70,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-plugin-import": "^1.11.0",
     "chalk": "^2.4.2",
+    "chokidar": "^3.0.0",
     "commitizen": "^3.1.1",
     "conventional-changelog": "^3.1.8",
     "cz-conventional-changelog": "^2.1.0",

@@ -71,6 +71,7 @@
 </template>
 
 <script lang="ts">
+import axios from 'axios'
 import { Vue, Component } from 'vue-property-decorator'
 
 @Component({
@@ -79,6 +80,12 @@ import { Vue, Component } from 'vue-property-decorator'
 export default class Notice extends Vue {
   private visible: boolean = false
   private loading: boolean = false
+  private mounted() {
+    axios.get(`${process.env.VUE_APP_BASE_API}/user/login`).then(res => {
+      console.log(res)
+      return res
+    })
+  }
   private fetchNotice() {
     if (!this.visible) {
       this.loading = true

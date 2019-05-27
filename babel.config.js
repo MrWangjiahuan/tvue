@@ -1,5 +1,5 @@
 module.exports = {
-  presets: ['@vue/app'],
+  presets: ['@vue/app', '@babel/preset-typescript'],
   plugins: [
     // 按需加载antd组件
     [
