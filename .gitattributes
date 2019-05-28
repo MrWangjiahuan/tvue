@@ -3,6 +3,7 @@
 *.html linguist-language=Vue 
 *.js linguist-language=Vue 
 *.ts linguist-language=Vue 
+*.vue linguist-language=Vue 
 *.xml linguist-language=Vue
 *.css linguist-language=Vue 
 *.sql linguist-language=Vue
