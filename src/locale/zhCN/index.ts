@@ -23,8 +23,15 @@ const menu = {
   dashboard: '仪表盘',
   analysis: '分析页',
   form: '表单',
-  basicform: '基础表单',
-  stepform: '分步表单'
+  basicForm: '基础表单',
+  stepForm: '分步表单'
 }
 
-export { globalHeader, settingDrawer, menu }
+const http = {
+  networkError: '网络错误',
+  networkErrorDesc: '请检查网络连接是否异常',
+  timeoutError: '请求超时',
+  timeoutErrorDesc: '请求已超时，请稍后重试'
+}
+
+export { globalHeader, settingDrawer, menu, http }

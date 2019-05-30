@@ -72,6 +72,8 @@ import throttle from 'lodash/throttle'
 import { Getter, Action } from 'vuex-class'
 import { DeviceMixin } from '@/utils/mixins'
 import { Notice } from '@/components/'
+import Utils from '@/utils/util'
+import findLast from 'lodash/findLast'
 
 @Component({
   name: 'HeaderRightLayout',
@@ -101,9 +103,20 @@ export default class HeaderRightLayout extends Mixins(DeviceMixin) {
   private localeChange() {
     return this.$message
       .loading(this.$t('globalHeader.message'), 1)
-      .then(() => {
-        this.toggleLanguage(this.language === 'enUS' ? 'zhCN' : 'enUS')
+      .then(async () => {
         this.$i18n.locale = this.language === 'enUS' ? 'zhCN' : 'enUS'
+        await this.toggleLanguage(this.language === 'enUS' ? 'zhCN' : 'enUS')
+        const record = findLast(
+          this.$route.matched,
+          record => record.meta.title
+        )
+        let title: string
+        if (record) {
+          title = `${record.meta.localeTitle} - Ant Design Pro`
+        } else {
+          title = 'Ant Design Pro'
+        }
+        Utils.setDocumentTitle(title)
       })
   }
 }

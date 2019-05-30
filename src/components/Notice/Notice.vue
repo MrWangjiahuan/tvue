@@ -71,6 +71,7 @@
 </template>
 
 <script lang="ts">
+import { getUser } from '@/api/user'
 import { Vue, Component } from 'vue-property-decorator'
 
 @Component({
@@ -79,6 +80,13 @@ import { Vue, Component } from 'vue-property-decorator'
 export default class Notice extends Vue {
   private visible: boolean = false
   private loading: boolean = false
+  private mounted() {
+    setTimeout(() => {
+      getUser().then(res => {
+        console.log(res)
+      })
+    }, 6000)
+  }
   private fetchNotice() {
     if (!this.visible) {
       this.loading = true

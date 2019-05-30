@@ -23,8 +23,15 @@ const menu = {
   dashboard: 'Dashboard',
   analysis: 'Analysis',
   form: 'Form',
-  basicform: 'Basicform',
-  stepform: 'Stepform'
+  basicForm: 'Basic Form',
+  stepForm: 'Step Form'
 }
 
-export { globalHeader, settingDrawer, menu }
+const http = {
+  networkError: 'Network Error',
+  networkErrorDesc: 'Check if the network connection is abnormal',
+  timeoutError: 'Timeout Error',
+  timeoutErrorDesc: 'The request has timed out. Please try again later'
+}
+
+export { globalHeader, settingDrawer, menu, http }

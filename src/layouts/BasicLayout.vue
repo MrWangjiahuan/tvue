@@ -84,7 +84,7 @@
 <script lang="ts">
 import { Vue, Component, Mixins, Watch } from 'vue-property-decorator'
 import { Mixin, DeviceMixin } from '@/utils/mixins'
-import { triggerWindowResizeEvent } from '@/utils/helper/'
+import Utils from '@/utils/util'
 import config from '@/config/defaultSettings'
 import GlobalHeader from './GlobalHeader.vue'
 import GlobalFooter from './GlobalFooter.vue'
@@ -120,7 +120,7 @@ export default class BasicLayout extends Mixins(Mixin, DeviceMixin) {
   private toggle() {
     this.collapsed = !this.collapsed
     this.AppModule.SetSidebar(!this.collapsed)
-    triggerWindowResizeEvent()
+    Utils.triggerWindowResizeEvent()
   }
 
   private handleClick({ item, key, keyPath }) {
