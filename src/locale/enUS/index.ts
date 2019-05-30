@@ -23,8 +23,8 @@ const menu = {
   dashboard: 'Dashboard',
   analysis: 'Analysis',
   form: 'Form',
-  basicform: 'Basicform',
-  stepform: 'Stepform'
+  basicForm: 'Basic Form',
+  stepForm: 'Step Form'
 }
 
 const http = {

@@ -17,7 +17,7 @@ import LogoSvg from '@/assets/logo.svg?inline'
   }
 })
 export default class Logo extends Vue {
-  @Prop({ default: 'Tvue Admin' }) public title!: string
+  @Prop({ default: 'Ant Design Pro' }) public title!: string
   @Prop({ default: true }) public showTitle!: boolean
 }
 </script>

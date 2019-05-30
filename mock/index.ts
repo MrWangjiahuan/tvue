@@ -1,5 +1,5 @@
 import Mock from 'mockjs'
-import { param2Obj } from '../src/utils/helper/index'
+import Utils from '../src/utils/util'
 
 import user from './user'
 // import role from './role'
@@ -35,7 +35,7 @@ export function mockXHR() {
         result = respond({
           method: type,
           body: JSON.parse(body),
-          query: param2Obj(url)
+          query: Utils.param2Obj(url)
         })
       } else {
         result = respond
