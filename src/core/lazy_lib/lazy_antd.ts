@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import {
+  Row,
+  Col,
   Button,
   Layout,
   Icon,
@@ -19,9 +21,14 @@ import {
   Avatar,
   Tabs,
   Badge,
+  Checkbox,
+  Select,
+  Progress,
   LocaleProvider
 } from 'ant-design-vue'
 
+Vue.use(Row)
+Vue.use(Col)
 Vue.use(Button)
 Vue.use(Layout)
 Vue.use(Icon)
@@ -41,4 +48,7 @@ Vue.use(List)
 Vue.use(Avatar)
 Vue.use(Tabs)
 Vue.use(Badge)
+Vue.use(Checkbox)
+Vue.use(Select)
+Vue.use(Progress)
 Vue.use(LocaleProvider)

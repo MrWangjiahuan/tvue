@@ -104,7 +104,7 @@ export default class Notice extends Vue {
 .header-notice-wrapper {
   top: 50px !important;
 }
-.ant-popover-inner-content {
+/* .ant-popover-inner-content {
   padding: 0 !important;
 }
 .ant-tabs-nav-scroll {
@@ -114,7 +114,7 @@ export default class Notice extends Vue {
 .ant-list-item {
   padding-left: 22px !important;
   padding-right: 22px !important;
-}
+} */
 </style>
 <style lang="less" scoped>
 .tvue-components-notice-icon-notice-list-bottomBar {
