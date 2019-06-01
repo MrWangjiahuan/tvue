@@ -98,7 +98,6 @@ Utils.deepClone = data => {
  */
 Utils.setDocumentTitle = (title: string): void => {
   document.title = title
-  console.log(document.title)
   const ua = navigator.userAgent
   const regex = /\bMicroMessenger\/([\d\.]+)/
   if (regex.test(ua) && /ip(hone|od|ad)/i.test(ua)) {

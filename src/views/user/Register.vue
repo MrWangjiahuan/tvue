@@ -194,7 +194,9 @@ export default class Register extends Mixins(DeviceMixin) {
     percent: 10,
     progressColor: '#FF0000'
   }
-
+  private created() {
+    this.form = this.$form.createForm(this)
+  }
   get passwordLevelClass() {
     return levelClass[this.state.passwordLevel]
   }

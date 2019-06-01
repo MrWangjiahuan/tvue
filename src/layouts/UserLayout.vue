@@ -9,7 +9,7 @@
           </a>
         </div>
         <div class="desc">
-          基于 ant-design-vue + typescript 重构 Ant Design Pro
+          基于 vue + typescript + ant-design-vue 重构 Ant Design Pro
         </div>
       </div>
       <route-view></route-view>

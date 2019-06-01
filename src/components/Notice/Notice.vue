@@ -1,5 +1,5 @@
 <template>
-  <div class="tvue-notice-wrapper">
+  <div class="notice-wrapper">
     <a-popover
       v-model="visible"
       trigger="click"
@@ -50,7 +50,7 @@
                     />
                   </a-list-item-meta>
                 </a-list-item>
-                <div class="tvue-components-notice-icon-notice-list-bottomBar">
+                <div class="components-notice-icon-notice-list-bottomBar">
                   <div class="bottomBar__left">清空 通知</div>
                   <div class="bottomBar__right">查看更多</div>
                 </div>
@@ -100,24 +100,27 @@ export default class Notice extends Vue {
   }
 }
 </script>
-<style lang="css">
+<style lang="less">
 .header-notice-wrapper {
-  top: 50px !important;
-}
-/* .ant-popover-inner-content {
+  top: 500px;
   padding: 0 !important;
 }
-.ant-tabs-nav-scroll {
-  display: flex;
-  justify-content: center;
+.header-notice-wrapper {
+  .ant-popover-inner-content {
+    padding: 0 !important;
+  }
+  .ant-tabs-nav-scroll {
+    display: flex;
+    justify-content: center;
+  }
+  .ant-list-item {
+    padding-left: 22px !important;
+    padding-right: 22px !important;
+  }
 }
-.ant-list-item {
-  padding-left: 22px !important;
-  padding-right: 22px !important;
-} */
 </style>
 <style lang="less" scoped>
-.tvue-components-notice-icon-notice-list-bottomBar {
+.components-notice-icon-notice-list-bottomBar {
   display: flex;
   flex: 2;
   justify-content: space-around;

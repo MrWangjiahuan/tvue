@@ -145,9 +145,9 @@ export default class SiderMenu extends Mixins(Mixin, DeviceMixin) {
   @Watch('$route.path')
   routePathChange(val) {
     this.selectedKeys = this.selectedKeysMap[val]
-    this.openKeys = this.collapsed
-      ? []
-      : this.openKeys.concat(this.openKeysMap[val])
+    this.openKeys = this.openKeys.concat(this.openKeysMap[val])
+    // 缓存上一次openKeys
+    this.openKeysCache = this.openKeys.concat()
   }
   @Watch('language')
   languageChange(val) {

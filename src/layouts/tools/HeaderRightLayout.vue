@@ -95,8 +95,9 @@ export default class HeaderRightLayout extends Mixins(DeviceMixin) {
 
   private mounted() {
     this.clientWidth = window.innerWidth
+    // mobile 取outerWidth
     window.onresize = throttle(() => {
-      this.clientWidth = window.innerWidth
+      this.clientWidth = window.outerWidth
     }, 1000)
   }
 

@@ -152,7 +152,6 @@ const router = new Router({
 })
 
 router.beforeEach((to: Route, from: Route, next: any) => {
-  console.log(to)
   const lan = Vue.ls.get(types.DEFAULT_LANGUAGE, config.language)
   if (to.path !== from.path) {
     NProgress.start()
