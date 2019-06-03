@@ -35,12 +35,12 @@ service.interceptors.request.use(
 
 // response interceptor
 service.interceptors.response.use(
-  async (res: AxiosResponse) => {
+  async (res: any) => {
     if (res.status.toString().charAt(0) !== '2') {
       const result = await handleException(res)
       return result
     }
-    return res.data
+    return res
   },
   (error: AxiosError): void => handleError(error)
 )

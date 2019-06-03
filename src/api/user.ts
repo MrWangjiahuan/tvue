@@ -6,3 +6,10 @@ export const getUser = () => {
     method: 'get'
   })
 }
+
+export const getSmsCaptcha = () => {
+  return request({
+    url: '/user/getSmsCaptcha',
+    method: 'get'
+  })
+}

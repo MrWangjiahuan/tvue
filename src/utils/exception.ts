@@ -18,7 +18,7 @@ export function handleError(error) {
   // 处理 network fail 异常
   const lan = Vue.ls.get(types.DEFAULT_LANGUAGE, config.language)
   if (!error.response) {
-    Vue.prototype.$notify.error({
+    Vue.prototype.$notification.error({
       message: lan === 'enUS' ? enUS.http.networkError : zhCN.http.networkError,
       description:
         lan === 'enUS' ? enUS.http.networkErrorDesc : zhCN.http.networkErrorDesc
@@ -32,7 +32,7 @@ export function handleError(error) {
     error.message.indexOf('timeout') !== -1
   ) {
     console.log(Vue)
-    Vue.prototype.$notify.error({
+    Vue.prototype.$notification.error({
       message: lan === 'enUS' ? enUS.http.timeoutError : zhCN.http.timeoutError,
       description:
         lan === 'enUS' ? enUS.http.timeoutErrorDesc : zhCN.http.timeoutErrorDesc

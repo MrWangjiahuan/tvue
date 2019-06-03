@@ -1,7 +1,8 @@
-import { globalHeader, settingDrawer, menu, http } from './zhCN/index'
+import { globalHeader, settingDrawer, menu, http, user } from './zhCN/index'
 export default {
   globalHeader,
   settingDrawer,
   menu,
-  http
+  http,
+  user
 }

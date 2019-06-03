@@ -12,17 +12,23 @@
         :tabBarStyle="{ textAlign: 'center', borderBottom: 'unset' }"
         @change="handleTabClick"
       >
-        <a-tab-pane key="credentials" tab="账号密码登录">
+        <a-tab-pane
+          key="credentials"
+          :tab="$t(`user['login.tab-login-credentials']`)"
+        >
           <a-form-item>
             <a-input
               size="large"
               type="text"
-              placeholder="账户: admin"
+              :placeholder="`${$t(`user['login.userName']`)}: admin or user`"
               v-decorator="[
                 'username',
                 {
                   rules: [
-                    { required: true, message: '请输入帐户名或邮箱地址' },
+                    {
+                      required: true,
+                      message: $t(`user['validation.userName.required']`)
+                    },
                     { validator: handleUsernameOrEmail }
                   ],
                   validateTrigger: 'change'
@@ -41,11 +47,16 @@
               size="large"
               type="password"
               autocomplete="false"
-              placeholder="密码: admin or ant.design"
+              :placeholder="`${$t(`user['login.password']`)}: ant.design`"
               v-decorator="[
                 'password',
                 {
-                  rules: [{ required: true, message: '请输入密码' }],
+                  rules: [
+                    {
+                      required: true,
+                      message: $t(`user['validation.password.required']`)
+                    }
+                  ],
                   validateTrigger: 'blur'
                 }
               ]"
@@ -58,12 +69,15 @@
             </a-input>
           </a-form-item>
         </a-tab-pane>
-        <a-tab-pane key="mobileNumber" tab="手机号登录">
+        <a-tab-pane
+          key="mobileNumber"
+          :tab="$t(`user['login.tab-login-mobile']`)"
+        >
           <a-form-item>
             <a-input
               size="large"
               type="text"
-              placeholder="手机号"
+              :placeholder="$t(`user['login.phone']`)"
               v-decorator="[
                 'mobile',
                 {
@@ -71,7 +85,9 @@
                     {
                       required: true,
                       pattern: /^1[34578]\d{9}$/,
-                      message: '请输入正确的手机号'
+                      message: $t(
+                        `user['validation.phone-number.wrong-format']`
+                      )
                     }
                   ],
                   validateTrigger: 'change'
@@ -91,11 +107,18 @@
                 <a-input
                   size="large"
                   type="text"
-                  placeholder="验证码"
+                  :placeholder="$t(`user['login.verification-code']`)"
                   v-decorator="[
                     'captcha',
                     {
-                      rules: [{ required: true, message: '请输入验证码' }],
+                      rules: [
+                        {
+                          required: true,
+                          message: $t(
+                            `user['validation.verification-code.required']`
+                          )
+                        }
+                      ],
                       validateTrigger: 'blur'
                     }
                   ]"
@@ -115,7 +138,9 @@
                 :disabled="state.smsSendBtn"
                 @click.stop.prevent="getCaptcha"
                 v-text="
-                  (!state.smsSendBtn && '获取验证码') || state.time + ' s'
+                  (!state.smsSendBtn &&
+                    $t(`user['register.get-verification-code']`)) ||
+                    state.time + ' s'
                 "
               />
             </a-col>
@@ -123,12 +148,14 @@
         </a-tab-pane>
       </a-tabs>
       <a-form-item>
-        <a-checkbox v-decorator="['rememberMe']">自动登录</a-checkbox>
+        <a-checkbox v-decorator="['rememberMe']">{{
+          $t(`user['login.remember-me']`)
+        }}</a-checkbox>
         <router-link
           :to="{ name: 'recover', params: { user: 'aaa' } }"
           class="forge-password"
           style="float: right;"
-          >忘记密码</router-link
+          >{{ $t(`user['login.forgot-password']`) }}</router-link
         >
       </a-form-item>
 
@@ -140,12 +167,12 @@
           class="login-button"
           :loading="state.loginBtn"
           :disabled="state.loginBtn"
-          >确定</a-button
+          >{{ $t(`user['login.login']`) }}</a-button
         >
       </a-form-item>
 
       <div class="user-login-other">
-        <span>其他登录方式</span>
+        <span>{{ $t(`user['login.sign-in-with']`) }}</span>
         <a>
           <a-icon class="item-icon" type="alipay-circle"></a-icon>
         </a>
@@ -155,9 +182,9 @@
         <a>
           <a-icon class="item-icon" type="weibo-circle"></a-icon>
         </a>
-        <router-link class="register" :to="{ name: 'register' }"
-          >注册账户</router-link
-        >
+        <router-link class="register" :to="{ name: 'register' }">{{
+          $t(`user['login.signup']`)
+        }}</router-link>
       </div>
     </a-form>
   </div>
@@ -181,7 +208,9 @@ export default class Login extends Vue {
     this.form = this.$form.createForm(this)
   }
   private handleSubmit() {}
-  private handleTabClick() {}
+  private handleTabClick(key: string) {
+    this.activeKey = key
+  }
   private getCaptcha(e) {
     e.preventDefault()
     const {

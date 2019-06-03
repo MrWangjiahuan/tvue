@@ -9,7 +9,7 @@ import '@/core/lazy_lib/lazy_antd'
 
 Vue.config.productionTip = false
 Vue.prototype.$message = message
-Vue.prototype.$notify = notification
+Vue.prototype.$notification = notification
 
 // 全局权限组件
 Vue.component('Authorized', Authorized)

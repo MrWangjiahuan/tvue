@@ -89,7 +89,7 @@ export default class HeaderRightLayout extends Mixins(DeviceMixin) {
   @Action('ToggleLanguage') toggleLanguage
 
   // 如果为手机端下拉菜单则为屏幕宽度
-  get contentWith() {
+  get contentWith(): string {
     return this.isMobile() ? `width:${this.clientWidth}px;` : ''
   }
 

@@ -1,7 +1,8 @@
-import { globalHeader, settingDrawer, menu, http } from './enUS/index'
+import { globalHeader, settingDrawer, menu, http, user } from './enUS/index'
 export default {
   globalHeader,
   settingDrawer,
   menu,
-  http
+  http,
+  user
 }
