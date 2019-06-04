@@ -37,6 +37,9 @@ const http = {
 }
 
 const user = {
+  'userLayout.help': 'Help',
+  'userLayout.privacy': 'Privacy',
+  'userLayout.terms': 'Terms',
   'login.userName': 'UserName',
   'login.password': 'Password',
   'login.phone': 'Phone Number',

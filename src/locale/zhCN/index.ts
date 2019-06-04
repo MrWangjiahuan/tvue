@@ -37,6 +37,9 @@ const http = {
 }
 
 const user = {
+  'userLayout.help': '帮助',
+  'userLayout.privacy': '隐私',
+  'userLayout.terms': '条款',
   'login.userName': '用户名',
   'login.password': '密码',
   'login.phone': '手机号',

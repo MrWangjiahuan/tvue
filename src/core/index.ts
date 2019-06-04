@@ -44,7 +44,6 @@ export const updateTheme = (
   primaryColor: string,
   mess?: any
 ): void => {
-  console.log(showMessage)
   if (!primaryColor) {
     return
   }

@@ -1,6 +1,27 @@
 <template>
   <div id="userLayout" :class="['user-layout-wrapper', device]">
     <div class="container">
+      <div class="top-right-wrapper">
+        <a-dropdown>
+          <span class="action ant-dropdown-link user-dropdown-menu">
+            <a-icon type="global" class="icon" />
+          </span>
+          <a-menu
+            class="user-dropdown-menu-wrapper"
+            slot="overlay"
+            @click="localeChange"
+            :selectedKeys="[language]"
+            :style="contentWith"
+          >
+            <a-menu-item key="zhCN" :style="contentWith">
+              <span role="img" aria-label="简体中文">🇨🇳</span>&nbsp;简体中文
+            </a-menu-item>
+            <a-menu-item key="enUS" :style="contentWith">
+              <span role="img" aria-label="English">🇬🇧</span>&nbsp;English
+            </a-menu-item>
+          </a-menu>
+        </a-dropdown>
+      </div>
       <div class="top">
         <div class="header">
           <a href="/">
@@ -12,12 +33,12 @@
           基于 vue + typescript + ant-design-vue 重构 Ant Design Pro
         </div>
       </div>
-      <route-view></route-view>
+      <router-view></router-view>
       <div class="footer">
         <div class="links">
-          <a href="_self">帮助</a>
-          <a href="_self">隐私</a>
-          <a href="_self">条款</a>
+          <a href="_self">{{ $t(`user['userLayout.help']`) }}</a>
+          <a href="_self">{{ $t(`user['userLayout.privacy']`) }}</a>
+          <a href="_self">{{ $t(`user['userLayout.terms']`) }}</a>
         </div>
         <div class="copyright">Copyright &copy; 2019 wangjiahaun</div>
       </div>
@@ -26,20 +47,18 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import { Getter } from 'vuex-class'
-import RouteView from './RouteView.vue'
-import { DeviceMixin } from '@/utils/mixins'
-@Component({
-  components: {
-    RouteView
-  }
-})
-export default class UserLayout extends Vue {
+import { HeaderLayoutMixin } from './mixins'
+
+@Component
+export default class UserLayout extends Mixins(HeaderLayoutMixin) {
   @Getter device
-  private mounted() {
+
+  public mounted() {
     document.body.classList.add('userLayout')
   }
+
   private beforeDestroy() {
     document.body.classList.remove('userLayout')
   }
@@ -56,6 +75,7 @@ export default class UserLayout extends Vue {
       }
     }
   }
+
   .container {
     width: 100%;
     min-height: 100%;
@@ -63,7 +83,11 @@ export default class UserLayout extends Vue {
     background-size: 100%;
     padding: 110px 0 144px;
     position: relative;
-
+    .top-right-wrapper {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+    }
     a {
       text-decoration: none;
     }

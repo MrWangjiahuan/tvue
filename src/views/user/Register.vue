@@ -171,16 +171,16 @@
           :disabled="registerBtn"
           >{{ $t(`user['register.register']`) }}</a-button
         >
-        <router-link class="login" :to="{ name: 'login' }">
-          {{ $t(`user['register.sign-in']`) }}
-        </router-link>
+        <router-link class="login" :to="{ name: 'login' }">{{
+          $t(`user['register.sign-in']`)
+        }}</router-link>
       </a-form-item>
     </a-form>
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component, Mixins } from 'vue-property-decorator'
+import { Vue, Component, Mixins, Watch } from 'vue-property-decorator'
 import { DeviceMixin } from '@/utils/mixins'
 import { getSmsCaptcha } from '@/api/user'
 
