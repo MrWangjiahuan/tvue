@@ -83,14 +83,12 @@
                 {
                   rules: [
                     {
-                      required: true,
-                      pattern: /^1[34578]\d{9}$/,
-                      message: $t(
-                        `user['validation.phone-number.wrong-format']`
-                      )
+                      validator: handlePhoneCheck,
+                      mess: $t(`user['validation.phone-number.required']`),
+                      mess1: $t(`user['validation.phone-number.wrong-format']`)
                     }
                   ],
-                  validateTrigger: 'change'
+                  validateTrigger: 'blur'
                 }
               ]"
             >
@@ -148,9 +146,9 @@
         </a-tab-pane>
       </a-tabs>
       <a-form-item>
-        <a-checkbox v-decorator="['rememberMe']">{{
-          $t(`user['login.remember-me']`)
-        }}</a-checkbox>
+        <a-checkbox v-decorator="['rememberMe']">
+          {{ $t(`user['login.remember-me']`) }}
+        </a-checkbox>
         <router-link
           :to="{ name: 'recover', params: { user: 'aaa' } }"
           class="forge-password"
@@ -182,9 +180,9 @@
         <a>
           <a-icon class="item-icon" type="weibo-circle"></a-icon>
         </a>
-        <router-link class="register" :to="{ name: 'register' }">{{
-          $t(`user['login.signup']`)
-        }}</router-link>
+        <router-link class="register" :to="{ name: 'register' }">
+          {{ $t(`user['login.signup']`) }}
+        </router-link>
       </div>
     </a-form>
   </div>
@@ -192,6 +190,9 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
+import md5 from 'md5'
+import { getSmsCaptcha } from '@/api/user'
+
 @Component
 export default class Login extends Vue {
   private form: any
@@ -207,9 +208,49 @@ export default class Login extends Vue {
   private created() {
     this.form = this.$form.createForm(this)
   }
-  private handleSubmit() {}
+  private handleSubmit(e) {
+    e.preventDefault()
+    const {
+      form: { validateFields },
+      state,
+      activeKey
+    } = this
+    state.loginBtn = true
+    const validateFieldsKey: string[] =
+      activeKey === 'credentials'
+        ? ['username', 'password']
+        : ['mobile', 'captcha']
+    validateFields(validateFieldsKey, { force: true }, (err, values) => {
+      if (!err) {
+        console.log('login form', values)
+        const loginParams = { ...values }
+        delete loginParams.username
+        loginParams[!state.loginType ? 'email' : 'username'] = values.username
+        loginParams.password = md5(values.password)
+        // Login(loginParams)
+        //   .then((res) => this.loginSuccess(res))
+        //   .catch(err => this.requestFailed(err))
+        //   .finally(() => {
+        //     state.loginBtn = false
+        //   })
+      } else {
+        setTimeout(() => {
+          state.loginBtn = false
+        }, 600)
+      }
+    })
+  }
   private handleTabClick(key: string) {
     this.activeKey = key
+  }
+  private handlePhoneCheck(rule, value, callback) {
+    if (value === '' || value === undefined) {
+      callback(new Error(rule.mess))
+    }
+    if (!/^1[3456789]\d{9}$/.test(value)) {
+      callback(new Error(rule.mess1))
+    }
+    callback()
   }
   private getCaptcha(e) {
     e.preventDefault()
@@ -228,24 +269,20 @@ export default class Login extends Vue {
             window.clearInterval(interval)
           }
         }, 1000)
-        const hide = this.$message.loading('验证码发送中..', 0)
-        // getSmsCaptcha({ mobile: values.mobile })
-        //   .then(res => {
-        //     setTimeout(hide, 2500)
-        //     this.$notification['success']({
-        //       message: '提示',
-        //       description:
-        //         '验证码获取成功，您的验证码为：' + res.result.captcha,
-        //       duration: 8
-        //     })
-        //   })
-        //   .catch(err => {
-        //     setTimeout(hide, 1)
-        //     clearInterval(interval)
-        //     state.time = 60
-        //     state.smsSendBtn = false
-        //     this.requestFailed(err)
-        //   })
+        getSmsCaptcha()
+          .then(res => {
+            const { code, captcha } = res.data
+            this.$notification['success']({
+              message: '提示',
+              description: '验证码获取成功，您的验证码为：' + captcha,
+              duration: 8
+            })
+          })
+          .catch(() => {
+            clearInterval(interval)
+            state.time = 60
+            state.smsSendBtn = false
+          })
       }
     })
   }
@@ -261,44 +298,4 @@ export default class Login extends Vue {
   }
 }
 </script>
-<style lang="less" scoped>
-.user-layout-login {
-  label {
-    font-size: 14px;
-  }
-  .getCaptcha {
-    display: block;
-    width: 100%;
-    height: 40px;
-  }
-  .forge-password {
-    font-size: 14px;
-  }
-  button.login-button {
-    padding: 0 15px;
-    font-size: 16px;
-    height: 40px;
-    width: 100%;
-  }
-  .user-login-other {
-    text-align: left;
-    margin-top: 24px;
-    line-height: 22px;
-    .item-icon {
-      font-size: 24px;
-      color: rgba(0, 0, 0, 0.2);
-      margin-left: 16px;
-      vertical-align: middle;
-      cursor: pointer;
-      transition: color 0.3s;
-
-      &:hover {
-        color: #1890ff;
-      }
-    }
-    .register {
-      float: right;
-    }
-  }
-}
-</style>
+<style lang="less" src="./less/login.less" />

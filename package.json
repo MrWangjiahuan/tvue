@@ -41,6 +41,7 @@
     "core-js": "^2.6.5",
     "enquire.js": "^2.1.6",
     "lodash": "^4.17.11",
+    "md5": "^2.2.1",
     "mockjs": "^1.0.1-beta3",
     "moment": "^2.24.0",
     "nprogress": "^0.2.0",

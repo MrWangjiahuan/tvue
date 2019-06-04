@@ -40,6 +40,14 @@ const routes = [
         meta: { title: 'register' },
         component: () =>
           import(/* webpackChunkName: "user" */ '@/views/user/Register.vue')
+      },
+      {
+        path: 'register-result',
+        name: 'registerResult',
+        component: () =>
+          import(
+            /* webpackChunkName: "user" */ '@/views/user/RegisterResult.vue'
+          )
       }
     ]
   },

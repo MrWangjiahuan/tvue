@@ -60,7 +60,7 @@ const user = {
   'register-result.msg': '你的账户：{email} 注册成功',
   'register-result.activation-email':
     '激活邮件已发送到你的邮箱中，邮件有效期为24小时。请及时登录邮箱，点击邮件中的链接激活帐户。',
-  'register-result.back-home': '返回首页',
+  'register-result.back-login': '返回登录页',
   'register-result.view-mailbox': '查看邮箱',
   'validation.email.required': '请输入邮箱地址！',
   'validation.email.wrong-format': '邮箱地址格式错误！',

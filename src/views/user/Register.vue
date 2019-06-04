@@ -57,7 +57,7 @@
               {
                 rules: [
                   {
-                    validator: this.handlePasswordLevel,
+                    validator: handlePasswordLevel,
                     mess: $t(`user['validation.password.required']`),
                     mess1: $t(`user['validation.password.strength']`)
                   }
@@ -80,7 +80,7 @@
             {
               rules: [
                 {
-                  validator: this.handlePasswordCheck,
+                  validator: handlePasswordCheck,
                   mess: $t(`user['validation.confirm-password.required']`),
                   mess1: $t(`user['validation.password.twice']`)
                 }
@@ -100,7 +100,7 @@
             {
               rules: [
                 {
-                  validator: this.handlePhoneCheck,
+                  validator: handlePhoneCheck,
                   mess: $t(`user['validation.phone-number.required']`),
                   mess1: $t(`user['validation.phone-number.wrong-format']`)
                 }
@@ -171,9 +171,9 @@
           :disabled="registerBtn"
           >{{ $t(`user['register.register']`) }}</a-button
         >
-        <router-link class="login" :to="{ name: 'login' }">{{
-          $t(`user['register.sign-in']`)
-        }}</router-link>
+        <router-link class="login" :to="{ name: 'login' }">
+          {{ $t(`user['register.sign-in']`) }}
+        </router-link>
       </a-form-item>
     </a-form>
   </div>
@@ -271,7 +271,7 @@ export default class Register extends Mixins(DeviceMixin) {
     callback()
   }
   private handlePhoneCheck(rule, value, callback) {
-    if (value === '') {
+    if (value === '' || value === undefined) {
       callback(new Error(rule.mess))
     }
     if (!/^1[3456789]\d{9}$/.test(value)) {
