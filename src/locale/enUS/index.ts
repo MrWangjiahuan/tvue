@@ -1,6 +1,8 @@
 const globalHeader = {
   message: 'Compiling Language !',
-  themeMessage: 'Compiling theme !'
+  themeMessage: 'Compiling theme !',
+  tips: 'Tips',
+  logoutMess: 'Do you really want to log out?'
 }
 const settingDrawer = {
   pageStyleTitle: 'Page style setting',

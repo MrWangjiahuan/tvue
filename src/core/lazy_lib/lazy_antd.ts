@@ -24,6 +24,9 @@ import {
   Checkbox,
   Select,
   Progress,
+  Modal,
+  notification,
+  message,
   LocaleProvider
 } from 'ant-design-vue'
 
@@ -52,3 +55,11 @@ Vue.use(Checkbox)
 Vue.use(Select)
 Vue.use(Progress)
 Vue.use(LocaleProvider)
+
+Vue.prototype.$message = message
+Vue.prototype.$notification = notification
+Vue.prototype.$info = Modal.info
+Vue.prototype.$success = Modal.success
+Vue.prototype.$error = Modal.error
+Vue.prototype.$warning = Modal.warning
+Vue.prototype.$confirm = Modal.confirm

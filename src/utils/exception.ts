@@ -7,7 +7,7 @@ import zhCN from '@/locale/zhCN'
 export async function handleException(res) {
   return new Promise(async (resolve, reject) => {
     Vue.prototype.$message({
-      message: '未知的error_code',
+      message: 'Unkonw Error_code',
       type: 'error'
     })
     reject(res)

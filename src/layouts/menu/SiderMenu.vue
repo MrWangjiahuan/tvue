@@ -149,10 +149,12 @@ export default class SiderMenu extends Mixins(Mixin, DeviceMixin) {
     // 缓存上一次openKeys
     this.openKeysCache = this.openKeys.concat()
   }
+
   @Watch('language')
   languageChange(val) {
     this.menuData = this.getMenuData(this.$router['options'].routes)
   }
+
   @Watch('collapsed')
   collapsedChange(val) {
     if (val) {
@@ -165,4 +167,3 @@ export default class SiderMenu extends Mixins(Mixin, DeviceMixin) {
   }
 }
 </script>
-<style lang="less" scoped></style>

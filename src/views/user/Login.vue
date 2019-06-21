@@ -22,14 +22,14 @@
               type="text"
               :placeholder="`${$t(`user['login.userName']`)}: admin or user`"
               v-decorator="[
-                'username',
+                'userName',
                 {
                   rules: [
                     {
                       required: true,
                       message: $t(`user['validation.userName.required']`)
                     },
-                    { validator: handleUsernameOrEmail }
+                    { validator: handleuserNameOrEmail }
                   ],
                   validateTrigger: 'change'
                 }
@@ -146,9 +146,9 @@
         </a-tab-pane>
       </a-tabs>
       <a-form-item>
-        <a-checkbox v-decorator="['rememberMe']">
-          {{ $t(`user['login.remember-me']`) }}
-        </a-checkbox>
+        <a-checkbox v-decorator="['rememberMe']">{{
+          $t(`user['login.remember-me']`)
+        }}</a-checkbox>
         <router-link
           :to="{ name: 'recover', params: { user: 'aaa' } }"
           class="forge-password"
@@ -180,9 +180,9 @@
         <a>
           <a-icon class="item-icon" type="weibo-circle"></a-icon>
         </a>
-        <router-link class="register" :to="{ name: 'register' }">
-          {{ $t(`user['login.signup']`) }}
-        </router-link>
+        <router-link class="register" :to="{ name: 'register' }">{{
+          $t(`user['login.signup']`)
+        }}</router-link>
       </div>
     </a-form>
   </div>
@@ -190,8 +190,11 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
+import { Action } from 'vuex-class'
 import md5 from 'md5'
 import { getSmsCaptcha } from '@/api/user'
+import { RESULT_CODE } from '@/config/constant'
+import Utils from '@/utils/util'
 
 @Component
 export default class Login extends Vue {
@@ -200,10 +203,12 @@ export default class Login extends Vue {
   private state = {
     time: 60,
     loginBtn: false,
-    // login type: 0 email, 1 username, 2 telephone
+    // login type: 0 email, 1 userName, 2 telephone
     loginType: 0,
     smsSendBtn: false
   }
+  @Action('LoginByUserName') loginByUserName
+  @Action('GetUserInfo') getUserInfo
 
   private created() {
     this.form = this.$form.createForm(this)
@@ -218,27 +223,61 @@ export default class Login extends Vue {
     state.loginBtn = true
     const validateFieldsKey: string[] =
       activeKey === 'credentials'
-        ? ['username', 'password']
+        ? ['userName', 'password']
         : ['mobile', 'captcha']
     validateFields(validateFieldsKey, { force: true }, (err, values) => {
       if (!err) {
-        console.log('login form', values)
+        if (activeKey !== 'credentials') {
+          this.$notification['warning']({
+            message:
+              'Mobile login is for demonstration only. Please login with username and password.',
+            description: '',
+            duration: 5
+          })
+          setTimeout(() => {
+            state.loginBtn = false
+          }, 600)
+          return
+        }
         const loginParams = { ...values }
-        delete loginParams.username
-        loginParams[!state.loginType ? 'email' : 'username'] = values.username
+        delete loginParams.userName
+        loginParams[!state.loginType ? 'email' : 'userName'] = values.userName
         loginParams.password = md5(values.password)
-        // Login(loginParams)
-        //   .then((res) => this.loginSuccess(res))
-        //   .catch(err => this.requestFailed(err))
-        //   .finally(() => {
-        //     state.loginBtn = false
-        //   })
+        this.loginByUserName(loginParams)
+          .then(res => {
+            const { code, message } = res
+            console.log(res)
+            if (code === RESULT_CODE.USER_ACCOUNT_ERROR) {
+              this.$notification['error']({
+                message: 'Login Failure',
+                description: message,
+                duration: 2
+              })
+            } else {
+              this.getUserInfo().then(() => {
+                this.loginSuccess()
+              })
+            }
+          })
+          .finally(() => {
+            state.loginBtn = false
+          })
       } else {
         setTimeout(() => {
           state.loginBtn = false
         }, 600)
       }
     })
+  }
+  private loginSuccess() {
+    this.$router.push({ path: '/' })
+    // 延迟 1 秒显示欢迎信息
+    setTimeout(() => {
+      this.$notification.success({
+        message: 'Welcome',
+        description: `${Utils.timeFix()}，Welcome back`
+      })
+    }, 1000)
   }
   private handleTabClick(key: string) {
     this.activeKey = key
@@ -272,9 +311,17 @@ export default class Login extends Vue {
         getSmsCaptcha()
           .then(res => {
             const { code, captcha } = res.data
+            let mess: string = ''
+            if (code === RESULT_CODE.SUCCESS) {
+              mess =
+                'Verification code is successful, your verification code is  ' +
+                captcha
+            } else {
+              mess = 'Verification code acquisition failure'
+            }
             this.$notification['success']({
-              message: '提示',
-              description: '验证码获取成功，您的验证码为：' + captcha,
+              message: 'Tips',
+              description: mess,
               duration: 8
             })
           })
@@ -286,7 +333,7 @@ export default class Login extends Vue {
       }
     })
   }
-  private handleUsernameOrEmail(rule, value, callback) {
+  private handleuserNameOrEmail(rule, value, callback) {
     const { state } = this
     const regex = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/
     if (regex.test(value)) {

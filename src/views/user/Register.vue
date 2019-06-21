@@ -183,6 +183,7 @@
 import { Vue, Component, Mixins, Watch } from 'vue-property-decorator'
 import { DeviceMixin } from '@/utils/mixins'
 import { getSmsCaptcha } from '@/api/user'
+import { RESULT_CODE } from '@/config/constant'
 
 const levelNames = {
   0: 'user.week',
@@ -322,9 +323,15 @@ export default class Register extends Mixins(DeviceMixin) {
         getSmsCaptcha()
           .then(res => {
             const { code, captcha } = res.data
-            $notification['success']({
+            let mess: string = ''
+            if (code === RESULT_CODE.SUCCESS) {
+              mess = '验证码获取成功，您的验证码为：' + captcha
+            } else {
+              mess = '验证码获取失败'
+            }
+            this.$notification['success']({
               message: '提示',
-              description: '验证码获取成功，您的验证码为：' + captcha,
+              description: mess,
               duration: 8
             })
           })

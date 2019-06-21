@@ -35,7 +35,7 @@
             <span>测试</span>
           </a-menu-item>
           <a-menu-divider />
-          <a-menu-item key="3" :style="contentWith">
+          <a-menu-item key="3" :style="contentWith" @click="handleLogout">
             <a href="javascript:;">
               <a-icon type="logout" />
               <span>退出登录</span>
@@ -70,6 +70,7 @@
 import { Component, Mixins } from 'vue-property-decorator'
 import { Notice } from '@/components/'
 import { HeaderLayoutMixin } from '../mixins'
+import { Action } from 'vuex-class'
 
 @Component({
   name: 'HeaderRightLayout',
@@ -77,5 +78,25 @@ import { HeaderLayoutMixin } from '../mixins'
     Notice
   }
 })
-export default class HeaderRightLayout extends Mixins(HeaderLayoutMixin) {}
+export default class HeaderRightLayout extends Mixins(HeaderLayoutMixin) {
+  @Action('Logout') logout
+
+  private handleLogout() {
+    const self = this
+    self.$confirm({
+      title: self.$t(`globalHeader.tips`) as string,
+      content: self.$t(`globalHeader.logoutMess`) as string,
+      onOk() {
+        return self.logout().then(() => {
+          self.$router.push({
+            path: '/user/login'
+          })
+        })
+      },
+      onCancel() {
+        return
+      }
+    })
+  }
+}
 </script>

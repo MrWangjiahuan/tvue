@@ -1,6 +1,8 @@
 const globalHeader = {
   message: '正在编译语言！',
-  themeMessage: '正在编译主题！'
+  themeMessage: '正在编译主题！',
+  tips: '提示',
+  logoutMess: '确认注销吗？'
 }
 const settingDrawer = {
   pageStyleTitle: '整体风格设置',

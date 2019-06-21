@@ -31,6 +31,24 @@ Utils.cutString = (str: string, len: number): string => {
 }
 
 /**
+ * 返回欢迎信息
+ * @param {Number} n
+ */
+Utils.timeFix = (): string => {
+  const time = new Date()
+  const hour = time.getHours()
+  return hour < 9
+    ? '早上好'
+    : hour <= 11
+    ? '上午好'
+    : hour <= 13
+    ? '中午好'
+    : hour < 20
+    ? '下午好'
+    : '晚上好'
+}
+
+/**
  * 返回 n 位的随机字符串
  * @param {Number} n
  */
