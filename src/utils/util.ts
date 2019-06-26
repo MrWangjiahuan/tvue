@@ -49,6 +49,29 @@ Utils.timeFix = (): string => {
 }
 
 /**
+ * 深拷贝：目标的完全拷贝
+ * @param source
+ */
+// 对每一层的数据都实现一次 创建对象->对象赋值 的操作
+Utils.deepClone = source => {
+  const targetObj = source.constructor === Array ? [] : {} // 判断复制的目标是数组还是对象
+  for (let keys in source) {
+    // 遍历目标
+    if (source.hasOwnProperty(keys)) {
+      if (source[keys] && typeof source[keys] === 'object') {
+        // 如果值是对象，就递归一下
+        targetObj[keys] = source[keys].constructor === Array ? [] : {}
+        targetObj[keys] = Utils.deepClone(source[keys])
+      } else {
+        // 如果不是，就直接赋值
+        targetObj[keys] = source[keys]
+      }
+    }
+  }
+  return targetObj
+}
+
+/**
  * 返回 n 位的随机字符串
  * @param {Number} n
  */

@@ -6,7 +6,7 @@
           <a-icon type="question-circle-o" class="icon"></a-icon>
         </span>
       </a>
-      <Notice class="action" />
+      <notice-icon-view />
       <a-dropdown>
         <span class="action ant-dropdown-link user-dropdown-menu">
           <!-- <a-avatar class="avatar" size="small" :src="avatar()"/>
@@ -68,26 +68,23 @@
 
 <script lang="ts">
 import { Component, Mixins } from 'vue-property-decorator'
-import { Notice } from '@/components/'
+import NoticeIconView from './NoticeIconView.vue'
 import { HeaderLayoutMixin } from '../mixins'
-import { Action } from 'vuex-class'
+import { UserModule } from '@/store/modules/user'
 
 @Component({
-  name: 'HeaderRightLayout',
   components: {
-    Notice
+    NoticeIconView
   }
 })
 export default class HeaderRightLayout extends Mixins(HeaderLayoutMixin) {
-  @Action('Logout') logout
-
   private handleLogout() {
     const self = this
     self.$confirm({
       title: self.$t(`globalHeader.tips`) as string,
       content: self.$t(`globalHeader.logoutMess`) as string,
       onOk() {
-        return self.logout().then(() => {
+        return UserModule.Logout().then(() => {
           self.$router.push({
             path: '/user/login'
           })

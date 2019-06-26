@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie'
-import { ACCESS_TOKEN } from '@/store/mutation-types'
-import { UserModule } from '@/store/modules/user'
+import { ACCESS_TOKEN, AUTHORITY } from '@/store/mutation-types'
+import Vue from 'vue'
 
 export function getToken() {
   return Cookies.get(ACCESS_TOKEN) || ''
@@ -15,7 +15,7 @@ export function removeToken() {
 }
 
 export function check(authority): boolean {
-  const current = UserModule.authority
+  const current = Vue.ls.get(AUTHORITY, [])
   return current.some(item => authority.includes(item))
 }
 

@@ -38,6 +38,19 @@ const http = {
   timeoutErrorDesc: 'The request has timed out. Please try again later'
 }
 
+const component = {
+  'globalHeader.notification': 'Notification',
+  'globalHeader.notification.empty': 'You have viewed all notifications.',
+  'globalHeader.message': 'Message',
+  'globalHeader.message.empty': 'You have viewed all messages.',
+  'globalHeader.event': 'Event',
+  'globalHeader.event.empty': 'You have viewed all events',
+  'noticeIcon.clear': 'Clear',
+  'noticeIcon.cleared': 'Cleared',
+  'noticeIcon.empty': 'No notifications',
+  'noticeIcon.view-more': 'View more'
+}
+
 const user = {
   'userLayout.help': 'Help',
   'userLayout.privacy': 'Privacy',
@@ -89,4 +102,4 @@ const user = {
   'validation.standard.required': 'Please enter a metric'
 }
 
-export { globalHeader, settingDrawer, menu, http, user }
+export { globalHeader, settingDrawer, component, menu, http, user }

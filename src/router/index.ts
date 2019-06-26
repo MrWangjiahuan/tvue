@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router, { Route } from 'vue-router'
-import findLast from 'lodash/findLast'
+import _findLast from 'lodash/findLast'
 import { notification } from 'ant-design-vue'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
@@ -165,7 +165,7 @@ router.beforeEach((to: Route, from: Route, next: any) => {
   const lan = Vue.ls.get(types.DEFAULT_LANGUAGE, config.language)
   if (to.path !== from.path) {
     NProgress.start()
-    const record = findLast(to.matched, record => record.meta.title)
+    const record = _findLast(to.matched, record => record.meta.title)
     let title
     if (record) {
       title = `${
@@ -178,7 +178,7 @@ router.beforeEach((to: Route, from: Route, next: any) => {
     }
     Utils.setDocumentTitle(title)
   }
-  const record = findLast(to.matched, record => record.meta.authority)
+  const record = _findLast(to.matched, record => record.meta.authority)
   if (record && !check(record.meta.authority)) {
     if (!isLogin() && to.path !== '/user/login') {
       next({

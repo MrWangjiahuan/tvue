@@ -9,6 +9,7 @@ import {
 import * as types from '@/store/mutation-types'
 import store from '@/store'
 import { DEVICE_TYPE } from '@/utils/device'
+import { getNotices } from '@/api/user'
 
 export interface IAppState {
   device: DEVICE_TYPE
@@ -23,6 +24,11 @@ export interface IAppState {
   colorWeak: boolean
   multiTab: boolean
   language: string
+  // notice
+  notices: any
+  fetchingStatus: object
+  notifyCount: number
+  unreadCount: number
 }
 
 @Module({ dynamic: true, store, name: 'app' })
@@ -39,6 +45,12 @@ class App extends VuexModule implements IAppState {
   public fixSiderbar = false
   public multiTab = true
   public language = 'enUS'
+
+  // notice
+  public notices = []
+  public fetchingStatus = { notice: false }
+  public notifyCount = 0
+  public unreadCount = 0
 
   @Mutation
   public SET_SIDEBAR(type: boolean) {
@@ -116,6 +128,31 @@ class App extends VuexModule implements IAppState {
     this.language = lan
   }
 
+  // notice
+  @Mutation
+  public CHANGE_FETCH_STATUS(payload: any) {
+    this.fetchingStatus = {
+      ...this.fetchingStatus,
+      ...payload
+    }
+  }
+
+  @Mutation
+  public SAVE_CLEAR_NOTICES(payload: any) {
+    this.notices = this.notices.filter((item: any) => item.type !== payload)
+  }
+
+  @Mutation
+  public SAVE_NOTICES(payload: any) {
+    this.notices = payload
+  }
+
+  @Mutation
+  public CHANGE_NOTIFY_COUNT({ notifyCount = 0, unreadCount = 0 }) {
+    this.notifyCount = notifyCount
+    this.unreadCount = unreadCount
+  }
+
   @Action({ commit: 'SET_SIDEBAR' })
   public SetSidebar(type: boolean) {
     return type
@@ -182,6 +219,45 @@ class App extends VuexModule implements IAppState {
   @Action({ commit: 'TOGGLE_LANGUAGE' })
   public ToggleLanguage(lan: string) {
     return lan
+  }
+
+  // notice
+  @Action
+  async FetchNotices() {
+    const { commit } = this.context
+    commit('CHANGE_FETCH_STATUS', true)
+    const res = await getNotices()
+    const { data = [] } = res.data
+    commit('SAVE_NOTICES', data)
+    const unreadCount = this.notices.filter((item: any) => !item.read).length
+    commit('CHANGE_NOTIFY_COUNT', { unreadCount, notifyCount: data.length })
+    commit('CHANGE_FETCH_STATUS', false)
+  }
+
+  @Action
+  ClearNotices(payload) {
+    const { commit } = this.context
+    commit('SAVE_CLEAR_NOTICES', payload)
+    const count = this.notices.length
+    const unreadCount = this.notices.filter((item: any) => !item.read).length
+    commit('CHANGE_NOTIFY_COUNT', { unreadCount, notifyCount: count })
+  }
+
+  @Action
+  ChangeNoticeReadState(payload) {
+    const { commit } = this.context
+    const notices = this.notices.map((item: any) => {
+      const notice = { ...item }
+      if (notice.id === payload) {
+        notice.read = true
+      }
+      return notice
+    })
+    commit('SAVE_NOTICES', notices)
+    commit('CHANGE_NOTIFY_COUNT', {
+      unreadCount: notices.filter(item => !item.read).length,
+      notifyCount: notices.length
+    })
   }
 }
 

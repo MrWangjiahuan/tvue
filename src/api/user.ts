@@ -37,3 +37,10 @@ export const getSmsCaptcha = () => {
     method: METHOD_TYPE.GET
   })
 }
+
+export const getNotices = () => {
+  return request({
+    url: '/user/getNotices',
+    method: METHOD_TYPE.GET
+  })
+}

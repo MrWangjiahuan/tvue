@@ -38,6 +38,19 @@ const http = {
   timeoutErrorDesc: '请求已超时，请稍后重试'
 }
 
+const component = {
+  'globalHeader.notification': '通知',
+  'globalHeader.notification.empty': '您已查看所有通知',
+  'globalHeader.message': '消息',
+  'globalHeader.message.empty': '您已读完所有消息',
+  'globalHeader.event': '待办',
+  'globalHeader.event.empty': '您已完成所有待办',
+  'noticeIcon.clear': '清空',
+  'noticeIcon.cleared': '清空了',
+  'noticeIcon.empty': '暂无数据',
+  'noticeIcon.view-more': '查看更多'
+}
+
 const user = {
   'userLayout.help': '帮助',
   'userLayout.privacy': '隐私',
@@ -88,4 +101,4 @@ const user = {
   'validation.standard.required': '请输入衡量标准'
 }
 
-export { globalHeader, settingDrawer, menu, http, user }
+export { globalHeader, settingDrawer, component, menu, http, user }

@@ -195,6 +195,7 @@ import md5 from 'md5'
 import { getSmsCaptcha } from '@/api/user'
 import { RESULT_CODE } from '@/config/constant'
 import Utils from '@/utils/util'
+import { UserModule } from '@/store/modules/user'
 
 @Component
 export default class Login extends Vue {
@@ -207,11 +208,13 @@ export default class Login extends Vue {
     loginType: 0,
     smsSendBtn: false
   }
-  @Action('LoginByUserName') loginByUserName
+
   @Action('GetUserInfo') getUserInfo
+  @Action('FetchNotices') fetchNotices
 
   private created() {
     this.form = this.$form.createForm(this)
+    this.fetchNotices()
   }
   private handleSubmit(e) {
     e.preventDefault()
@@ -243,9 +246,9 @@ export default class Login extends Vue {
         delete loginParams.userName
         loginParams[!state.loginType ? 'email' : 'userName'] = values.userName
         loginParams.password = md5(values.password)
-        this.loginByUserName(loginParams)
+        UserModule.LoginByUserName(loginParams)
           .then(res => {
-            const { code, message } = res
+            const { code, message } = res as any
             console.log(res)
             if (code === RESULT_CODE.USER_ACCOUNT_ERROR) {
               this.$notification['error']({

@@ -2,8 +2,8 @@ import { Vue, Component, Mixins } from 'vue-property-decorator'
 import { Getter, Action } from 'vuex-class'
 import { DeviceMixin } from '@/utils/mixins'
 import Utils from '@/utils/util'
-import findLast from 'lodash/findLast'
-import throttle from 'lodash/throttle'
+import _findLast from 'lodash/findLast'
+import _throttle from 'lodash/throttle'
 
 @Component
 class HeaderLayoutMixin extends Mixins(DeviceMixin) {
@@ -21,7 +21,7 @@ class HeaderLayoutMixin extends Mixins(DeviceMixin) {
   public mounted() {
     this.clientWidth = window.innerWidth
     // mobile 取outerWidth
-    window.onresize = throttle(() => {
+    window.onresize = _throttle(() => {
       this.clientWidth = window.outerWidth
     }, 1000)
   }
@@ -32,7 +32,7 @@ class HeaderLayoutMixin extends Mixins(DeviceMixin) {
       .then(async () => {
         this.$i18n.locale = this.language === 'enUS' ? 'zhCN' : 'enUS'
         await this.toggleLanguage(this.language === 'enUS' ? 'zhCN' : 'enUS')
-        const record = findLast(
+        const record = _findLast(
           this.$route.matched,
           record => record.meta.title
         )

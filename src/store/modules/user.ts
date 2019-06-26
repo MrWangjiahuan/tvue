@@ -10,6 +10,7 @@ import {
 import store from '@/store'
 import { loginByUserName, logout, getUserInfo } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
+import * as types from '@/store/mutation-types'
 
 export interface IUserState {
   token: string
@@ -39,6 +40,7 @@ class User extends VuexModule implements IUserState {
 
   @Mutation
   public SET_AUTHORITY(authority) {
+    Vue.ls.set(types.AUTHORITY, authority)
     this.authority = authority
   }
 
@@ -85,7 +87,7 @@ class User extends VuexModule implements IUserState {
   @Action
   public Logout() {
     return new Promise(resolve => {
-      logout().then(response => {
+      return logout().then(response => {
         this.ResetToken()
         resolve(response.data)
       })
@@ -99,6 +101,7 @@ class User extends VuexModule implements IUserState {
     return new Promise(resolve => {
       commit('SET_TOKEN', '')
       commit('SET_AUTHORITY', [])
+      // Vue.ls.set(types.AUTHORITY, [])
       commit('SET_NAME', '')
       commit('SET_AVATAR', '')
       commit('SET_USER_INFO', {})
