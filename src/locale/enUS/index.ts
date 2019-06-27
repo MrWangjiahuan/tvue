@@ -27,6 +27,10 @@ const menu = {
   form: 'Form',
   basicForm: 'Basic Form',
   stepForm: 'Step Form',
+  exception: 'Exception',
+  exception_403: '403',
+  exception_404: '404',
+  exception_500: '500',
   login: 'Login',
   register: 'Register'
 }

@@ -4,14 +4,15 @@ import _findLast from 'lodash/findLast'
 import { notification } from 'ant-design-vue'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
-import NotFound from '@/views/404.vue'
-import Forbidden from '@/views/403.vue'
+import NotFound from '@/views/exception/404.vue'
+import Forbidden from '@/views/exception/403.vue'
 import { check, isLogin } from '@/utils/auth'
 import Utils from '@/utils/util'
 import enUS from '@/locale/enUS'
 import zhCN from '@/locale/zhCN'
 import config from '@/config/defaultSettings'
 import * as types from '@/store/mutation-types'
+import RouteView from '@/layouts/RouteView.vue'
 
 NProgress.configure({ showSpinner: false })
 Vue.use(Router)
@@ -137,6 +138,43 @@ const routes = [
           }
         ]
       },
+      // Exception
+      {
+        path: '/exception',
+        name: 'exception',
+        component: RouteView,
+        redirect: '/exception/403',
+        meta: { title: 'exception', icon: 'warning' },
+        children: [
+          {
+            path: '/exception/403',
+            name: 'Exception403',
+            component: () =>
+              import(
+                /* webpackChunkName: "fail" */ '@/views/exception/403.vue'
+              ),
+            meta: { title: 'exception_403' }
+          },
+          {
+            path: '/exception/404',
+            name: 'Exception404',
+            component: () =>
+              import(
+                /* webpackChunkName: "fail" */ '@/views/exception/404.vue'
+              ),
+            meta: { title: 'exception_404' }
+          },
+          {
+            path: '/exception/500',
+            name: 'Exception500',
+            component: () =>
+              import(
+                /* webpackChunkName: "fail" */ '@/views/exception/500.vue'
+              ),
+            meta: { title: 'exception_500' }
+          }
+        ]
+      },
       {
         path: '/403',
         name: '403',
@@ -158,6 +196,7 @@ const router = new Router({
       ? 'hash'
       : 'history',
   base: process.env.BASE_URL,
+  scrollBehavior: () => ({ x: 0, y: 0 }),
   routes: routes
 })
 

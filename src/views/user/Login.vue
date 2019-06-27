@@ -246,7 +246,7 @@ export default class Login extends Vue {
         delete loginParams.userName
         loginParams[!state.loginType ? 'email' : 'userName'] = values.userName
         loginParams.password = md5(values.password)
-        UserModule.LoginByUserName(loginParams)
+        return UserModule.LoginByUserName(loginParams)
           .then(res => {
             const { code, message } = res as any
             console.log(res)

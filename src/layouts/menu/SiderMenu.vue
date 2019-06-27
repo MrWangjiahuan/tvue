@@ -84,6 +84,10 @@ export default class SiderMenu extends Mixins(Mixin, DeviceMixin) {
       this.openKeys = openKeys
       return
     }
+    // 解决404路由时 报错BUG
+    if (!this.openKeys) {
+      this.openKeys = openKeys
+    }
     // 非水平模式时
     const latestOpenKey: string = openKeys.find(
       key => !this.openKeys.includes(key)
@@ -145,6 +149,7 @@ export default class SiderMenu extends Mixins(Mixin, DeviceMixin) {
   @Watch('$route.path')
   routePathChange(val) {
     this.selectedKeys = this.selectedKeysMap[val]
+    this.openKeys = []
     this.openKeys = this.openKeys.concat(this.openKeysMap[val])
     // 缓存上一次openKeys
     this.openKeysCache = this.openKeys.concat()
@@ -159,8 +164,10 @@ export default class SiderMenu extends Mixins(Mixin, DeviceMixin) {
   collapsedChange(val) {
     if (val) {
       // 缓存上一次openKeys
-      this.openKeysCache = this.openKeys.concat()
-      this.openKeys = []
+      if (this.openKeys) {
+        this.openKeysCache = this.openKeys.concat()
+        this.openKeys = []
+      }
     } else {
       this.openKeys = this.openKeysCache
     }

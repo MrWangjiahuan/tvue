@@ -12,7 +12,9 @@ const getters = {
   notices: (state: IRootState) => state.app.notices,
   unreadCount: (state: IRootState) => state.app.unreadCount,
   fetchingNotices: (state: IRootState) =>
-    (state.app.fetchingStatus as any).notice
+    (state.app.fetchingStatus as any).notice,
+  avatar: (state: IRootState) => state.user.avatar,
+  name: (state: IRootState) => state.user.name
 }
 
 export default getters

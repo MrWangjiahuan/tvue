@@ -9,9 +9,8 @@
       <notice-icon-view />
       <a-dropdown>
         <span class="action ant-dropdown-link user-dropdown-menu">
-          <!-- <a-avatar class="avatar" size="small" :src="avatar()"/>
-          <span>{{ nickname() }}</span>-->
-          <span>ssss</span>
+          <a-avatar class="avatar" size="small" :src="avatar" />
+          <span>{{ name }}</span>
         </span>
         <a-menu
           slot="overlay"
@@ -29,10 +28,6 @@
               <a-icon type="setting" />
               <span>账户设置</span>
             </router-link>
-          </a-menu-item>
-          <a-menu-item key="2" disabled :style="contentWith">
-            <a-icon type="setting" />
-            <span>测试</span>
           </a-menu-item>
           <a-menu-divider />
           <a-menu-item key="3" :style="contentWith" @click="handleLogout">
@@ -68,6 +63,7 @@
 
 <script lang="ts">
 import { Component, Mixins } from 'vue-property-decorator'
+import { Getter } from 'vuex-class'
 import NoticeIconView from './NoticeIconView.vue'
 import { HeaderLayoutMixin } from '../mixins'
 import { UserModule } from '@/store/modules/user'
@@ -78,6 +74,8 @@ import { UserModule } from '@/store/modules/user'
   }
 })
 export default class HeaderRightLayout extends Mixins(HeaderLayoutMixin) {
+  @Getter name
+  @Getter avatar
   private handleLogout() {
     const self = this
     self.$confirm({

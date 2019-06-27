@@ -97,11 +97,14 @@ export default class NoticeIconView extends Vue {
     this.changeNoticeReadState(item.id)
   }
   private handleNoticeClear(title, tabKey) {
+    /* tslint:disable */
     this.$message.success(
       `${this.$t('component')['noticeIcon.cleared']} ${title}`
     )
     this.clearNotices(tabKey)
   }
-  private handleViewMore() {}
+  private handleViewMore() {
+    console.log('handleViewMore')
+  }
 }
 </script>

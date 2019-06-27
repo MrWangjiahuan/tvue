@@ -27,6 +27,10 @@ const menu = {
   form: '表单',
   basicForm: '基础表单',
   stepForm: '分步表单',
+  exception: '异常',
+  exception_403: '403',
+  exception_404: '404',
+  exception_500: '500',
   login: '登录',
   register: '注册'
 }
