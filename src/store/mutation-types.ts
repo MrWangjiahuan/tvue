@@ -1,5 +1,6 @@
 export const ACCESS_TOKEN = 'Access-Token'
 export const AUTHORITY = 'AUTHORITY'
+export const USER_INFO = 'USER_INFO'
 export const DEFAULT_SIDEBAR_TYPE = 'DEFAULT_SIDEBAR_TYPE'
 export const DEFAULT_NAV_THEME = 'DEFAULT_NAV_THEME'
 export const DEFAULT_LAYOUT_MODE = 'DEFAULT_LAYOUT_MODE'

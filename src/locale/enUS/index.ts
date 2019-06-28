@@ -31,6 +31,9 @@ const menu = {
   exception_403: '403',
   exception_404: '404',
   exception_500: '500',
+  result: 'Result',
+  resultFail: 'Error',
+  resultSuccess: 'Success',
   login: 'Login',
   register: 'Register'
 }
@@ -54,7 +57,34 @@ const component = {
   'noticeIcon.empty': 'No notifications',
   'noticeIcon.view-more': 'View more'
 }
-
+const result = {
+  'error.title': 'Submission Failed',
+  'error.description':
+    'Please check and modify the following information before resubmitting.',
+  'error.hint-title': 'The content you submitted has the following error:',
+  'error.hint-text1': 'Your account has been frozen',
+  'error.hint-btn1': 'Thaw immediately',
+  'error.hint-text2': 'Your account is not yet eligible to apply',
+  'error.hint-btn2': 'Upgrade immediately',
+  'error.btn-text': 'Return to modify',
+  'success.title': 'Submission Success',
+  'success.description':
+    'The submission results page is used to feed back the results of a series of operational tasks. If it is a simple operation, use the Message global prompt feedback. This text area can show a simple supplementary explanation. If there is a similar requirement for displaying “documents”, the following gray area can present more complicated content.',
+  'success.operate-title': 'Project Name',
+  'success.operate-id': 'Project ID：',
+  'success.principal': 'Principal：',
+  'success.operate-time': 'Effective time：',
+  'success.step1-title': 'Create project',
+  'success.step1-operator': 'Qu Lili',
+  'success.step2-title': 'Departmental preliminary review',
+  'success.step2-operator': 'Zhou Maomao',
+  'success.step2-extra': 'Urge',
+  'success.step3-title': 'Financial review',
+  'success.step4-title': 'Finish',
+  'success.btn-return': 'Back to list',
+  'success.btn-project': 'View project',
+  'success.btn-print': 'Print'
+}
 const user = {
   'userLayout.help': 'Help',
   'userLayout.privacy': 'Privacy',
@@ -106,4 +136,4 @@ const user = {
   'validation.standard.required': 'Please enter a metric'
 }
 
-export { globalHeader, settingDrawer, component, menu, http, user }
+export { globalHeader, settingDrawer, component, menu, http, user, result }

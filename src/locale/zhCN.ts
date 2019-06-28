@@ -4,7 +4,8 @@ import {
   menu,
   http,
   user,
-  component
+  component,
+  result
 } from './zhCN/index'
 export default {
   globalHeader,
@@ -12,5 +13,6 @@ export default {
   menu,
   http,
   user,
-  component
+  component,
+  result
 }

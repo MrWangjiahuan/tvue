@@ -38,8 +38,8 @@ export default class NoticeList extends Vue {
       return (
         <div class={genCls('not-found')}>
           <img
-            src="https://gw.alipayobjects.com/zos/rmsportal/sAuJeJzSKbUmHfBQRzmZ.svg"
-            alt="not found"
+            src={`https://gw.alipayobjects.com/zos/rmsportal/sAuJeJzSKbUmHfBQRzmZ.svg`}
+            alt={`not found`}
           />
           <div>{emptyText}</div>
         </div>

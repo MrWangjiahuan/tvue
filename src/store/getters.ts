@@ -1,4 +1,6 @@
+import Vue from 'vue'
 import { IRootState } from '@/store/index'
+import * as types from '@/store/mutation-types'
 
 const getters = {
   sidebar: (state: IRootState) => state.app.sidebar,
@@ -11,10 +13,10 @@ const getters = {
   colorWeak: (state: IRootState) => state.app.colorWeak,
   notices: (state: IRootState) => state.app.notices,
   unreadCount: (state: IRootState) => state.app.unreadCount,
+  multiTab: (state: IRootState) => state.app.multiTab,
   fetchingNotices: (state: IRootState) =>
     (state.app.fetchingStatus as any).notice,
-  avatar: (state: IRootState) => state.user.avatar,
-  name: (state: IRootState) => state.user.name
+  userInfo: () => Vue.ls.get(types.USER_INFO, {})
 }
 
 export default getters

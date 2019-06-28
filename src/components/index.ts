@@ -4,6 +4,8 @@ import Result from '@/components/Result'
 import HeaderDropdown from '@/components/HeaderDropdown'
 import NoticeIcon from '@/components/NoticeIcon'
 import Exception from '@/components/Exception'
+import Breadcrumb from '@/components/Breadcrumb'
+import PageHeader from '@/components/PageHeader'
 
 export {
   SettingDrawer,
@@ -11,5 +13,7 @@ export {
   Result,
   HeaderDropdown,
   NoticeIcon,
-  Exception
+  Exception,
+  Breadcrumb,
+  PageHeader
 }

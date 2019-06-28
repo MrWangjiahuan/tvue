@@ -45,17 +45,8 @@ class User extends VuexModule implements IUserState {
   }
 
   @Mutation
-  public SET_NAME(name: string) {
-    this.name = name
-  }
-
-  @Mutation
-  public SET_AVATAR(avatar: string) {
-    this.avatar = avatar
-  }
-
-  @Mutation
   public SET_USER_INFO(userInfo: object) {
+    Vue.ls.set(types.USER_INFO, userInfo)
     this.userInfo = userInfo
   }
 
@@ -88,6 +79,7 @@ class User extends VuexModule implements IUserState {
   public Logout() {
     return new Promise(resolve => {
       return logout().then(response => {
+        /* tslint:disable */
         this.ResetToken()
         resolve(response.data)
       })
@@ -102,8 +94,6 @@ class User extends VuexModule implements IUserState {
       commit('SET_TOKEN', '')
       commit('SET_AUTHORITY', [])
       // Vue.ls.set(types.AUTHORITY, [])
-      commit('SET_NAME', '')
-      commit('SET_AVATAR', '')
       commit('SET_USER_INFO', {})
       removeToken()
       resolve()
@@ -127,7 +117,7 @@ class User extends VuexModule implements IUserState {
           throw new Error(message)
         }
 
-        const { authority, name, avatar } = data
+        const { authority } = data
         if (!authority || authority.length <= 0) {
           const message = 'getUserInfo: authority must be a non-null array!'
           Vue.prototype.$notification['error']({
@@ -138,8 +128,6 @@ class User extends VuexModule implements IUserState {
           throw new Error(message)
         }
         commit('SET_AUTHORITY', authority)
-        commit('SET_NAME', name)
-        commit('SET_AVATAR', avatar)
         commit('SET_USER_INFO', data)
         resolve(data)
       })

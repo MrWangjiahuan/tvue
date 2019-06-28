@@ -25,8 +25,11 @@ import {
   Select,
   Progress,
   Modal,
+  Breadcrumb,
   notification,
   message,
+  Card,
+  Steps,
   LocaleProvider
 } from 'ant-design-vue'
 
@@ -53,7 +56,10 @@ Vue.use(Tabs)
 Vue.use(Badge)
 Vue.use(Checkbox)
 Vue.use(Select)
+Vue.use(Card)
 Vue.use(Progress)
+Vue.use(Breadcrumb)
+Vue.use(Steps)
 Vue.use(LocaleProvider)
 
 Vue.prototype.$message = message

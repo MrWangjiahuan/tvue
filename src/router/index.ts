@@ -13,6 +13,7 @@ import zhCN from '@/locale/zhCN'
 import config from '@/config/defaultSettings'
 import * as types from '@/store/mutation-types'
 import RouteView from '@/layouts/RouteView.vue'
+import PageView from '@/layouts/PageView.vue'
 
 NProgress.configure({ showSpinner: false })
 Vue.use(Router)
@@ -138,6 +139,45 @@ const routes = [
           }
         ]
       },
+      // result
+      {
+        path: '/result',
+        name: 'resultPage',
+        component: PageView,
+        redirect: '/result/success',
+        meta: {
+          title: 'result',
+          icon: 'check-circle-o'
+        },
+        children: [
+          {
+            path: '/result/success',
+            name: 'resultSuccess',
+            component: () =>
+              import(
+                /* webpackChunkName: "result" */ '@/views/result/Success.vue'
+              ),
+            meta: {
+              title: 'resultSuccess',
+              keepAlive: false,
+              hiddenHeaderContent: true
+            }
+          },
+          {
+            path: '/result/fail',
+            name: 'resultFail',
+            component: () =>
+              import(
+                /* webpackChunkName: "result" */ '@/views/result/Error.vue'
+              ),
+            meta: {
+              title: 'resultFail',
+              keepAlive: false,
+              hiddenHeaderContent: true
+            }
+          }
+        ]
+      },
       // Exception
       {
         path: '/exception',
@@ -230,6 +270,13 @@ router.beforeEach((to: Route, from: Route, next: any) => {
       })
       next({
         path: '/403'
+      })
+    }
+    NProgress.done()
+  } else {
+    if (isLogin() && to.path === '/user/login') {
+      next({
+        path: '/'
       })
     }
     NProgress.done()

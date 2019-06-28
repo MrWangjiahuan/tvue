@@ -24,13 +24,16 @@ const settingDrawer = {
 const menu = {
   dashboard: '仪表盘',
   analysis: '分析页',
-  form: '表单',
+  form: '表单页',
   basicForm: '基础表单',
   stepForm: '分步表单',
-  exception: '异常',
+  exception: '异常页',
   exception_403: '403',
   exception_404: '404',
   exception_500: '500',
+  result: '结果页',
+  resultFail: '失败',
+  resultSuccess: '成功',
   login: '登录',
   register: '注册'
 }
@@ -54,7 +57,33 @@ const component = {
   'noticeIcon.empty': '暂无数据',
   'noticeIcon.view-more': '查看更多'
 }
-
+const result = {
+  'error.title': '提交失败',
+  'error.description': '请核对并修改以下信息后，再重新提交。',
+  'error.hint-title': '您提交的内容有如下错误：',
+  'error.hint-text1': '您的账户已被冻结',
+  'error.hint-btn1': '立即解冻',
+  'error.hint-text2': '您的账户还不具备申请资格',
+  'error.hint-btn2': '立即升级',
+  'error.btn-text': '返回修改',
+  'success.title': '提交成功',
+  'success.description':
+    '提交结果页用于反馈一系列操作任务的处理结果， 如果仅是简单操作，使用 Message 全局提示反馈即可。 本文字区域可以展示简单的补充说明，如果有类似展示 “单据”的需求，下面这个灰色区域可以呈现比较复杂的内容。',
+  'success.operate-title': '项目名称',
+  'success.operate-id': '项目 ID：',
+  'success.principal': '负责人：',
+  'success.operate-time': '生效时间：',
+  'success.step1-title': '创建项目',
+  'success.step1-operator': '曲丽丽',
+  'success.step2-title': '部门初审',
+  'success.step2-operator': '周毛毛',
+  'success.step2-extra': '催一下',
+  'success.step3-title': '财务复核',
+  'success.step4-title': '完成',
+  'success.btn-return': '返回列表',
+  'success.btn-project': '查看项目',
+  'success.btn-print': '打印'
+}
 const user = {
   'userLayout.help': '帮助',
   'userLayout.privacy': '隐私',
@@ -105,4 +134,4 @@ const user = {
   'validation.standard.required': '请输入衡量标准'
 }
 
-export { globalHeader, settingDrawer, component, menu, http, user }
+export { globalHeader, settingDrawer, component, menu, http, user, result }

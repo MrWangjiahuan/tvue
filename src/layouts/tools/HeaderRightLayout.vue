@@ -9,8 +9,8 @@
       <notice-icon-view />
       <a-dropdown>
         <span class="action ant-dropdown-link user-dropdown-menu">
-          <a-avatar class="avatar" size="small" :src="avatar" />
-          <span>{{ name }}</span>
+          <a-avatar class="avatar" size="small" :src="userInfo.avatar" />
+          <span>{{ userInfo.name }}</span>
         </span>
         <a-menu
           slot="overlay"
@@ -74,8 +74,7 @@ import { UserModule } from '@/store/modules/user'
   }
 })
 export default class HeaderRightLayout extends Mixins(HeaderLayoutMixin) {
-  @Getter name
-  @Getter avatar
+  @Getter userInfo
   private handleLogout() {
     const self = this
     self.$confirm({

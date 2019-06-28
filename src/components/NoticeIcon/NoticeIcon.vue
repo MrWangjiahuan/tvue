@@ -93,7 +93,7 @@ export default class NoticeIcon extends Vue {
       [`${prefixCls}__notice-button`]: true
     }
     const notificationBox = this.getNotificationBox(h)
-    const NoticeBellIcon = <a-icon type="bell" class={`${prefixCls}__icon`} />
+    const NoticeBellIcon = <a-icon type={`bell`} class={`${prefixCls}__icon`} />
     const trigger = (
       <span class={noticeButtonClass}>
         <a-badge
@@ -114,7 +114,7 @@ export default class NoticeIcon extends Vue {
     }
     return (
       <header-dropdown
-        placement="bottomRight"
+        placement={`bottomRight`}
         overlayClassName={`${prefixCls}__popover`}
         trigger={['click']}
         visible={visible}

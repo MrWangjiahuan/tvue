@@ -4,7 +4,8 @@ import {
   menu,
   http,
   user,
-  component
+  component,
+  result
 } from './enUS/index'
 export default {
   globalHeader,
@@ -12,5 +13,6 @@ export default {
   menu,
   http,
   user,
-  component
+  component,
+  result
 }
