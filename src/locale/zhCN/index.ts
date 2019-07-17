@@ -24,6 +24,7 @@ const settingDrawer = {
 const menu = {
   dashboard: '仪表盘',
   analysis: '分析页',
+  workplace: '工作台',
   form: '表单页',
   basicForm: '基础表单',
   stepForm: '分步表单',

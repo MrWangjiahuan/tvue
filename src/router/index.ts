@@ -62,7 +62,7 @@ const routes = [
       // dashboard
       {
         path: '/',
-        redirect: '/dashboard/analysis'
+        redirect: '/dashboard/workplace'
       },
       {
         path: '/dashboard',
@@ -71,12 +71,12 @@ const routes = [
         component: { render: h => h('router-view') },
         children: [
           {
-            path: '/dashboard/analysis',
-            name: 'analysis',
-            meta: { title: 'analysis' },
+            path: '/dashboard/workplace',
+            name: 'workplace',
+            meta: { title: 'workplace' },
             component: () =>
               import(
-                /* webpackChunkName: "dashboard" */ '@/views/dashboard/Analysis.vue'
+                /* webpackChunkName: "dashboard" */ '@/views/dashboard/Workplace.vue'
               )
           }
         ]

@@ -2,11 +2,12 @@ import Mock from 'mockjs'
 import Utils from '../src/utils/util'
 
 import user from './user'
+import dashboard from './dashboard'
 // import role from './role'
 // import article from './article'
 // import search from './remote-search'
 
-const mocks = [...user]
+const mocks = [...user, ...dashboard]
 
 // for front mock
 // please use it cautiously, it will redefine XMLHttpRequest,

@@ -1,17 +1,16 @@
 import request from '@/utils/request'
-import { METHOD_TYPE } from '@/config/constant'
 
 export const getUser = () => {
   return request({
     url: '/user/login/s',
-    method: METHOD_TYPE.GET
+    method: 'GET'
   })
 }
 
 export const loginByUserName = data => {
   return request({
     url: '/user/login',
-    method: METHOD_TYPE.POST,
+    method: 'POST',
     data
   })
 }
@@ -19,14 +18,14 @@ export const loginByUserName = data => {
 export const logout = () => {
   return request({
     url: '/user/logout',
-    method: METHOD_TYPE.POST
+    method: 'POST'
   })
 }
 
 export const getUserInfo = token => {
   return request({
     url: '/user/getUserInfo',
-    method: METHOD_TYPE.GET,
+    method: 'GET',
     params: { token }
   })
 }
@@ -34,13 +33,13 @@ export const getUserInfo = token => {
 export const getSmsCaptcha = () => {
   return request({
     url: '/user/getSmsCaptcha',
-    method: METHOD_TYPE.GET
+    method: 'GET'
   })
 }
 
 export const getNotices = () => {
   return request({
     url: '/user/getNotices',
-    method: METHOD_TYPE.GET
+    method: 'GET'
   })
 }

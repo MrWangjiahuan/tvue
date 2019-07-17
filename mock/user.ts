@@ -136,8 +136,8 @@ export default [
           message = 'ERROR Incorrect username or password'
         } else {
           code = 20000
-          ;(message = 'Successful login'),
-            (token = userName == 'admin' ? tokens[0] : tokens[1])
+          message = 'Successful login'
+          token = userName === 'admin' ? tokens[0] : tokens[1]
         }
       }
       return {
@@ -161,7 +161,7 @@ export default [
           avatar:
             'https://gw.alipayobjects.com/zos/rmsportal/jZUIxmJycoymBprLOUbT.png',
           status: 1,
-          authority: token == tokens[0] ? ['admin', 'user'] : ['user'],
+          authority: token === tokens[0] ? ['admin', 'user'] : ['user'],
           telephone: '',
           lastLoginIp: '27.154.74.117',
           lastLoginTime: 1534837621348,

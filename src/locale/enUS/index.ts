@@ -24,6 +24,7 @@ const settingDrawer = {
 const menu = {
   dashboard: 'Dashboard',
   analysis: 'Analysis',
+  workplace: 'Workplace',
   form: 'Form',
   basicForm: 'Basic Form',
   stepForm: 'Step Form',

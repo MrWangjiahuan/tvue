@@ -6,6 +6,7 @@ import NoticeIcon from '@/components/NoticeIcon'
 import Exception from '@/components/Exception'
 import Breadcrumb from '@/components/Breadcrumb'
 import PageHeader from '@/components/PageHeader'
+import HeaderInfo from '@/components/HeaderInfo'
 
 export {
   SettingDrawer,
@@ -15,5 +16,6 @@ export {
   NoticeIcon,
   Exception,
   Breadcrumb,
-  PageHeader
+  PageHeader,
+  HeaderInfo
 }
