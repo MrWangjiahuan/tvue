@@ -30,6 +30,7 @@ import {
   message,
   Card,
   Steps,
+  Table,
   LocaleProvider
 } from 'ant-design-vue'
 
@@ -60,6 +61,7 @@ Vue.use(Card)
 Vue.use(Progress)
 Vue.use(Breadcrumb)
 Vue.use(Steps)
+Vue.use(Table)
 Vue.use(LocaleProvider)
 
 Vue.prototype.$message = message

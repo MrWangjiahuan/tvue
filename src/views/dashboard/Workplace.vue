@@ -215,35 +215,31 @@ export default class Workplace extends Vue {
   private radarData = []
 
   private mounted() {
+    console.log(this.userInfo)
     this.getProjects()
     this.getActivity()
     this.getTeams()
     this.initRadar()
   }
   private getProjects() {
-    return getProjectsApi().then(res => {
-      console.log(
-        '%cres: ',
-        'color: MidnightBlue; background: Aquamarine; font-size: 20px;',
-        res
-      )
+    getProjectsApi().then(res => {
       this.projects = res.data.data
       this.loading = false
     })
   }
   private getActivity() {
-    return getActivityApi().then(res => {
+    getActivityApi().then(res => {
       this.activities = res.data.data
     })
   }
   private getTeams() {
-    return getTeamsApi().then(res => {
+    getTeamsApi().then(res => {
       this.teams = res.data.data
     })
   }
   private initRadar() {
     this.radarLoading = true
-    return getRadarApi().then(res => {
+    getRadarApi().then(res => {
       const dv = new DataSet.View().source(res.data.data)
       dv.transform({
         type: 'fold',

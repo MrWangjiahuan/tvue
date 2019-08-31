@@ -128,7 +128,10 @@ class User extends VuexModule implements IUserState {
           throw new Error(message)
         }
         commit('SET_AUTHORITY', authority)
-        commit('SET_USER_INFO', data)
+        commit('SET_USER_INFO', {
+          name: data.name,
+          avatar: data.avatar
+        })
         resolve(data)
       })
     })

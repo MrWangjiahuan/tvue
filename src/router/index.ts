@@ -78,6 +78,17 @@ const routes = [
               import(
                 /* webpackChunkName: "dashboard" */ '@/views/dashboard/Workplace.vue'
               )
+          },
+          {
+            path: '/dashboard/analysis',
+            name: 'analysis',
+            meta: {
+              title: 'analysis'
+            },
+            component: () =>
+              import(
+                /* webpackChunkName: "dashboard" */ '@/views/dashboard/Analysis.vue'
+              )
           }
         ]
       },

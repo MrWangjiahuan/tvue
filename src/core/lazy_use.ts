@@ -4,6 +4,7 @@ import config from '@/config/defaultSettings'
 import Viser from 'viser-vue'
 import { Authorized } from '@/components'
 import Auth from '@/directives/auth'
+import '@/utils/filter' // global filter
 // base library
 import '@/core/lazy_lib/lazy_antd'
 

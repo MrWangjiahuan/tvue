@@ -247,7 +247,7 @@ export default class Login extends Vue {
         loginParams[!state.loginType ? 'email' : 'userName'] = values.userName
         loginParams.password = md5(values.password)
         return UserModule.LoginByUserName(loginParams)
-          .then(res => {
+          .then(async res => {
             const { code, message } = res as any
             console.log(res)
             if (code === RESULT_CODE.USER_ACCOUNT_ERROR) {
@@ -257,9 +257,13 @@ export default class Login extends Vue {
                 duration: 2
               })
             } else {
-              this.getUserInfo().then(() => {
-                this.loginSuccess()
-              })
+              await this.getUserInfo()
+                .then(() => {
+                  this.loginSuccess()
+                })
+                .finally(() => {
+                  this.$router.push({ path: '/' })
+                })
             }
           })
           .finally(() => {
@@ -273,7 +277,6 @@ export default class Login extends Vue {
     })
   }
   private loginSuccess() {
-    this.$router.push({ path: '/' })
     // 延迟 1 秒显示欢迎信息
     setTimeout(() => {
       this.$notification.success({

@@ -1,13 +1,8 @@
 {
   "defaultSeverity": "warning",
-  "extends": [
-    "tslint-config-standard",
-    "tslint-config-prettier"
-  ],
+  "extends": ["tslint-config-standard", "tslint-config-prettier"],
   "linterOptions": {
-    "exclude": [
-      "node_modules/**"
-    ]
+    "exclude": ["node_modules/**"]
   },
   "rules": {
     "quotemark": [true, "single"],
@@ -15,6 +10,7 @@
     "interface-name": false,
     "ordered-imports": false,
     "object-literal-sort-keys": false,
-    "no-consecutive-blank-lines": false
+    "no-consecutive-blank-lines": false,
+    "no-floating-promises": false
   }
 }

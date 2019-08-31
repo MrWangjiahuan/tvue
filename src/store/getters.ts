@@ -16,7 +16,10 @@ const getters = {
   multiTab: (state: IRootState) => state.app.multiTab,
   fetchingNotices: (state: IRootState) =>
     (state.app.fetchingStatus as any).notice,
-  userInfo: () => Vue.ls.get(types.USER_INFO, {})
+  userInfo: () => {
+    console.log(Vue.ls.get(types.USER_INFO, {}))
+    return Vue.ls.get(types.USER_INFO, {})
+  }
 }
 
 export default getters

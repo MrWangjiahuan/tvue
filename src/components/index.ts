@@ -7,7 +7,8 @@ import Exception from '@/components/Exception'
 import Breadcrumb from '@/components/Breadcrumb'
 import PageHeader from '@/components/PageHeader'
 import HeaderInfo from '@/components/HeaderInfo'
-
+import NumberInfo from '@/components/NumberInfo'
+import * as Charts from '@/components/Charts/index'
 export {
   SettingDrawer,
   Authorized,
@@ -17,5 +18,7 @@ export {
   Exception,
   Breadcrumb,
   PageHeader,
-  HeaderInfo
+  HeaderInfo,
+  NumberInfo,
+  Charts
 }

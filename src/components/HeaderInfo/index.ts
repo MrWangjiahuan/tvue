@@ -1,3 +1,3 @@
-import HeadInfo from './HeadInfo.vue'
+import HeaderInfo from './HeaderInfo.vue'
 
-export default HeadInfo
+export default HeaderInfo
